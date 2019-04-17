@@ -1,0 +1,17 @@
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\MainWindow.g.cs
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\App.g.cs
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.cache
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.lref
+F:\C# projects\SalesManagment\SalesManagment\bin\Debug\SalesManagment.exe.config
+F:\C# projects\SalesManagment\SalesManagment\bin\Debug\SalesManagment.exe
+F:\C# projects\SalesManagment\SalesManagment\bin\Debug\SalesManagment.pdb
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\MainWindow.baml
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.g.resources
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.Properties.Resources.resources
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.csproj.GenerateResource.cache
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.csproj.CoreCompileInputs.cache
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.exe
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.pdb
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\Views\ShellView.g.cs
+F:\C# projects\SalesManagment\SalesManagment\obj\Debug\Views\ShellView.baml
