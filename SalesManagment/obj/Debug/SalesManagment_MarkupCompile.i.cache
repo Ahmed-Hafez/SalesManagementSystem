@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\C# projects\SalesManagment\SalesManagment\obj\Debug\
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\
 SalesManagment
 none
 false
 DEBUG;TRACE
-F:\C# projects\SalesManagment\SalesManagment\App.xaml
-2901202249
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\App.xaml
+61383125253
 
-15499052740
+16-336551390
 14-1129169182
-MainWindow.xaml;Views\ShellView.xaml;
+MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Views\ShellView.xaml;
 
 False
 
