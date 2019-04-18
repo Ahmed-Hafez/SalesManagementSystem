@@ -22,6 +22,7 @@ namespace SalesManagment
         public ShellView()
         {
             InitializeComponent();
+            DataContext = new ShellViewModel(this);
         }
     }
 }

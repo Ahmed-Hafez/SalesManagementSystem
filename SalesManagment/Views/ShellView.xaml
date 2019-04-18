@@ -8,15 +8,90 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Title="ShellView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="ShellView" Height="650" Width="1000">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type local:ShellView}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <!--Outer border with the drop shadow margin-->
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+
+                            <!--Shell outline-->
+                            <Grid>
+
+                                <!--Shell border and drop shadow-->
+                                <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
+                                        Background="{StaticResource ForegroundLightBrush}">
+
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" 
+                                                          Opacity="0.2"/>
+                                    </Border.Effect>
+
+                                </Border>
+
+                                <!--Shell Content-->
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+
+                                        <!--Title bar-->
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=40}"/>
+                                        <!--Drop shadow-->
+                                        <RowDefinition Height="auto"/>
+                                        <!--Shell Content-->
+                                        <RowDefinition Height="*"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <!--Title bar-->
+                                    <Grid Grid.Column="0"
+                                          Panel.ZIndex="1"
+                                          Background="{StaticResource DarkSkyToLightSky}">
+
+                                        <Grid.ColumnDefinitions>
+
+                                            <!--Icon-->
+                                            <ColumnDefinition Width="auto"/>
+                                            <!--Title-->
+                                            <ColumnDefinition Width="*"/>
+                                            <!--Control Buttons-->
+                                            <ColumnDefinition Width="auto"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!--TODO Icon-->
+                                        <Button Command="{Binding MenuCommand}"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                Content="logo">
+
+                                            <!--<Image/>-->
+                                            
+                                        </Button>
+                                        
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <WindowChrome.WindowChrome>
+
         <WindowChrome 
-            ResizeBorderThickness="5"
-            CaptionHeight="150"
-            GlassFrameThickness="100"/>
+            CornerRadius="{Binding WindowCornerRadius}"
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            CaptionHeight="{Binding TitleHeight}"
+            GlassFrameThickness="0"/>
+
     </WindowChrome.WindowChrome>
 </Window>
