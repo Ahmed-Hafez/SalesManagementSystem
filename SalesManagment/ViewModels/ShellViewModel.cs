@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace SalesManagment
 {
@@ -26,11 +27,21 @@ namespace SalesManagment
         /// </summary>
         private double mWindowRadius = 10;
 
-        private double mTitleHeight = 40;
+        private double mTitleHeight = 46;
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The smallest width for the window
+        /// </summary>
+        public double WindowMinimumWidth { get; set; } = 400;
+
+        /// <summary>
+        /// The smallest height for the window
+        /// </summary>
+        public double WindowMinimumHeight { get; set; } = 400;
 
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome
@@ -49,7 +60,7 @@ namespace SalesManagment
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? 5 : mOuterMarginSize;
+                return mWindow.WindowState == WindowState.Maximized ? 0 : mOuterMarginSize;
             }
             set { mOuterMarginSize = value; }
         }
@@ -58,6 +69,8 @@ namespace SalesManagment
         /// The margin around the window to allow for a drop shadow
         /// </summary>
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
+
+        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder - mOuterMarginSize); } }
 
         /// <summary>
         /// The radius of the edges of the window
@@ -75,6 +88,21 @@ namespace SalesManagment
         /// The radius of the edges of the window
         /// </summary>
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
+
+        /// <summary>
+        /// Corener radius of the title bar
+        /// </summary>
+        public CornerRadius TitleBarCornerRadius { get { return new CornerRadius(WindowRadius, WindowRadius, 0, 0); } }
+
+        /// <summary>
+        /// Corener radius of the shell content border
+        /// </summary>
+        public CornerRadius ShellContentCornerRadius { get { return new CornerRadius(0, 0, WindowRadius, WindowRadius); } }
+        
+        /// <summary>
+        /// Corener radius of the 'Close' button
+        /// </summary>
+        public CornerRadius CloseButtonCornerRadius { get { return new CornerRadius(0, WindowRadius-2, 0, 0); } }
 
         /// <summary>
         /// The height of the title bar
@@ -98,6 +126,30 @@ namespace SalesManagment
 
         #endregion
 
+        #region Commands
+
+        /// <summary>
+        /// The command to minimize the shell
+        /// </summary>
+        public ICommand MinimizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to maximize the shell
+        /// </summary>
+        public ICommand MaximizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to close the shell
+        /// </summary>
+        public ICommand CloseCommand { get; set; }
+
+        /// <summary>
+        /// The command to show the menu of the shell
+        /// </summary>
+        public ICommand MenuCommand { get; set; }
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -108,14 +160,41 @@ namespace SalesManagment
         {
             this.mWindow = window;
 
-            mWindow.StateChanged += (sender, e) => 
+            mWindow.StateChanged += (sender, e) =>
             {
                 OnPropertyChanged(nameof(ResizeBorderThickness));
                 OnPropertyChanged(nameof(OuterMarginSize));
                 OnPropertyChanged(nameof(OuterMarginSizeThickness));
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
+                OnPropertyChanged(nameof(TitleBarCornerRadius));
+                OnPropertyChanged(nameof(ShellContentCornerRadius));
+                OnPropertyChanged(nameof(CloseButtonCornerRadius));
             };
+
+            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => mWindow.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+
+            // Fixing window maximizing issue (hiding the bottom content)
+            var resizer = new WindowResizer(mWindow);
+        }
+
+        #endregion
+
+        #region Private helpers
+
+        /// <summary>
+        /// Get the mouse position on the shell
+        /// </summary>
+        private Point GetMousePosition()
+        {
+            Point position = Mouse.GetPosition(mWindow);
+            if (mWindow.WindowState == WindowState.Normal)
+                return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
+            else
+                return new Point(position.X, position.Y);
         }
 
         #endregion

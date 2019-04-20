@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:SalesManagment"
         mc:Ignorable="d"
         WindowStyle="None"
+        MinHeight="{Binding WindowMinimumHeight}"
+        MinWidth="{Binding WindowMinimumWidth}"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Title="ShellView" Height="650" Width="1000">
+        Icon="../Images/Management-icon.ico"
+        Title="Sales Management Studio" Height="650" Width="1000">
 
     <Window.Resources>
         <Style TargetType="{x:Type local:ShellView}">
@@ -24,12 +27,10 @@
                                 <!--Shell border and drop shadow-->
                                 <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
                                         Background="{StaticResource ForegroundLightBrush}">
-
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" 
                                                           Opacity="0.2"/>
                                     </Border.Effect>
-
                                 </Border>
 
                                 <!--Shell Content-->
@@ -38,41 +39,117 @@
                                     <Grid.RowDefinitions>
 
                                         <!--Title bar-->
-                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=40}"/>
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=46}"/>
                                         <!--Drop shadow-->
                                         <RowDefinition Height="auto"/>
-                                        <!--Shell Content-->
+                                        <!--Page content-->
                                         <RowDefinition Height="*"/>
 
                                     </Grid.RowDefinitions>
 
                                     <!--Title bar-->
-                                    <Grid Grid.Column="0"
-                                          Panel.ZIndex="1"
-                                          Background="{StaticResource DarkSkyToLightSky}">
+                                    <Border CornerRadius="{Binding TitleBarCornerRadius}"
+                                            Background="{StaticResource DarkSkyToLightSky}">
 
-                                        <Grid.ColumnDefinitions>
+                                        <!--Title bar-->
+                                        <Grid Grid.Column="0"
+                                          Panel.ZIndex="1"
+                                          Margin="-0.2"
+                                          Background="Transparent">
+
+                                            <Grid.ColumnDefinitions>
+
+                                                <!--Icon-->
+                                                <ColumnDefinition Width="auto"/>
+                                                <!--Title-->
+                                                <ColumnDefinition Width="*"/>
+                                                <!--Control Buttons-->
+                                                <ColumnDefinition Width="auto"/>
+
+                                            </Grid.ColumnDefinitions>
 
                                             <!--Icon-->
-                                            <ColumnDefinition Width="auto"/>
+                                            <Button Style="{StaticResource SystemIconButton}"
+                                                    Padding="2"
+                                                    Command="{Binding MenuCommand}">
+
+                                                <Image Source="../Images/Management-icon.png">
+                                                    <Image.Effect>
+                                                        <DropShadowEffect ShadowDepth="0" Opacity="1"/>
+                                                    </Image.Effect>
+                                                </Image>
+
+                                            </Button>
+
                                             <!--Title-->
-                                            <ColumnDefinition Width="*"/>
+                                            <Viewbox Grid.Column="1">
+
+                                                <TextBlock
+                                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Sales Management Studio'}"
+                                                    Foreground="{StaticResource ForegroundLightBrush}"
+                                                    Padding="0 0 0 1"/>
+
+                                            </Viewbox>
+
                                             <!--Control Buttons-->
-                                            <ColumnDefinition Width="auto"/>
+                                            <StackPanel Grid.Column="2" 
+                                                    Orientation="Horizontal">
 
-                                        </Grid.ColumnDefinitions>
-                                        
-                                        <!--TODO Icon-->
-                                        <Button Command="{Binding MenuCommand}"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Content="logo">
+                                                <!--Minimize Button-->
+                                                <Button Content="_"
+                                                    Command="{Binding MinimizeCommand}"
+                                                    Style="{StaticResource WindowControlButton}"/>
 
-                                            <!--<Image/>-->
-                                            
-                                        </Button>
-                                        
+                                                <!--Maximize Button-->
+                                                <Button Content="[ ]"
+                                                    Command="{Binding MaximizeCommand}"
+                                                    Style="{StaticResource WindowControlButton}"/>
 
-                                    </Grid>
+                                                <!--Close Button-->
+                                                <Border Background="Transparent" ClipToBounds="True">
+
+                                                    <!--Close Button-->
+                                                    <Button Content="X" 
+                                                        Command="{Binding CloseCommand}"
+                                                        Style="{DynamicResource WindowCloseButton}"/>
+
+                                                </Border>
+
+                                            </StackPanel>
+
+                                        </Grid>
+
+                                    </Border>
+
+                                    <!--Drop shadow-->
+                                    <Border Grid.Row="1"
+                                            Height="4"
+                                            BorderThickness="0 0.2 0 0">
+
+                                        <!--Underline-->
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Color="{StaticResource ForegroundLightColor}" Offset="0.0"/>
+                                                <GradientStop Color="{StaticResource ForegroundMainColor}" Offset="0.5"/>
+                                                <GradientStop Color="{StaticResource ForegroundLightColor}" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+
+                                        <!--Drop shadow-->
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Color="{StaticResource ForegroundLightColor}" Offset="0.0"/>
+                                                <GradientStop Color="{StaticResource ForegroundMainColor}" Offset="0.5"/>
+                                                <GradientStop Color="{StaticResource ForegroundLightColor}" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <!--Page content-->
+                                    <Border Grid.Row="2"
+                                            CornerRadius="{Binding ShellContentCornerRadius}">
+                                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                                    </Border>
 
                                 </Grid>
 
@@ -83,6 +160,43 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--Close button style-->
+        <Style x:Key="WindowCloseButton" TargetType="{x:Type Button}" 
+            BasedOn="{StaticResource WindowControlButton}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding CloseButtonCornerRadius}">
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="Red" Opacity="0.7"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="Red" Opacity="0.8"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
 
     <WindowChrome.WindowChrome>
@@ -94,4 +208,11 @@
             GlassFrameThickness="0"/>
 
     </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="{Binding ShellContentCornerRadius}">
+        <Grid>
+            <Frame/>
+        </Grid>
+    </Border>
+
 </Window>
