@@ -4,6 +4,11 @@
 
     <FontFamily x:Key="LatoThin">pack://application;,,,/Fonts/#Lato Thin</FontFamily>
     <FontFamily x:Key="LatoRegular">pack://application;,,,/Fonts/#Lato Regular</FontFamily>
+    <FontFamily x:Key="LatoHeavy">pack://application;,,,/Fonts/#Lato Heavy</FontFamily>
+    <FontFamily x:Key="LatoBold">pack://application;,,,/Fonts/#Lato Bold</FontFamily>
+    <FontFamily x:Key="LatoSemibold">pack://application;,,,/Fonts/#Lato Semibold</FontFamily>
+    <FontFamily x:Key="LatoLight">pack://application;,,,/Fonts/#Lato Light</FontFamily>
+    <FontFamily x:Key="LatoMedium">pack://application;,,,/Fonts/#Lato Medium</FontFamily>
 
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
