@@ -5,12 +5,18 @@
     <!--Colors-->
     <Color x:Key="LightSkyColor">#FF00BAFF</Color>
     <Color x:Key="DarkSkyColor">#FF0F252E</Color>
-    <Color x:Key="ForegroundLight">#ffffff</Color>
-
+    <Color x:Key="ForegroundLightColor">#FFFFFF</Color>
+    <Color x:Key="ForegroundMainColor">#FFC4C4C4</Color>
+    <Color x:Key="BackgroundVeryLightColor">#fafafa</Color>
+    
     <!--Solid Brushes-->
     <SolidColorBrush x:Key="LightSkyBrush" Color="{StaticResource LightSkyColor}"/>
     <SolidColorBrush x:Key="DarktSkyBrush" Color="{StaticResource DarkSkyColor}"/>
-    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}" />
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLightColor}" />
+    <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMainColor}" />
+    <SolidColorBrush x:Key="BackgroundLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.35"/>
+    <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLightColor}" />
+    <SolidColorBrush x:Key="ClickedLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.5"/>
 
     <!--Gradient Brushes-->
     <LinearGradientBrush x:Key="DarkSkyToLightSky" EndPoint="0.5,1" StartPoint="0.5,0">
