@@ -38,3 +38,5 @@ F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\Sal
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.exe
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.pdb
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Pages\LoginPage.g.cs
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Pages\LoginPage.baml

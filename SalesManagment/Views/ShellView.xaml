@@ -14,6 +14,7 @@
         Title="Sales Management Studio" Height="650" Width="1000">
 
     <Window.Resources>
+        <!--Window style-->
         <Style TargetType="{x:Type local:ShellView}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -106,6 +107,7 @@
                                                     Style="{StaticResource WindowControlButton}"/>
 
                                                 <!--Close Button-->
+                                                <!--This border was made to afix the issue of Close button top right edge -->
                                                 <Border Background="Transparent" ClipToBounds="True">
 
                                                     <!--Close Button-->
@@ -147,7 +149,9 @@
 
                                     <!--Page content-->
                                     <Border Grid.Row="2"
-                                            CornerRadius="{Binding ShellContentCornerRadius}">
+                                            ClipToBounds="True"
+                                            CornerRadius="{Binding ShellContentCornerRadius}"
+                                            Background="Transparent">
                                         <ContentPresenter Content="{TemplateBinding Content}"/>
                                     </Border>
 
@@ -196,7 +200,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
     </Window.Resources>
 
     <WindowChrome.WindowChrome>
@@ -209,10 +213,10 @@
 
     </WindowChrome.WindowChrome>
 
-    <Border CornerRadius="{Binding ShellContentCornerRadius}">
-        <Grid>
-            <Frame/>
-        </Grid>
-    </Border>
+    <Grid Background="Transparent">
+        <Frame x:Name="MainFrame"
+               Padding="{Binding InnerContentPadding}"
+               Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+    </Grid>
 
 </Window>

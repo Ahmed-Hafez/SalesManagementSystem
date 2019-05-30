@@ -70,7 +70,10 @@ namespace SalesManagment
         /// </summary>
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
 
-        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder - mOuterMarginSize); } }
+        /// <summary>
+        /// TODO Remove this because it is not used
+        /// </summary>
+        public Thickness InnerContentPadding { get { return new Thickness(6); } }
 
         /// <summary>
         /// The radius of the edges of the window
@@ -100,7 +103,7 @@ namespace SalesManagment
         public CornerRadius ShellContentCornerRadius { get { return new CornerRadius(0, 0, WindowRadius, WindowRadius); } }
         
         /// <summary>
-        /// Corener radius of the 'Close' button
+        /// Corner radius of the 'Close' button
         /// </summary>
         public CornerRadius CloseButtonCornerRadius { get { return new CornerRadius(0, WindowRadius-2, 0, 0); } }
 
@@ -123,6 +126,11 @@ namespace SalesManagment
                 return new GridLength(mTitleHeight - mOuterMarginSize + ResizeBorder);
             }
         }
+
+        /// <summary>
+        /// The current page of the application
+        /// </summary>
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
         #endregion
 
@@ -162,6 +170,7 @@ namespace SalesManagment
 
             mWindow.StateChanged += (sender, e) =>
             {
+                // Editting properties when window state changed
                 OnPropertyChanged(nameof(ResizeBorderThickness));
                 OnPropertyChanged(nameof(OuterMarginSize));
                 OnPropertyChanged(nameof(OuterMarginSizeThickness));
@@ -172,6 +181,7 @@ namespace SalesManagment
                 OnPropertyChanged(nameof(CloseButtonCornerRadius));
             };
 
+            // Initailize commands
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
