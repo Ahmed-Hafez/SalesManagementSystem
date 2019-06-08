@@ -5,7 +5,7 @@ namespace SalesManagment
     /// <summary>
     /// A base view model that fires Property Changed events as needed
     /// </summary>
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The event that is fired when any child property changes its value

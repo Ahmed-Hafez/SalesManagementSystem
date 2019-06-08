@@ -23,6 +23,7 @@ namespace SalesManagment
         public LoginPage()
         {
             InitializeComponent();
+            DataContext = new LoginPageViewModel(this);
         }
     }
 }

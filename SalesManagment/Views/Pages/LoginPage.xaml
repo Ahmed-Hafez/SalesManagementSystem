@@ -22,10 +22,10 @@
                         TextBlock.TextAlignment="Center">
 
                 <Border Background="{StaticResource VeryLightSkyMask}" 
-                            CornerRadius="15"
-                            Padding="15 0 15 15"
-                            Width="330"
-                            Margin="50 50 50 0">
+                        CornerRadius="15"
+                        Padding="15 0 15 15"
+                        Width="330"
+                        Margin="50 50 50 0">
 
                     <StackPanel>
 
@@ -39,39 +39,40 @@
 
                         <!--Username-->
                         <TextBox Tag="Username"
+                                 Text="{Binding Username, Mode=OneWayToSource}"
                                  Style="{StaticResource TextBoxPlaceHolder}"
                                  HorizontalContentAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 SelectionBrush="#FFD7005D"
+                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
                                  SelectionOpacity="0.3"
                                  CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
                         <!--Password-->
                         <TextBox Tag="Password"
+                                 Text="{Binding Password, Mode=OneWayToSource}"
                                  Style="{StaticResource TextBoxPlaceHolder}"
                                  HorizontalContentAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 SelectionBrush="#FFD7005D"
+                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
                                  SelectionOpacity="0.3"
                                  CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
-                        <!--Type-->
+                        <!--UserType-->
                         <ComboBox Width="170"
                                   Height="42"
                                   FontSize="{StaticResource FontSizeRegular}"
                                   BorderBrush="{StaticResource ForegroundLightBrush}" 
                                   Foreground="{StaticResource ForegroundMainBrush}" 
-                                  Style="{StaticResource HollowComboBox}">
-
-                            <ComboBoxItem Content="Manger"/>
-                            <ComboBoxItem Content="Employee"/>
-
-                        </ComboBox>
+                                  Style="{StaticResource HollowComboBox}"
+                                  ItemsSource="{Binding Types}"
+                                  SelectedIndex="1"
+                                  SelectedItem="{Binding UserType, Mode=OneWayToSource}"/>
 
                         <!--Sign in-->
                         <Button Content="Sign in"
                                 HorizontalAlignment="Center"
-                                Style="{StaticResource RegularButton}"/>
+                                Style="{StaticResource RegularButton}"
+                                Command="{Binding SignInCommand}"/>
 
                     </StackPanel>
 

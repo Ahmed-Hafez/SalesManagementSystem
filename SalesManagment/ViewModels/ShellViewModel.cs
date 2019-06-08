@@ -4,23 +4,10 @@ using System.Windows.Input;
 namespace SalesManagment
 {
     /// <summary>
-    /// Represents the method that will handle an event related to the pages corners.
-    /// </summary>
-    /// <param name="topLeft">Top left corner</param>
-    /// <param name="topRight">Top Right corner</param>
-    /// <param name="downRight">Down Right corner</param>
-    /// <param name="downLeft">Down left corner</param>
-    public delegate void CornerHandler(double topLeft, double topRight, double downRight, double downLeft);
-
-    /// <summary>
     /// The Shell view data binder.
     /// </summary>
-    class ShellViewModel : BaseViewModel
+    public class ShellViewModel : BaseViewModel
     {
-        /// <summary>
-        /// Fires to provide all pages with the new corner radius
-        /// </summary>
-        public event CornerHandler CornerRadiusEvent;
 
         #region Private Members
 
@@ -186,7 +173,7 @@ namespace SalesManagment
         /// <summary>
         /// Initializes an instance to control ShellView
         /// </summary>
-        /// <param name="window"></param>
+        /// <param name="window">The window to control, i.e the shell view</param>
         public ShellViewModel(Window window)
         {
             this.mWindow = window;

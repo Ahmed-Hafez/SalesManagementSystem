@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SalesManagment
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         #region Private Members
 
@@ -36,8 +32,6 @@ namespace SalesManagment
         /// <summary>
         /// A relay command can always execute
         /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 
         #endregion
@@ -47,8 +41,6 @@ namespace SalesManagment
         /// <summary>
         /// A relay command can always execute
         /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
         public bool CanExecute(object parameter)
         {
             return true;
@@ -57,7 +49,7 @@ namespace SalesManagment
         /// <summary>
         /// Executes the commands Action
         /// </summary>
-        /// <param name="parameter"></param>
+        /// <param name="parameter">Required parameters</param>
         public void Execute(object parameter)
         {
             mAction();
