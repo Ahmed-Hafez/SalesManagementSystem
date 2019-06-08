@@ -7,14 +7,14 @@
     <Color x:Key="DarkSkyColor">#FF0F252E</Color>
     <Color x:Key="ForegroundLightColor">#FFFFFF</Color>
     <Color x:Key="ForegroundMainColor">#FFC4C4C4</Color>
-    <Color x:Key="BackgroundVeryLightColor">#fafafa</Color>
+    <Color x:Key="BackgroundVeryLightColor">#FAFAFA</Color>
     
     <!--Solid Brushes-->
     <SolidColorBrush x:Key="LightSkyBrush" Color="{StaticResource LightSkyColor}"/>
     <SolidColorBrush x:Key="DarktSkyBrush" Color="{StaticResource DarkSkyColor}"/>
     <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLightColor}" />
     <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMainColor}" />
-    <SolidColorBrush x:Key="BackgroundLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.35"/>
+    <SolidColorBrush x:Key="BackgroundLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.55"/>
     <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLightColor}" />
     <SolidColorBrush x:Key="ClickedLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.5"/>
 
@@ -24,5 +24,9 @@
         <GradientStop Color="{StaticResource DarkSkyColor}" Offset="1"/>
     </LinearGradientBrush>
 
+    
+    <!--Masks-->
+    <SolidColorBrush x:Key="DarkSkyMask" Color="{StaticResource DarkSkyColor}" Opacity="0.5"/>
+    <SolidColorBrush x:Key="VeryLightSkyMask" Color="{StaticResource LightSkyColor}" Opacity="0.25"/>
 
 </ResourceDictionary>

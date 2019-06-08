@@ -1,15 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace SalesManagment
 {
+    /// <summary>
+    /// Represents the method that will handle an event related to the pages corners.
+    /// </summary>
+    /// <param name="topLeft">Top left corner</param>
+    /// <param name="topRight">Top Right corner</param>
+    /// <param name="downRight">Down Right corner</param>
+    /// <param name="downLeft">Down left corner</param>
+    public delegate void CornerHandler(double topLeft, double topRight, double downRight, double downLeft);
+
+    /// <summary>
+    /// The Shell view data binder.
+    /// </summary>
     class ShellViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Fires to provide all pages with the new corner radius
+        /// </summary>
+        public event CornerHandler CornerRadiusEvent;
+
         #region Private Members
 
         /// <summary>
@@ -46,7 +58,7 @@ namespace SalesManagment
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome
         /// </summary>
-        public double ResizeBorder { get; set; } = 6;
+        public double ResizeBorder { get; set; } = 12;
 
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome
@@ -73,7 +85,7 @@ namespace SalesManagment
         /// <summary>
         /// TODO Remove this because it is not used
         /// </summary>
-        public Thickness InnerContentPadding { get { return new Thickness(6); } }
+        public Thickness InnerContentPadding { get { return new Thickness(20); } }
 
         /// <summary>
         /// The radius of the edges of the window
@@ -98,7 +110,7 @@ namespace SalesManagment
         public CornerRadius TitleBarCornerRadius { get { return new CornerRadius(WindowRadius, WindowRadius, 0, 0); } }
 
         /// <summary>
-        /// Corener radius of the shell content border
+        /// Corener radius of the shell content bottom border
         /// </summary>
         public CornerRadius ShellContentCornerRadius { get { return new CornerRadius(0, 0, WindowRadius, WindowRadius); } }
         
@@ -106,6 +118,17 @@ namespace SalesManagment
         /// Corner radius of the 'Close' button
         /// </summary>
         public CornerRadius CloseButtonCornerRadius { get { return new CornerRadius(0, WindowRadius-2, 0, 0); } }
+
+        /// <summary>
+        /// Frame corner radius
+        /// </summary>
+        public CornerRadius FrameCornerRadius
+        {
+            get
+            {
+                return mWindow.WindowState == WindowState.Maximized ? new CornerRadius(0) : new CornerRadius(0, 0, 29, 29);
+            }
+        }
 
         /// <summary>
         /// The height of the title bar
@@ -179,6 +202,7 @@ namespace SalesManagment
                 OnPropertyChanged(nameof(TitleBarCornerRadius));
                 OnPropertyChanged(nameof(ShellContentCornerRadius));
                 OnPropertyChanged(nameof(CloseButtonCornerRadius));
+                OnPropertyChanged(nameof(FrameCornerRadius));
             };
 
             // Initailize commands

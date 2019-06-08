@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -57,7 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataModels\ApplicationPage.cs" />
-    <Compile Include="Pages\LoginPage.xaml.cs">
+    <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DataConnection.cs" />
@@ -65,14 +66,18 @@
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\WindowResizer.cs" />
-    <Page Include="Pages\LoginPage.xaml">
+    <Page Include="Styles\ComboBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +164,33 @@
   <ItemGroup>
     <Resource Include="Images\Management-icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ballons.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LoginBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Light-sky-stars-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\49237497_237155117207796_2799187309591789568_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\62117171_2054172221359792_1441066801751392256_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\space_galaxy_shine_137572_1920x1080.jpg" />
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\Database\SQL_Scripts\Login_Procedure.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

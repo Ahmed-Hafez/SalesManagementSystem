@@ -11,14 +11,16 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Icon="../Images/Management-icon.ico"
-        Title="Sales Management Studio" Height="650" Width="1000">
+        Title="Sales Management System" Height="650" Width="1000">
 
+    <!--Created here (Not in a resource dictionary) because no need to them again-->
     <Window.Resources>
         <!--Window style-->
         <Style TargetType="{x:Type local:ShellView}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
+
                         <!--Outer border with the drop shadow margin-->
                         <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
 
@@ -86,9 +88,8 @@
                                             <Viewbox Grid.Column="1">
 
                                                 <TextBlock
-                                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Sales Management Studio'}"
-                                                    Foreground="{StaticResource ForegroundLightBrush}"
-                                                    Padding="0 0 0 1"/>
+                                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Sales Management System'}"
+                                                    Style="{StaticResource HeaderText}"/>
 
                                             </Viewbox>
 
@@ -107,7 +108,7 @@
                                                     Style="{StaticResource WindowControlButton}"/>
 
                                                 <!--Close Button-->
-                                                <!--This border was made to afix the issue of Close button top right edge -->
+                                                <!--This border was made to fix the issue of Close button top right edge -->
                                                 <Border Background="Transparent" ClipToBounds="True">
 
                                                     <!--Close Button-->
@@ -213,10 +214,31 @@
 
     </WindowChrome.WindowChrome>
 
-    <Grid Background="Transparent">
-        <Frame x:Name="MainFrame"
-               Padding="{Binding InnerContentPadding}"
-               Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
-    </Grid>
+    <Border CornerRadius="{Binding FrameCornerRadius}" ClipToBounds="True">
 
+        <!--Opacity mask for clipping the content inside the Border layout-->
+        <Border.OpacityMask>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Border Background="Blue"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                            Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
+                            Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"
+                            Padding="5"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Border.OpacityMask>
+
+        <Grid Background="Transparent" Margin="-5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="563*"/>
+                <ColumnDefinition Width="427*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame x:Name="MainFrame"
+                   Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Grid.ColumnSpan="2" Margin="0,0,0,0.2"/>
+
+        </Grid>
+    </Border>
 </Window>

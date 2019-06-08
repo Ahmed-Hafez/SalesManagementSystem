@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace SalesManagment
 {
     /// <summary>
     /// A base view model that fires Property Changed events as needed
     /// </summary>
-    //[ImplementPropertyChanged]
     class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>

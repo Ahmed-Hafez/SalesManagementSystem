@@ -1,0 +1,122 @@
+﻿<Page x:Class="SalesManagment.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManagment"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="LoginPage">
+
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="..\..\Images\space_galaxy_shine_137572_1920x1080.jpg"/>
+        </Border.Background>
+
+        <Grid>
+
+            <Border Background="{StaticResource DarkSkyMask}"/>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        TextBlock.TextAlignment="Center">
+
+                <Border Background="{StaticResource VeryLightSkyMask}" 
+                            CornerRadius="15"
+                            Padding="15 0 15 15"
+                            Width="330"
+                            Margin="50 50 50 0">
+
+                    <StackPanel>
+
+                        <!--Sign In header-->
+                        <TextBlock Text="Sign in"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   FontFamily="{StaticResource LatoSemibold}"
+                                   FontSize="{StaticResource FontSizeLarge}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 0 0 50"/>
+
+                        <!--Username-->
+                        <TextBox Tag="Username"
+                                 Style="{StaticResource TextBoxPlaceHolder}"
+                                 HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 SelectionBrush="#FFD7005D"
+                                 SelectionOpacity="0.3"
+                                 CaretBrush="{StaticResource ForegroundLightBrush}"/>
+
+                        <!--Password-->
+                        <TextBox Tag="Password"
+                                 Style="{StaticResource TextBoxPlaceHolder}"
+                                 HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 SelectionBrush="#FFD7005D"
+                                 SelectionOpacity="0.3"
+                                 CaretBrush="{StaticResource ForegroundLightBrush}"/>
+
+                        <!--Type-->
+                        <ComboBox Width="170"
+                                  Height="42"
+                                  FontSize="{StaticResource FontSizeRegular}"
+                                  BorderBrush="{StaticResource ForegroundLightBrush}" 
+                                  Foreground="{StaticResource ForegroundMainBrush}" 
+                                  Style="{StaticResource HollowComboBox}">
+
+                            <ComboBoxItem Content="Manger"/>
+                            <ComboBoxItem Content="Employee"/>
+
+                        </ComboBox>
+
+                        <!--Sign in-->
+                        <Button Content="Sign in"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource RegularButton}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+
+
+            </StackPanel>
+
+
+        </Grid>
+
+
+
+    </Border>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</Page>
