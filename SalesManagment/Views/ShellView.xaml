@@ -231,13 +231,9 @@
         </Border.OpacityMask>
 
         <Grid Background="Transparent" Margin="-5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="563*"/>
-                <ColumnDefinition Width="427*"/>
-            </Grid.ColumnDefinitions>
 
-            <Frame x:Name="MainFrame"
-                   Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Grid.ColumnSpan="2" Margin="0,0,0,0.2"/>
+            <Frame Grid.ColumnSpan="2"
+                   Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
 
         </Grid>
     </Border>

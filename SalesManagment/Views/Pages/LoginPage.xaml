@@ -48,14 +48,12 @@
                                  CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
                         <!--Password-->
-                        <TextBox Tag="Password"
-                                 Text="{Binding Password, Mode=OneWayToSource}"
-                                 Style="{StaticResource TextBoxPlaceHolder}"
-                                 HorizontalContentAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
-                                 SelectionOpacity="0.3"
-                                 CaretBrush="{StaticResource ForegroundLightBrush}"/>
+                        <PasswordBox Tag="Password"
+                                     HorizontalContentAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                     SelectionOpacity="0.3"
+                                     CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
                         <!--UserType-->
                         <ComboBox Width="170"
