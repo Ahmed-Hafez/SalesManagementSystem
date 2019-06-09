@@ -9,6 +9,8 @@ namespace SalesManagment
     /// </summary>
     public class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
     {
+        #region Value converter methods
+
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Finding the targeted page
@@ -26,5 +28,7 @@ namespace SalesManagment
         {
             throw new NotImplementedException();
         }
+       
+        #endregion
     }
 }

@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace SalesManagment
 {
     /// <summary>
-    /// The Shell view data binder.
+    /// The view model that controls the shell view
     /// </summary>
     public class ShellViewModel : BaseViewModel
     {
@@ -171,7 +171,7 @@ namespace SalesManagment
         #region Constructor
 
         /// <summary>
-        /// Initializes an instance to control ShellView
+        /// Initializes an instance of <see cref="ShellViewModel"/>
         /// </summary>
         /// <param name="window">The window to control, i.e the shell view</param>
         public ShellViewModel(Window window)

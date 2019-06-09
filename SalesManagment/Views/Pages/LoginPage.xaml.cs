@@ -18,12 +18,17 @@ namespace SalesManagment
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : BasePage
     {
         public LoginPage()
         {
             InitializeComponent();
             DataContext = new LoginPageViewModel(this);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AnimateOut();
         }
     }
 }

@@ -10,6 +10,8 @@ namespace SalesManagment
     public class BooleanToVisibiltyValueConverter :
         BaseValueConverter<BooleanToVisibiltyValueConverter>
     {
+        #region Value converter methods
+
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (bool)value ? Visibility.Hidden : Visibility.Visible;
@@ -19,5 +21,7 @@ namespace SalesManagment
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

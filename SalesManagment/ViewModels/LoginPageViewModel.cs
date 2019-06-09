@@ -6,6 +6,9 @@ using System.Windows.Controls;
 
 namespace SalesManagment
 {
+    /// <summary>
+    /// The view model that controls the login page
+    /// </summary>
     public class LoginPageViewModel : BaseViewModel
     {
         #region Private members
@@ -69,7 +72,7 @@ namespace SalesManagment
         #region Constructor
 
         /// <summary>
-        /// Initialize an instance from the LoginPageViewModel
+        /// Initialize an instance from the <see cref="LoginPageViewModel"/> class
         /// </summary>
         /// <param name="page">The page to control</param>
         public LoginPageViewModel(Page page)
