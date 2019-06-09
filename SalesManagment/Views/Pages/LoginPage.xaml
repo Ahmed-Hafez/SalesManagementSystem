@@ -10,7 +10,7 @@
 
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="..\..\Images\space_galaxy_shine_137572_1920x1080.jpg"/>
+            <ImageBrush ImageSource="..\..\Images\space_galaxy_shine.jpg"/>
         </Border.Background>
 
         <Grid>

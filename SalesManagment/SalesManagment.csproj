@@ -172,28 +172,7 @@
     <Resource Include="Images\Management-icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ballons.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Wallpaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\LoginBackground.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Light-sky-stars-background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\49237497_237155117207796_2799187309591789568_n.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\62117171_2054172221359792_1441066801751392256_n.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\images.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\space_galaxy_shine_137572_1920x1080.jpg" />
+    <Resource Include="Images\space_galaxy_shine.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
