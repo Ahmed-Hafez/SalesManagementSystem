@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace SalesManagment
 {
+    /// <summary>
+    /// A basic command that runs an action
+    /// </summary>
     public class RelayCommand : ICommand
     {
         #region Private Members
@@ -17,9 +20,9 @@ namespace SalesManagment
         #region Constructor
 
         /// <summary>
-        /// Default Constructor
+        /// Initializes a new instance from the <see cref="RelayCommand"/> class
         /// </summary>
-        /// <param name="action"></param>
+        /// <param name="action">The action to run</param>
         public RelayCommand(Action action)
         {
             mAction = action;

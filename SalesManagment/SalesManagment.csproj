@@ -63,8 +63,11 @@
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Security\IHavePassword.cs" />
+    <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ViewModels\Base\BasePage.cs" />
+    <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

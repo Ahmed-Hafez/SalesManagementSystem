@@ -48,8 +48,6 @@ namespace SalesManagment
 
             sb.Begin(page);
 
-            page.Visibility = Visibility.Visible;
-
             // Wait to finish the animation
             await Task.Delay(milliseconds);
         }
@@ -94,8 +92,6 @@ namespace SalesManagment
 
             sb.Begin(page);
 
-            page.Visibility = Visibility.Visible;
-
             // Wait to finish the animation
             await Task.Delay(milliseconds);
         }
@@ -137,9 +133,7 @@ namespace SalesManagment
             sb.AddSlideWithClosing(milliseconds, page.WindowHeight, 0.9f);
 
             sb.Begin(page);
-
-            page.Visibility = Visibility.Visible;
-
+            
             // Wait to finish the animation
             await Task.Delay(milliseconds);
         }

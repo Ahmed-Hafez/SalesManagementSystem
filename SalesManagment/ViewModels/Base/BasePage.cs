@@ -9,8 +9,19 @@ namespace SalesManagment
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage : Page
+    /// <typeparam name="VM">The type of view model associated with this page</typeparam>
+    public class BasePage<VM> : Page
+        where VM : BaseViewModel, new()
     {
+        #region Private members
+
+        /// <summary>
+        /// The view model associated with this page
+        /// </summary>
+        private VM mViewModel;
+
+        #endregion
+
         #region Public properties
 
         /// <summary>
@@ -28,6 +39,24 @@ namespace SalesManagment
         /// </summary>
         public int SlideAnimationDuration { get; set; } = 800;
 
+        /// <summary>
+        /// The view model associated with this page
+        /// </summary>
+        public VM ViewModel
+        {
+            get { return mViewModel; }
+            set
+            {
+                // If nothing has changed, return....
+                if (mViewModel == value)
+                    return;
+
+                mViewModel = value;
+
+                this.DataContext = mViewModel;
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -42,6 +71,8 @@ namespace SalesManagment
 
             // Listen out for the page laoding
             this.Loaded += BasePage_Loaded;
+
+            this.ViewModel = new VM();
         }
 
         #endregion
@@ -65,6 +96,7 @@ namespace SalesManagment
             if (this.PageLoadAnimation == PageAnimation.None)
                 return;
 
+            // Resolves the load animation type
             switch (this.PageLoadAnimation)
             {
                 case PageAnimation.SlideInFromRight:
@@ -95,6 +127,8 @@ namespace SalesManagment
             // Make sure that we have something to do
             if (this.PageUnloadAnimation == PageAnimation.None)
                 return;
+
+            // Resolves the unload animation type
             switch (this.PageUnloadAnimation)
             {
                 case PageAnimation.SlideOutToLeft:

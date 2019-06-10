@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,13 +19,15 @@ namespace SalesManagment
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage
+    public partial class LoginPage : BasePage<LoginPageViewModel>, IHavePassword
     {
         public LoginPage()
         {
             InitializeComponent();
-            DataContext = new LoginPageViewModel(this);
+            DataContext = new LoginPageViewModel();
         }
+
+        public SecureString SecurePassword => PasswordText.SecurePassword;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

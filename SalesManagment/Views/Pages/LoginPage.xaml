@@ -1,12 +1,12 @@
-﻿<local:BasePage x:Class="SalesManagment.LoginPage"
+﻿<local:BasePage x:Class="SalesManagment.LoginPage" x:TypeArguments="local:LoginPageViewModel"
+      x:Name="LoginPageView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalesManagment"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000"
-      Title="LoginPage">
+      d:DesignHeight="600" d:DesignWidth="1000">
 
     <Border>
         <Border.Background>
@@ -48,7 +48,8 @@
                                  CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
                         <!--Password-->
-                        <PasswordBox Tag="Password"
+                        <PasswordBox x:Name="PasswordText"
+                                     Tag="Password"
                                      HorizontalContentAlignment="Center"
                                      VerticalContentAlignment="Center"
                                      SelectionBrush="{StaticResource LightRedSelectionBrush}"
@@ -63,14 +64,15 @@
                                   Foreground="{StaticResource ForegroundMainBrush}" 
                                   Style="{StaticResource HollowComboBox}"
                                   ItemsSource="{Binding Types}"
-                                  SelectedIndex="1"
-                                  SelectedItem="{Binding UserType, Mode=OneWayToSource}"/>
+                                  SelectedIndex="{Binding UserTypeSelectedIndex}"
+                                  SelectedItem="{Binding UserType}"/>
 
                         <!--Sign in-->
                         <Button Content="Sign in"
                                 HorizontalAlignment="Center"
                                 Style="{StaticResource RegularButton}"
-                                Command="{Binding SignInCommand}"/>
+                                Command="{Binding SignInCommand}"
+                                CommandParameter="{Binding ElementName=LoginPageView}"/>
 
                         <Button Content="Sign in" Click="Button_Click"/>
                     </StackPanel>

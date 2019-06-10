@@ -15,7 +15,7 @@ namespace SalesManagment
         /// <summary>
         /// Call this to fire a <see cref="PropertyChanged"/> event
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">The name of the property</param>
         public void OnPropertyChanged(string name)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(name));
