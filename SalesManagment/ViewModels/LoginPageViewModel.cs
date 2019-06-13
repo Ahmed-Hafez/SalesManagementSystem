@@ -9,7 +9,7 @@ namespace SalesManagment
     /// <summary>
     /// The view model that controls the login page
     /// </summary>
-    public class LoginPageViewModel : BaseViewModel
+    public class LoginPageViewModel : BasePageViewModel
     {
         #region Private members
         
@@ -73,6 +73,8 @@ namespace SalesManagment
         /// <param name="page">The page to control</param>
         public LoginPageViewModel()
         {
+            this.LoadAnimation = PageAnimation.SlideOpening;
+            this.UnloadAnimation = PageAnimation.SlideClosing;
 
             types = new List<string>() { "Manager", "Employee" };
             UserType = types[1];
@@ -97,6 +99,20 @@ namespace SalesManagment
             {
                 Password = (parameter as IHavePassword).SecurePassword.Unsecure();
 
+                if(string.IsNullOrEmpty(Username) 
+                    || string.IsNullOrWhiteSpace(Username))
+                {
+                    MessageBox.Show("Username is required.",
+                        "Signing in failed");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Password))
+                {
+                    MessageBox.Show("Password is required.",
+                       "Signing in failed");
+                    return;
+                }
+
                 SqlParameter[] sqlParameters = new SqlParameter[3];
                 sqlParameters[0] = new SqlParameter("@ID", SqlDbType.VarChar);
                 sqlParameters[0].Value = Username;
@@ -110,10 +126,10 @@ namespace SalesManagment
                     username = Username;
                     password = Password;
                     userType = UserType;
-
-                    MessageBox.Show($"username = {username}, password = {password}, userType = {userType}, login sucess");
+                    MessageBox.Show("True");
                 }
-                else MessageBox.Show("failed");
+                else MessageBox.Show("Username, password or user type is incorrect.",
+                    "Signing in failed");
             }
             catch
             {

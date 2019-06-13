@@ -33,7 +33,7 @@
         /// <summary>
         /// The page shrinks
         /// </summary>
-        Slideshrinkage = 5,
+        SlideShrinkage = 5,
 
         /// <summary>
         /// The page opens

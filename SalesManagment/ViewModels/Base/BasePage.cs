@@ -11,7 +11,7 @@ namespace SalesManagment
     /// </summary>
     /// <typeparam name="VM">The type of view model associated with this page</typeparam>
     public class BasePage<VM> : Page
-        where VM : BaseViewModel, new()
+        where VM : BasePageViewModel, new()
     {
         #region Private members
 
@@ -21,18 +21,19 @@ namespace SalesManagment
         private VM mViewModel;
 
         #endregion
+        
 
         #region Public properties
 
         /// <summary>
         /// The animation to play when the page is loaded
         /// </summary>
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideOpening;
+        public PageAnimation PageLoadAnimation { get; set; }
 
         /// <summary>
         /// The animation to play when the page is unloaded
         /// </summary>
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideClosing;
+        public PageAnimation PageUnloadAnimation { get; set; }
 
         /// <summary>
         /// The duration of the slide animation in milliseconds
@@ -71,8 +72,11 @@ namespace SalesManagment
 
             // Listen out for the page laoding
             this.Loaded += BasePage_Loaded;
+            this.Unloaded += BasePage_Unloaded;
 
             this.ViewModel = new VM();
+            PageLoadAnimation = this.ViewModel.LoadAnimation;
+            PageUnloadAnimation = this.ViewModel.UnloadAnimation;
         }
 
         #endregion
@@ -85,6 +89,14 @@ namespace SalesManagment
         private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             await AnimateIn();
+        }
+
+        /// <summary>
+        /// Performing animations when the page is unloaded
+        /// </summary>
+        private async void BasePage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            await AnimateOut();
         }
 
         /// <summary>
@@ -105,7 +117,7 @@ namespace SalesManagment
                 case PageAnimation.SlideInFromLeft:
                     await this.SlideAndFadeInFromLeft(this.SlideAnimationDuration);
                     break;
-                case PageAnimation.Slideshrinkage:
+                case PageAnimation.SlideShrinkage:
                     await this.SlideShrinkage(this.SlideAnimationDuration);
                     break;
                 case PageAnimation.SlideOpening:

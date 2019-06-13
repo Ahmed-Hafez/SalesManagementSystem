@@ -64,7 +64,6 @@
                                   Foreground="{StaticResource ForegroundMainBrush}" 
                                   Style="{StaticResource HollowComboBox}"
                                   ItemsSource="{Binding Types}"
-                                  SelectedIndex="{Binding UserTypeSelectedIndex}"
                                   SelectedItem="{Binding UserType}"/>
 
                         <!--Sign in-->
@@ -74,7 +73,6 @@
                                 Command="{Binding SignInCommand}"
                                 CommandParameter="{Binding ElementName=LoginPageView}"/>
 
-                        <Button Content="Sign in" Click="Button_Click"/>
                     </StackPanel>
 
                 </Border>

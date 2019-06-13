@@ -42,3 +42,5 @@ F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\Sal
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\LoginPage.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment_Content.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ComboBoxes.baml
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\MainPage.g.cs
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\MainPage.baml

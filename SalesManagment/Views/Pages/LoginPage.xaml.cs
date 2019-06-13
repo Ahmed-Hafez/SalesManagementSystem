@@ -24,14 +24,18 @@ namespace SalesManagment
         public LoginPage()
         {
             InitializeComponent();
-            DataContext = new LoginPageViewModel();
         }
 
+
+        /// <summary>
+        /// The password of the user
+        /// 
+        /// 
+        /// <!-- Note that : here is an violating to the MVVM roles,
+        ///      But this is an exception because this {PasswordBox} hasn't
+        ///      any dependancy property to bind to -->
+        /// </summary>
         public SecureString SecurePassword => PasswordText.SecurePassword;
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AnimateOut();
-        }
+        
     }
 }

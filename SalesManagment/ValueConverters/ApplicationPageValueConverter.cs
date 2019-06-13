@@ -18,6 +18,8 @@ namespace SalesManagment
             {
                 case ApplicationPage.Login:
                     return new LoginPage();
+                case ApplicationPage.Main:
+                    return new MainPage();
                 default:
                     Debugger.Break(); // For debugging reasons
                     return null;
