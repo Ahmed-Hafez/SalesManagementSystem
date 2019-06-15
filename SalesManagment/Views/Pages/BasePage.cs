@@ -22,7 +22,6 @@ namespace SalesManagment
 
         #endregion
         
-
         #region Public properties
 
         /// <summary>
