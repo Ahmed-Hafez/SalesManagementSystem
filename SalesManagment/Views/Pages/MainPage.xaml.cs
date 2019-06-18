@@ -23,6 +23,22 @@ namespace SalesManagment
         public MainPage()
         {
             InitializeComponent();
+
+            //object[] commands =
+            //{
+            //    new RelayCommand(() => MessageBox.Show("Button1")),
+            //    new RelayCommand(() => MessageBox.Show("Button2")),
+            //    new RelayCommand(() => MessageBox.Show("Button3")),
+            //    new RelayCommand(() => MessageBox.Show("Button4")),
+            //    new RelayCommand(() => MessageBox.Show("Button5"))
+            //};
+
+            //btnlist.ButtonsCommands = commands;
+        }
+
+        private void Btnlist_Open(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("works");
         }
     }
 }

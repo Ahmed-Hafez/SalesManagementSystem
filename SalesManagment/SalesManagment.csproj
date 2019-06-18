@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animation\AnimationType\GridLengthAnimation.cs" />
     <Compile Include="Animation\PageAnimation.cs" />
     <Compile Include="Animation\PageAnimationHelpers.cs" />
     <Compile Include="Animation\StoryboardHelpers.cs" />
@@ -65,10 +66,13 @@
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Security\IHavePassword.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="UserControls\ButtonList.xaml.cs">
+      <DependentUpon>ButtonList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
-    <Compile Include="ViewModels\Base\BasePage.cs" />
-    <Compile Include="ViewModels\Base\IPageAnimation.cs" />
+    <Compile Include="Views\Pages\BasePage.cs" />
+    <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
@@ -80,7 +84,6 @@
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -93,20 +96,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ButtonList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\Buttons.xaml">
@@ -126,8 +125,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\MainPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>

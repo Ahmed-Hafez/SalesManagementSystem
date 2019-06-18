@@ -22,10 +22,14 @@ namespace SalesManagment
 
         #region Public properties
 
+        #region Singleton
+
         /// <summary>
         /// A singleton instance from <see cref="Parent"/> class
         /// </summary>
         public static Parent Instance { get; private set; } = new Parent();
+
+        #endregion
 
         #endregion
 

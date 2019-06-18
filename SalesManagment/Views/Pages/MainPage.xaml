@@ -6,9 +6,16 @@
       xmlns:local="clr-namespace:SalesManagment"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage" Background="Aqua">
+      Title="MainPage" Background="Blue">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <local:ButtonList Title="Mohamed" NumberOfButtons="3"/>
+
+
     </Grid>
 </local:BasePage>
