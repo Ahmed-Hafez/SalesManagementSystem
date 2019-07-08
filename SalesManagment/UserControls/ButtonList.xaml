@@ -10,9 +10,13 @@
              d:DesignHeight="450" d:DesignWidth="400">
 
     <UserControl.Triggers>
+
+        <!--Opening Event-->
         <EventTrigger RoutedEvent="local:ButtonList.Open">
             <BeginStoryboard>
                 <Storyboard>
+
+                    <!--Arrow Animation-->
                     <DoubleAnimation Storyboard.TargetName="ArrowUp" 
                                      Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                      From="0"
@@ -20,6 +24,7 @@
                                      Duration="0:0:0.3"
                                      AccelerationRatio="0.8"/>
 
+                    <!--Opening Animation-->
                     <DoubleAnimation Storyboard.TargetProperty="Height"
                                      From="53"
                                      To="{Binding AnimatedHeight, ElementName=ButtonListUS}"
@@ -28,9 +33,12 @@
             </BeginStoryboard>
         </EventTrigger>
 
+        <!--Closing Event-->
         <EventTrigger RoutedEvent="local:ButtonList.Close">
             <BeginStoryboard>
                 <Storyboard>
+
+                    <!--Arrow Animation-->
                     <DoubleAnimation Storyboard.TargetName="ArrowUp" 
                                      Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                      From="180"
@@ -38,6 +46,7 @@
                                      Duration="0:0:0.3"
                                      AccelerationRatio="0.8"/>
 
+                    <!--Closing Animation-->
                     <DoubleAnimation Storyboard.TargetProperty="Height"
                                      From="{Binding AnimatedHeight, ElementName=ButtonListUS}"
                                      To="53"
@@ -45,14 +54,21 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
+
     </UserControl.Triggers>
-    
+
     <Grid>
         <Grid.RowDefinitions>
+
+            <!--Header-->
             <RowDefinition Height="auto"/>
+
+            <!--Content-->
             <RowDefinition Height="auto"/>
+
         </Grid.RowDefinitions>
 
+        <!--Header-->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -80,13 +96,13 @@
                     <EventTrigger RoutedEvent="MouseDown">
                         <BeginStoryboard>
                             <Storyboard>
-                                
+
                                 <ColorAnimation Storyboard.TargetProperty="Background.Color" 
                                                 From="Blue" 
                                                 To="Green" 
                                                 Duration="0:0:0.1"/>
 
-                                
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -100,32 +116,38 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
-                    
+
                 </Border.Triggers>
 
 
-                <Grid Grid.Row="0">
+                <Grid>
                     <Grid.RowDefinitions>
+
+                        <!--List Title-->
                         <RowDefinition Height="auto"/>
+
+                        <!--Arrow Section-->
                         <RowDefinition Height="auto"/>
+
                     </Grid.RowDefinitions>
 
-
+                    <!--List Title-->
                     <TextBlock Text="{Binding Title, ElementName=ButtonListUS, FallbackValue='Ahmed'}" 
                                Foreground="White"
                                FontSize="32"
                                HorizontalAlignment="Center"/>
 
-
+                    <!--Arrow Section-->
                     <Border Grid.Row="1" 
                             Background="{Binding ElementName=MainButton, Path=Background}">
 
+                        <!--Arrow-->
                         <Path x:Name="ArrowUp"
-                      StrokeThickness="2"
-                      Fill="White"
-                      HorizontalAlignment="Center"
-                      Data="M0 0 15 15 30 0 L0 0"
-                      RenderTransformOrigin="0.5,0.5">
+                              StrokeThickness="2"
+                              Fill="White"
+                              HorizontalAlignment="Center"
+                              Data="M0 0 15 15 30 0 L0 0"
+                              RenderTransformOrigin="0.5,0.5">
 
                             <Path.RenderTransform>
                                 <RotateTransform Angle="0"/>
@@ -137,13 +159,14 @@
                 </Grid>
             </Border>
 
-            
-            
+
+
         </Grid>
 
+        <!--Content-->
         <StackPanel x:Name="ButtonListContent"
-                        Grid.Row="1"/>
-        
+                    Grid.Row="1"/>
+
     </Grid>
 
 </UserControl>
