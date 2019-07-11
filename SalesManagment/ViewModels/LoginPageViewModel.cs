@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace SalesManagment
 {
@@ -12,7 +13,7 @@ namespace SalesManagment
     public class LoginPageViewModel : BasePageViewModel
     {
         #region Private members
-        
+
         /// <summary>
         /// The user types
         /// </summary>
@@ -36,12 +37,12 @@ namespace SalesManagment
         #endregion
 
         #region Public properties
-        
+
         /// <summary>
         /// The provided username from the textbox
         /// </summary>
         public string Username { get; set; }
-        
+
         /// <summary>
         /// The provided password from the textbox
         /// </summary>
@@ -56,7 +57,7 @@ namespace SalesManagment
         /// The user types
         /// </summary>
         public List<string> Types { get { return types; } }
-        
+
 
         /// <summary>
         /// The used command for sign in button
@@ -99,7 +100,7 @@ namespace SalesManagment
             {
                 Password = (parameter as IHavePassword).SecurePassword.Unsecure();
 
-                if(string.IsNullOrEmpty(Username) 
+                if (string.IsNullOrEmpty(Username)
                     || string.IsNullOrWhiteSpace(Username))
                 {
                     MessageBox.Show("Username is required.",
@@ -126,14 +127,17 @@ namespace SalesManagment
                     username = Username;
                     password = Password;
                     userType = UserType;
-                    MessageBox.Show("True");
+
+                    // Change the current page
+                    ((ShellViewModel)((ShellView)Application.Current.MainWindow).DataContext).ChangeCurrentPage(ApplicationPage.Main, page);
                 }
                 else MessageBox.Show("Username, password or user type is incorrect.",
                     "Signing in failed");
             }
             catch
             {
-                MessageBox.Show("Unexpected error : login120");
+                // TODO Check the error code
+                MessageBox.Show("Unexpected error : login137");
             }
         }
 

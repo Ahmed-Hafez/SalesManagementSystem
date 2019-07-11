@@ -233,6 +233,7 @@
         <Grid Background="Transparent" Margin="-5">
 
             <Frame Grid.ColumnSpan="2"
+                   NavigationUIVisibility="Hidden"
                    Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
 
         </Grid>

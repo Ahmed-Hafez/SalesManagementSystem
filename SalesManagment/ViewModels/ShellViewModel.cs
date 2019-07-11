@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SalesManagment
@@ -26,7 +29,15 @@ namespace SalesManagment
         /// </summary>
         private double mWindowRadius = 10;
 
+        /// <summary>
+        /// The height of the title bar
+        /// </summary>
         private double mTitleHeight = 46;
+
+        /// <summary>
+        /// The current page of the application
+        /// </summary>
+        private ApplicationPage mCurrentPage = ApplicationPage.Login;
 
         #endregion
 
@@ -100,11 +111,11 @@ namespace SalesManagment
         /// Corener radius of the shell content bottom border
         /// </summary>
         public CornerRadius ShellContentCornerRadius { get { return new CornerRadius(0, 0, WindowRadius, WindowRadius); } }
-        
+
         /// <summary>
         /// Corner radius of the 'Close' button
         /// </summary>
-        public CornerRadius CloseButtonCornerRadius { get { return new CornerRadius(0, WindowRadius-2, 0, 0); } }
+        public CornerRadius CloseButtonCornerRadius { get { return new CornerRadius(0, WindowRadius - 2, 0, 0); } }
 
         /// <summary>
         /// Frame corner radius
@@ -140,7 +151,15 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Main;
+        public ApplicationPage CurrentPage
+        {
+            get { return mCurrentPage; }
+            private set
+            {
+                mCurrentPage = value;
+                OnPropertyChanged(nameof(CurrentPage));
+            }
+        }
 
         #endregion
 
@@ -200,6 +219,27 @@ namespace SalesManagment
 
             // Fixing window maximizing issue (hiding the bottom content)
             var resizer = new WindowResizer(mWindow);
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Changes the frame content
+        /// </summary>
+        /// <param name="targetPage">The target page</param>
+        /// <param name="currentPage">The current page refernce</param>
+        public async void ChangeCurrentPage(ApplicationPage targetPage, Page currentPage)
+        {
+            // Raise unload animation if found 
+            currentPage.RaiseEvent(new RoutedEventArgs(Page.UnloadedEvent));
+
+            // Wait to the unload animation to finish if found
+            await Task.Delay(500);
+
+            // Changes the frame content
+            this.CurrentPage = targetPage;
         }
 
         #endregion

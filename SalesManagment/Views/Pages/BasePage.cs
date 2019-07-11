@@ -21,7 +21,7 @@ namespace SalesManagment
         private VM mViewModel;
 
         #endregion
-        
+
         #region Public properties
 
         /// <summary>
@@ -54,6 +54,7 @@ namespace SalesManagment
                 mViewModel = value;
 
                 this.DataContext = mViewModel;
+                mViewModel.page = this;
             }
         }
 
@@ -93,8 +94,10 @@ namespace SalesManagment
         /// <summary>
         /// Performing animations when the page is unloaded
         /// </summary>
-        private async void BasePage_Unloaded(object sender, RoutedEventArgs e)
+        public async void BasePage_Unloaded(object sender, RoutedEventArgs e)
         {
+            // Determine if the page was unloaded
+            if (!IsLoaded) return;
             await AnimateOut();
         }
 

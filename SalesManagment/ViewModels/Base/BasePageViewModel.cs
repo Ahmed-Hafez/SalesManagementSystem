@@ -1,7 +1,14 @@
-﻿namespace SalesManagment
+﻿using System.Windows.Controls;
+
+namespace SalesManagment
 {
     public class BasePageViewModel : BaseViewModel, IPageAnimation
     {
+        /// <summary>
+        /// The page associated with this view model
+        /// </summary>
+        public Page page { get; set; }
+
         /// <summary>
         /// The page load animation
         /// </summary>

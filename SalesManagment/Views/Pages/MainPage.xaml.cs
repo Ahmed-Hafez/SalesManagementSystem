@@ -23,7 +23,7 @@ namespace SalesManagment
         public MainPage()
         {
             InitializeComponent();
-
+            
             //object[] commands =
             //{
             //    new RelayCommand(() => MessageBox.Show("Button1")),
