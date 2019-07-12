@@ -11,53 +11,28 @@
     <Grid Margin="0 5 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Menu FontSize="18"
+        
+        
+        <Menu FontSize="20"
               Foreground="{StaticResource ForegroundLightBrush}"
-              Background="{StaticResource DarktSkyBrush}">
+              Background="{StaticResource DarktSkyBrush}" ItemsSource="{Binding MenuItems}">
 
-            <MenuItem Header="File" 
-                      Background="{StaticResource DarktSkyBrush}">
-                
-                <MenuItem Header="Create Backup" Foreground="Black"/>
-                <MenuItem Header="Restore Saved Copy" Foreground="Black"/>
+            <!--Editing the menu items to be adaptive with the view model-->
+            <Menu.ItemContainerStyle>
+                <Style TargetType="{x:Type MenuItem}">
+                    <Setter Property="Command" Value="{Binding Command}" />
+                </Style>
+            </Menu.ItemContainerStyle>
+            <Menu.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local:MenuItemViewModel}" ItemsSource="{Binding Path=MenuItems}">
+                    <TextBlock Text="{Binding Header}" 
+                               Foreground="{Binding ForgroundBrush}"/>
 
-
-            </MenuItem>
-
-            <MenuItem Header="Products" 
-                      Background="{StaticResource DarktSkyBrush}">
-
-                <MenuItem Header="Add Product" Foreground="Black"/>
-                <MenuItem Header="Products Management" Foreground="Black"/>
-                <Separator/>
-                <MenuItem Header="Add Class" Foreground="Black"/>
-                <MenuItem Header="Classes Management" Foreground="Black"/>
-
-            </MenuItem>
-
-            <MenuItem Header="Clients" 
-                      Background="{StaticResource DarktSkyBrush}">
-
-                <MenuItem Header="Add Client" Foreground="Black"/>
-                <MenuItem Header="Clients Management" Foreground="Black"/>
-                <Separator/>
-                <MenuItem Header="Add Sale" Foreground="Black"/>
-                <MenuItem Header="Sales Management" Foreground="Black"/>
-
-
-            </MenuItem>
-
-            <MenuItem Header="Users" 
-                      Background="{StaticResource DarktSkyBrush}">
-
-                <MenuItem Header="Add User" Foreground="Black"/>
-                <MenuItem Header="Users management" Foreground="Black"/>
-
-
-            </MenuItem>
-
-
+                </HierarchicalDataTemplate>
+            </Menu.ItemTemplate>
+            
         </Menu>
 
 
