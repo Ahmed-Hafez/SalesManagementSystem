@@ -71,7 +71,6 @@ namespace SalesManagment
         /// <summary>
         /// Initialize an instance from the <see cref="LoginPageViewModel"/> class
         /// </summary>
-        /// <param name="page">The page to control</param>
         public LoginPageViewModel()
         {
             this.LoadAnimation = PageAnimation.SlideOpening;

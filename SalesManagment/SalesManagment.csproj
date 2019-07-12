@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
+    <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="Views\Pages\BasePage.cs" />
     <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
