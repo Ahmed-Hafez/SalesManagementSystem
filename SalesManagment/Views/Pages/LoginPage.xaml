@@ -59,7 +59,7 @@
                         <!--UserType-->
                         <ComboBox Width="170"
                                   Height="42"
-                                  FontSize="{StaticResource FontSizeRegular}"
+                                  FontSize="{StaticResource FontSizeMedium}"
                                   BorderBrush="{StaticResource ForegroundLightBrush}" 
                                   Foreground="{StaticResource ForegroundMainBrush}" 
                                   Style="{StaticResource HollowComboBox}"

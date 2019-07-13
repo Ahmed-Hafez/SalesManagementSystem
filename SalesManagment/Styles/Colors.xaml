@@ -9,7 +9,7 @@
     <Color x:Key="ForegroundMainColor">#FFC4C4C4</Color>
     <Color x:Key="BackgroundVeryLightColor">#FAFAFA</Color>
     <Color x:Key="LightRedSelectionColor">#FFD7005D</Color>
-    
+
     <!--Solid Brushes-->
     <SolidColorBrush x:Key="LightSkyBrush" Color="{StaticResource LightSkyColor}"/>
     <SolidColorBrush x:Key="DarktSkyBrush" Color="{StaticResource DarkSkyColor}"/>

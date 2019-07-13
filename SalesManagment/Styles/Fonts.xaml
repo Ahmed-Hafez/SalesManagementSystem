@@ -12,15 +12,16 @@
     <FontFamily x:Key="LatoMedium">pack://application;,,,/Fonts/#Lato Medium</FontFamily>
 
     <System:Double x:Key="FontSizeSmall">14</System:Double>
-    <System:Double x:Key="FontSizeRegular">32</System:Double>
+    <System:Double x:Key="FontSizeRegular">20</System:Double>
+    <System:Double x:Key="FontSizeMedium">32</System:Double>
     <System:Double x:Key="FontSizeLarge">52</System:Double>
     
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+        <Setter Property="FontFamily" Value="{StaticResource LatoMedium}"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+        <Setter Property="FontFamily" Value="{StaticResource LatoMedium}"/>
     </Style>
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>

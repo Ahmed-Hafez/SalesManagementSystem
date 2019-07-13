@@ -1,0 +1,5 @@
+﻿
+
+
+TODO Tasks
+	1- Make a class AnimatedTextBox to add two dependency properties for the animated colors

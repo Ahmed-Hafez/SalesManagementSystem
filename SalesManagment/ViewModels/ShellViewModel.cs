@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,7 +10,6 @@ namespace SalesManagment
     /// </summary>
     public class ShellViewModel : BaseViewModel
     {
-
         #region Private Members
 
         /// <summary>
@@ -46,12 +44,12 @@ namespace SalesManagment
         /// <summary>
         /// The smallest width for the window
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 1100;
 
         /// <summary>
         /// The smallest height for the window
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 400;
+        public double WindowMinimumHeight { get; set; } = 700;
 
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome

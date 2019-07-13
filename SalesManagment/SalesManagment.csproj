@@ -70,8 +70,12 @@
       <DependentUpon>ButtonList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
+    <Compile Include="ViewModels\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="Views\Pages\AddingProductsPage.xaml.cs">
+      <DependentUpon>AddingProductsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\BasePage.cs" />
     <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
@@ -100,6 +104,10 @@
     <Page Include="UserControls\ButtonList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\AddingProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
@@ -190,6 +198,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Models\Database\SQL_Scripts\Login_Procedure.sql" />
+    <Resource Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

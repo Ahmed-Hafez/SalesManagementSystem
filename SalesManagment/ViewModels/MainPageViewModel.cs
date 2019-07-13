@@ -5,12 +5,34 @@ namespace SalesManagment
 {
     public class MainPageViewModel : BasePageViewModel
     {
+        #region Private Members
+
+        /// <summary>
+        /// The current page of the application
+        /// </summary>
+        private ApplicationPage mCurrentPage = ApplicationPage.AddingProducts;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
         /// Items of the top menu
         /// </summary>
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
+
+        /// <summary>
+        /// The current page of the application
+        /// </summary>
+        public ApplicationPage CurrentPage
+        {
+            get { return mCurrentPage; }
+            private set
+            {
+                mCurrentPage = value;
+                OnPropertyChanged(nameof(CurrentPage));
+            }
+        }
 
         #endregion
 
@@ -22,12 +44,17 @@ namespace SalesManagment
         public MainPageViewModel()
         {
             InitializeComponent();
+            this.LoadAnimation = PageAnimation.SlideInFromLeft;
+            this.UnloadAnimation = PageAnimation.SlideOutToRight;
         }
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// Initializes a the page component
+        /// </summary>
         private void InitializeComponent()
         {
             MenuItems = new ObservableCollection<MenuItemViewModel>
@@ -50,8 +77,8 @@ namespace SalesManagment
                     {
                         new MenuItemViewModel { Header="Add Product" },
                         new MenuItemViewModel { Header="Products Management"},
-                        new MenuItemViewModel { Header="Add Class" },
-                        new MenuItemViewModel { Header="Classes Management"}
+                        new MenuItemViewModel { Header="Add Category" },
+                        new MenuItemViewModel { Header="Categories Management"}
                     }
                 },
                 new MenuItemViewModel
