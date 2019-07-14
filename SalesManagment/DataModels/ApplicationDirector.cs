@@ -18,5 +18,9 @@ namespace SalesManagment
             }
         }
 
+        /// <summary>
+        /// The current user of the application after login
+        /// </summary>
+        public static User CurrentUser { get; set; }
     }
 }
