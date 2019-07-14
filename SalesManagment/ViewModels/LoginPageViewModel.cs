@@ -19,20 +19,7 @@ namespace SalesManagment
         /// </summary>
         private readonly List<string> types;
 
-        /// <summary>
-        /// The accepted username of the user
-        /// </summary>
-        private string username;
-
-        /// <summary>
-        /// The accepted password of the user
-        /// </summary>
-        private string password;
-
-        /// <summary>
-        /// The accepted type of the user
-        /// </summary>
-        private string userType;
+        private User user;
 
         #endregion
 
@@ -123,9 +110,9 @@ namespace SalesManagment
 
                 if (DataConnection.SelectData("Login_Procedure", sqlParameters).Rows.Count > 0)
                 {
-                    username = Username;
-                    password = Password;
-                    userType = UserType;
+                    user.Username = Username;
+                    user.Password = Password;
+                    user.UserType = UserType;
 
                     // Change the current page
                     ((ShellViewModel)((ShellView)Application.Current.MainWindow).DataContext).ChangeCurrentPage(ApplicationPage.Main, page);
