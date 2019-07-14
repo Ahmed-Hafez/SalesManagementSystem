@@ -24,26 +24,26 @@ namespace SalesManagment
         /// <summary>
         /// The margin of the title of the page
         /// </summary>
-        public Thickness PageTitleMargin { get; set; } = new Thickness(0, 30, 0, 0);
+        public Thickness PageTitleMargin { get { return new Thickness(0, 30, 0, 0); } }
 
         #region BorderFrame
 
         /// <summary>
         /// The margin of the frame which contains the content of the page
         /// </summary>
-        public Thickness BorderFrameMargin { get; set; } = new Thickness(0, 0, 0, 80);
+        public Thickness BorderFrameMargin { get { return new Thickness(0, 0, 0, 80); } }
 
         /// <summary>
         /// The padding of the frame which contains the content of the page
         /// </summary>
-        public Thickness BorderFramePadding { get; set; } = new Thickness(20, 50, 20, 15);
+        public Thickness BorderFramePadding { get { return new Thickness(20, 50, 20, 15); } }
 
         #endregion
 
         /// <summary>
         /// The padding between the frame and the content in the left
         /// </summary>
-        public Thickness LeftContentPadding { get; set; } = new Thickness(0, 5, 0, 0);
+        public Thickness LeftContentPadding { get { return new Thickness(0, 5, 0, 0); } }
 
         #region ProductImage    
 
@@ -118,6 +118,13 @@ namespace SalesManagment
             SelectPhotoCommand = new RelayCommand(SelectPhoto);
         }
 
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Adding photo from the pc into the image frame
+        /// </summary>
         private void SelectPhoto()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -127,6 +134,5 @@ namespace SalesManagment
         }
 
         #endregion
-
     }
 }
