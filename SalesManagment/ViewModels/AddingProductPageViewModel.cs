@@ -8,6 +8,9 @@ using System.Windows.Media.Imaging;
 
 namespace SalesManagment
 {
+    /// <summary>
+    /// The view model that controls the  AddingProductPage View
+    /// </summary>
     public class AddingProductPageViewModel : BasePageViewModel
     {
         #region PrivateMember

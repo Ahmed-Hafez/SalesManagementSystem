@@ -115,7 +115,7 @@ namespace SalesManagment
                     user.UserType = UserType;
 
                     // Change the current page
-                    ((ShellViewModel)((ShellView)Application.Current.MainWindow).DataContext).ChangeCurrentPage(ApplicationPage.Main, page);
+                    ApplicationDirector.ApplicationShell.ChangeCurrentPage(ApplicationPage.Main, page);
                 }
                 else MessageBox.Show("Username, password or user type is incorrect.",
                     "Signing in failed");
