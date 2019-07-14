@@ -55,6 +55,7 @@ namespace SalesManagment
 
                 this.DataContext = mViewModel;
                 mViewModel.page = this;
+                Console.WriteLine("Ahmed HAFEZ" + mViewModel.page);
             }
         }
 

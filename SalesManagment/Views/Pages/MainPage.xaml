@@ -23,6 +23,7 @@
             <Menu.ItemContainerStyle>
                 <Style TargetType="{x:Type MenuItem}">
                     <Setter Property="Command" Value="{Binding Command}" />
+                    <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
                 </Style>
             </Menu.ItemContainerStyle>
             <Menu.ItemTemplate>

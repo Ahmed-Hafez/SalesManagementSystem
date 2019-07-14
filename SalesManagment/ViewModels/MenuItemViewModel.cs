@@ -19,14 +19,19 @@ namespace SalesManagment
         public Brush ForgroundBrush { get; set; } = Brushes.Black;
 
         /// <summary>
-        /// The menu items falling under this menu item
+        /// The menu items falling under the menu item
         /// </summary>
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
 
         /// <summary>
-        /// The command of this menu item
+        /// The command used to add some action
         /// </summary>
         public ICommand Command { get; set; }
+
+        /// <summary>
+        /// The command parameter
+        /// </summary>
+        public object CommandParameter { get; set; }
 
         #endregion
     }

@@ -40,6 +40,7 @@
                         <!--Username-->
                         <TextBox Tag="Username"
                                  Text="{Binding Username, Mode=OneWayToSource}"
+                                 MinWidth="150"
                                  Style="{StaticResource TextBoxPlaceHolder}"
                                  HorizontalContentAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -52,14 +53,16 @@
                                      Tag="Password"
                                      HorizontalContentAlignment="Center"
                                      VerticalContentAlignment="Center"
+                                     MinWidth="150"
                                      SelectionBrush="{StaticResource LightRedSelectionBrush}"
                                      SelectionOpacity="0.3"
                                      CaretBrush="{StaticResource ForegroundLightBrush}"/>
 
                         <!--UserType-->
                         <ComboBox Width="170"
-                                  Height="42"
-                                  FontSize="{StaticResource FontSizeMedium}"
+                                  Height="32"
+                                  Margin="0 30 0 0"
+                                  FontSize="{StaticResource FontSizeRegular}"
                                   BorderBrush="{StaticResource ForegroundLightBrush}" 
                                   Foreground="{StaticResource ForegroundMainBrush}" 
                                   Style="{StaticResource HollowComboBox}"

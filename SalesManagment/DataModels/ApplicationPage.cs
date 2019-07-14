@@ -6,73 +6,78 @@
     public enum ApplicationPage
     {
         /// <summary>
+        /// Display no pages
+        /// </summary>
+        None = 0,
+
+        /// <summary>
         /// The initial login page
         /// </summary>
-        Login = 0,
+        Login = 1,
 
         /// <summary>
         /// The main page of the program
         /// </summary>
-        Main = 1,
+        Main = 2,
 
         /// <summary>
         /// The page used to add a new product
         /// </summary>
-        AddingProducts = 2,
+        AddingProducts = 3,
 
         /// <summary>
         /// The page used to manage products
         /// </summary>
-        ProductsManagement = 3,
+        ProductsManagement = 4,
 
         /// <summary>
         /// The page used to add a new class
         /// </summary>
-        AddingCategory = 4,
+        AddingCategory = 5,
 
         /// <summary>
         /// The page used to manage classes
         /// </summary>
-        CategoriesManagement = 5,
+        CategoriesManagement = 6,
 
         /// <summary>
         /// The page used to add a new client
         /// </summary>
-        AddingClient = 6,
+        AddingClient = 7,
 
         /// <summary>
         /// The page used to manage clients
         /// </summary>
-        ClientsManagement = 7,
+        ClientsManagement = 8,
 
         /// <summary>
         /// The page used to add a new sale
         /// </summary>
-        AddingSale = 8,
+        AddingSale = 9,
 
         /// <summary>
         /// The page used to manage products
         /// </summary>
-        SalesManagement = 9,
+        SalesManagement = 10,
 
         /// <summary>
         /// The page used to add a new user
         /// </summary>
-        AddingUser = 10,
+        AddingUser = 11,
 
         /// <summary>
         /// The page used to manage users
         /// </summary>
-        UsersManagement = 11,
+        UsersManagement = 12,
 
         /// <summary>
         /// The page used to creat backup
         /// </summary>
-        CreatingBackup = 12,
+        CreatingBackup = 13,
 
         /// <summary>
         /// The page used to restore saved copy
         /// </summary>
-        RestoringSavedCopy = 13
+        RestoringSavedCopy = 14
     }
 }

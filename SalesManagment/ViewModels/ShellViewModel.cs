@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -35,7 +36,7 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        private ApplicationPage mCurrentPage = ApplicationPage.Main;
+        private ApplicationPage mCurrentPage = ApplicationPage.Login;
 
         #endregion
 

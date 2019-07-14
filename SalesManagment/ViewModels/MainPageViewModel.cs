@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace SalesManagment
@@ -10,7 +13,17 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        private ApplicationPage mCurrentPage = ApplicationPage.AddingProducts;
+        private ApplicationPage mCurrentPage = ApplicationPage.None;
+
+        /// <summary>
+        /// The (Add Product) page
+        /// </summary>
+        private AddingProductsPage mAddingProductsPage;
+
+        /// <summary>
+        /// The page related to the selected MenuItem
+        /// </summary>
+        private Page mRelatedPage;
 
         #endregion
 
@@ -34,6 +47,11 @@ namespace SalesManagment
             }
         }
 
+        /// <summary>
+        /// The command related to add page related to menu item
+        /// </summary>
+        public ICommand AddPageCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -44,8 +62,11 @@ namespace SalesManagment
         public MainPageViewModel()
         {
             InitializeComponent();
-            this.LoadAnimation = PageAnimation.SlideInFromLeft;
+
+            this.LoadAnimation = PageAnimation.SlideInFromRight;
             this.UnloadAnimation = PageAnimation.SlideOutToRight;
+
+            AddPageCommand = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter));
         }
 
         #endregion
@@ -75,7 +96,12 @@ namespace SalesManagment
                     ForgroundBrush = Brushes.White,
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
-                        new MenuItemViewModel { Header="Add Product" },
+                        new MenuItemViewModel
+                        {
+                            Header ="Add Product",
+                            Command = new RelayParameterizedCommand(new Action<object>(AddRelatedPage)),
+                            CommandParameter = new AddingProductsPage()
+                        },
                         new MenuItemViewModel { Header="Products Management"},
                         new MenuItemViewModel { Header="Add Category" },
                         new MenuItemViewModel { Header="Categories Management"}
@@ -104,6 +130,23 @@ namespace SalesManagment
                     }
                 }
             };
+        }
+
+        /// <summary>
+        /// Adding the related page to the selected Menu Item
+        /// </summary>
+        private void AddRelatedPage(object page)
+        {
+            if(page is Page)
+            {
+                if (page is AddingProductsPage)
+                    CurrentPage = ApplicationPage.AddingProducts;
+            }
+            else
+            {
+                // TODO : Set Error Code
+                throw new Exception("Invalid Parameters: The parameter should be Page Object");
+            }
         }
 
         #endregion

@@ -1,4 +1,4 @@
-Create Proc Login_Procedure
+ginpageCreate Proc Login_Procedure
 
 @ID varchar(50),
 @Password varchar(50),
