@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:SalesManagment">
+
+    <ObjectDataProvider MethodName="GetValues" 
+                        ObjectType="{x:Type System:Enum}" 
+                        x:Key="UserTypeEnumMenu">
+
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="local:UserType"/>
+        </ObjectDataProvider.MethodParameters>
+
+    </ObjectDataProvider>
+
+</ResourceDictionary>
