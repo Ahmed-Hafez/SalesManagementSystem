@@ -16,6 +16,8 @@ namespace SalesManagment
             // Finding the targeted page
             switch ((ApplicationPage)value)
             {
+                case ApplicationPage.None:
+                    return null;
                 case ApplicationPage.Login:
                     return new LoginPage();
                 case ApplicationPage.Main:
