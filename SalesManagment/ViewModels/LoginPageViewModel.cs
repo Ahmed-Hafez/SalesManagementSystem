@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Security;
+﻿using System.Security;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace SalesManagment
 {
@@ -15,10 +11,8 @@ namespace SalesManagment
         #region Private members
 
         /// <summary>
-        /// The user types
+        /// The accpeted user
         /// </summary>
-        private readonly List<string> types;
-
         private User user;
 
         #endregion
@@ -38,13 +32,7 @@ namespace SalesManagment
         /// <summary>
         /// The provided type from the textbox
         /// </summary>
-        public string UserType { get; set; }
-
-        /// <summary>
-        /// The user types
-        /// </summary>
-        public List<string> Types { get { return types; } }
-
+        public UserType UserType { get; set; }
 
         /// <summary>
         /// The used command for sign in button
@@ -63,8 +51,7 @@ namespace SalesManagment
             this.LoadAnimation = PageAnimation.SlideOpening;
             this.UnloadAnimation = PageAnimation.SlideClosing;
 
-            types = new List<string>() { "Manager", "Employee" };
-            UserType = types[1];
+            user = new User();
 
             SignInCommand = new RelayParameterizedCommand((parameter) => signInButtonClick(parameter));
         }
@@ -100,22 +87,14 @@ namespace SalesManagment
                     return;
                 }
 
-                SqlParameter[] sqlParameters = new SqlParameter[3];
-                sqlParameters[0] = new SqlParameter("@ID", SqlDbType.VarChar);
-                sqlParameters[0].Value = Username;
-                sqlParameters[1] = new SqlParameter("@Password", SqlDbType.VarChar);
-                sqlParameters[1].Value = Password;
-                sqlParameters[2] = new SqlParameter("@UserType", SqlDbType.VarChar);
-                sqlParameters[2].Value = UserType;
-
-                if (DataConnection.SelectData("Login_Procedure", sqlParameters).Rows.Count > 0)
+                
+                if (user.Login(Username, Password, this.UserType))
                 {
-                    user.Username = Username;
-                    user.Password = Password;
-                    user.UserType = UserType;
-
                     // Change the current page
                     ApplicationDirector.ApplicationShell.ChangeCurrentPage(ApplicationPage.Main, page);
+
+                    // Setting the current user of the app
+                    ApplicationDirector.CurrentUser = user;
                 }
                 else MessageBox.Show("Username, password or user type is incorrect.",
                     "Signing in failed");
@@ -123,7 +102,7 @@ namespace SalesManagment
             catch
             {
                 // TODO Check the error code
-                MessageBox.Show("Unexpected error : login137");
+                MessageBox.Show("Unexpected error : login105");
             }
         }
 
