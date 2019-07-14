@@ -71,6 +71,28 @@ namespace SalesManagment
 
         #endregion
 
+        #region Inner Classes
+
+        /// <summary>
+        /// Simple Factory class to find a certain page
+        /// </summary>
+        private class PageFactory : IFactory
+        {
+            /// <summary>
+            /// The factory method
+            /// </summary>
+            /// <param name="page">The related <see cref="Page"/> object</param>
+            public object GetInstances(object page)
+            {
+                if (page is AddingProductsPage)
+                    return ApplicationPage.AddingProducts;
+
+                return ApplicationPage.None;
+            }
+        }
+
+        #endregion
+
         #region Methods
 
         /// <summary>
@@ -139,8 +161,9 @@ namespace SalesManagment
         {
             if(page is Page)
             {
-                if (page is AddingProductsPage)
-                    CurrentPage = ApplicationPage.AddingProducts;
+                // Factory Design Pattern was used here
+                IFactory finder = new PageFactory();
+                finder.GetInstances(page);
             }
             else
             {
