@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -94,7 +95,7 @@ namespace SalesManagment
         /// <summary>
         /// Category of the 
         /// </summary>
-        public List<string> CategoryItems { get; set; }
+        public DataTable CategoryItems { get; set; }
 
         #endregion
 
@@ -112,10 +113,9 @@ namespace SalesManagment
         /// </summary>
         public AddingProductPageViewModel()
         {
-            this.LoadAnimation = PageAnimation.SlideInFromRight;
-            CategoryItems = new List<string>();
-            CategoryItems = new List<string> { "Ahmed Hafez", "Mohamed Hafez", "Sara Hafez", "Hafez Taha", "Shadia Fawzy" };
-            if (CategoryItems.Count > 0)
+            this.LoadAnimation = PageAnimation.SlideInFromLeft;
+            CategoryItems = Product.GetAllCategories();
+            if (CategoryItems != null)
                 IsCategoryItemsComboBoxEnabled = true;
 
             SelectPhotoCommand = new RelayCommand(SelectPhoto);

@@ -111,6 +111,8 @@
                           BorderBrush="{StaticResource ForegroundLightBrush}"
                           Width="200"
                           ItemsSource="{Binding CategoryItems}"
+                          DisplayMemberPath="Description"
+                          SelectedValuePath="Category_ID"
                           IsEnabled="{Binding IsCategoryItemsComboBoxEnabled}"/>
 
                 <!--Name Section-->
