@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
+using System;
 
 namespace SalesManagment
 {
@@ -40,13 +41,21 @@ namespace SalesManagment
         /// <summary>
         /// Open the database connection
         /// </summary>
-        private static void Open() => Connection.Open();
+        private static void Open()
+        {
+            if (Connection.State == ConnectionState.Closed)
+                Connection.Open();
+        }
 
         /// <summary>
         /// Open the database connection
         /// </summary>
-        private static void Close() => Connection.Close();
-        
+        private static void Close()
+        {
+            if (Connection.State == ConnectionState.Open)
+                Connection.Close();
+        }
+
         #endregion
 
         #region Deal methods
@@ -58,23 +67,32 @@ namespace SalesManagment
         /// <param name="param">The parameters required for the stored procedures</param>
         public static DataTable SelectData(string stored_procedure, SqlParameter[] param)
         {
-            Open();
+            try
+            {
+                Open();
 
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.StoredProcedure;
-            sqlCmd.CommandText = stored_procedure;
-            sqlCmd.Connection = Connection;
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.CommandText = stored_procedure;
+                sqlCmd.Connection = Connection;
 
-            if (param != null)
-                sqlCmd.Parameters.AddRange(param);
+                if (param != null)
+                    sqlCmd.Parameters.AddRange(param);
 
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
-            DataTable dataTable = new DataTable();
-            dataAdapter.Fill(dataTable);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
 
-            Close();
-
-            return dataTable;
+                return dataTable;
+            }
+            catch
+            {
+                throw new Exception("Database Connection Error");
+            }
+            finally
+            {
+                Close();
+            }
         }
 
         /// <summary>
@@ -84,18 +102,27 @@ namespace SalesManagment
         /// <param name="param">The parameters required for the stored procedures</param>
         public static void ExcuteCommand(string stored_procedure, params SqlParameter[] param)
         {
-            Open();
+            try
+            {
+                Open();
 
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.StoredProcedure;
-            sqlCmd.CommandText = stored_procedure;
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.CommandText = stored_procedure;
 
-            if (param != null)
-                sqlCmd.Parameters.AddRange(param);
+                if (param != null)
+                    sqlCmd.Parameters.AddRange(param);
 
-            sqlCmd.ExecuteNonQuery();
-
-            Close();
+                sqlCmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new Exception("Database Connection Error");
+            }
+            finally
+            {
+                Close();
+            }
         }
 
         #endregion
