@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -14,16 +15,6 @@ namespace SalesManagment
         /// The current page of the application
         /// </summary>
         private ApplicationPage mCurrentPage = ApplicationPage.None;
-
-        /// <summary>
-        /// The (Add Product) page
-        /// </summary>
-        private AddingProductsPage mAddingProductsPage;
-
-        /// <summary>
-        /// The page related to the selected MenuItem
-        /// </summary>
-        private Page mRelatedPage;
 
         #endregion
 
@@ -47,11 +38,6 @@ namespace SalesManagment
             }
         }
 
-        /// <summary>
-        /// The command related to add page related to menu item
-        /// </summary>
-        public ICommand AddPageCommand { get; set; }
-
         #endregion
 
         #region Constructor
@@ -66,7 +52,6 @@ namespace SalesManagment
             this.LoadAnimation = PageAnimation.SlideInFromRight;
             this.UnloadAnimation = PageAnimation.SlideOutToRight;
 
-            AddPageCommand = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter));
         }
 
         #endregion
@@ -95,6 +80,23 @@ namespace SalesManagment
 
         #region Methods
 
+        #region Overriden Methods
+
+        /// <summary>
+        /// Called when page loaded
+        /// </summary>
+        protected async sealed override void Page_Loaded
+            (object sender, System.Windows.RoutedEventArgs e)
+        {
+            // Wait until The MainPage animation finishes if found
+            await Task.Delay(100);
+
+            // Setting the Frame page
+            CurrentPage = ApplicationPage.AddingProducts;
+        }
+
+        #endregion
+
         /// <summary>
         /// Initializes a the page component
         /// </summary>
@@ -122,7 +124,7 @@ namespace SalesManagment
                         {
                             Header ="Add Product",
                             Command = new RelayParameterizedCommand(new Action<object>(AddRelatedPage)),
-                            CommandParameter = new AddingProductsPage()
+                            CommandParameter = ApplicationPage.AddingProducts
                         },
                         new MenuItemViewModel { Header="Products Management"},
                         new MenuItemViewModel { Header="Add Category" },
@@ -159,12 +161,8 @@ namespace SalesManagment
         /// </summary>
         private void AddRelatedPage(object page)
         {
-            if(page is Page)
-            {
-                // Factory Design Pattern was used here
-                IFactory finder = new PageFactory();
-                finder.GetInstances(page);
-            }
+            if(page is ApplicationPage)
+                CurrentPage = (ApplicationPage)page;
             else
             {
                 // TODO : Set Error Code
