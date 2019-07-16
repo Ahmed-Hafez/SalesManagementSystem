@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,13 +64,20 @@
     <Compile Include="Animation\StoryboardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="DataModels\ApplicationDirector.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="DataModels\IFactory.cs" />
+    <Compile Include="Models\BussinessLogic\Product.cs" />
+    <Compile Include="Models\BussinessLogic\User.cs" />
+    <Compile Include="Models\BussinessLogic\UserType.cs" />
+    <Compile Include="CustomControls\NumericTextBox.cs" />
     <Compile Include="Security\IHavePassword.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="UserControls\ButtonList.xaml.cs">
       <DependentUpon>ButtonList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
+    <Compile Include="ValueConverters\ImageSourceToByteArrayValueConverter.cs" />
     <Compile Include="ViewModels\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
@@ -97,6 +105,10 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\WindowResizer.cs" />
+    <Page Include="PropertyResources\PropertyResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ComboBoxes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

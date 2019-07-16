@@ -46,3 +46,4 @@ F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\Sal
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.baml
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\PropertyResources\PropertyResources.baml
