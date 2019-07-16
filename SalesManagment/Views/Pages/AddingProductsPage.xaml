@@ -75,7 +75,8 @@
                            Margin="{Binding LeftContentPadding, FallbackValue='0 5 0 0'}"
                            VerticalAlignment="Top"
                            HorizontalAlignment="Left"/>
-                <local:NumericTextBox Grid.Row="0"
+                <local:NumericTextBox 
+                         Grid.Row="0"
                          Grid.Column="1"
                          VerticalAlignment="Top"
                          HorizontalAlignment="Left"
@@ -83,12 +84,14 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="ID"
+                         Text="{Binding ProductID, Mode=OneWayToSource}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
                          CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
-                         Width="200"/>
+                         Width="200"
+                         HasDecimalPoint="False"/>
 
                 <!--Category Section-->
                 <TextBlock Grid.Row="1"
@@ -114,6 +117,7 @@
                           ItemsSource="{Binding CategoryItems}"
                           DisplayMemberPath="Description"
                           SelectedValuePath="Category_ID"
+                          SelectedValue="{Binding ProductCategory}"
                           IsEnabled="{Binding IsCategoryItemsComboBoxEnabled}"/>
 
                 <!--Name Section-->
@@ -134,6 +138,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="Name"
+                         Text="{Binding ProductName, Mode=OneWayToSource}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
@@ -158,6 +163,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="Description"
+                         Text="{Binding ProductDescription}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
@@ -187,6 +193,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="0"
+                         Text="{Binding StoredQuantity, Mode=OneWayToSource}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
@@ -212,6 +219,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="0"
+                         Text="{Binding Price, Mode=OneWayToSource}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
