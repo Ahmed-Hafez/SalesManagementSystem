@@ -9,6 +9,11 @@ namespace SalesManagment
     /// </summary>
     public class NumericTextBox : TextBox
     {
+        /// <summary>
+        /// Indicates whether decimal point is allowed or not
+        /// </summary>
+        public bool HasDecimalPoint { get; set; } = true;
+
         public NumericTextBox()
         {
             this.PreviewTextInput += NumericTextBox_PreviewTextInput;
@@ -16,7 +21,10 @@ namespace SalesManagment
 
         private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9.]");
+            Regex regex;
+            if(HasDecimalPoint)
+                regex = new Regex("[^0-9.]");
+            else regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
     }
