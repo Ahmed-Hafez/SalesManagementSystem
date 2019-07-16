@@ -5,6 +5,10 @@ using System.Windows.Markup;
 
 namespace SalesManagment
 {
+    /// <summary>
+    /// The base class for all value converters
+    /// </summary>
+    /// <typeparam name="T">The inheritor class</typeparam>
     public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
         where T : class, new()
     {
