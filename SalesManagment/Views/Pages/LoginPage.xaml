@@ -56,7 +56,17 @@
                                      MinWidth="150"
                                      SelectionBrush="{StaticResource LightRedSelectionBrush}"
                                      SelectionOpacity="0.3"
-                                     CaretBrush="{StaticResource ForegroundLightBrush}"/>
+                                     CaretBrush="{StaticResource ForegroundLightBrush}">
+
+                            <PasswordBox.InputBindings>
+
+                                <KeyBinding Key="Return"
+                                            Command="{Binding SignInCommand}"
+                                            CommandParameter="{Binding ElementName=LoginPageView}"/>
+
+                            </PasswordBox.InputBindings>
+
+                        </PasswordBox>
 
                         <!--UserType-->
                         <ComboBox Width="170"
@@ -67,7 +77,17 @@
                                   Foreground="{StaticResource ForegroundMainBrush}" 
                                   Style="{StaticResource HollowComboBox}"
                                   ItemsSource="{Binding Source={StaticResource UserTypeEnumMenu}}"
-                                  SelectedItem="{Binding UserType}"/>
+                                  SelectedItem="{Binding UserType}">
+
+                            <ComboBox.InputBindings>
+
+                                <KeyBinding Key="Return"
+                                            Command="{Binding SignInCommand}"
+                                            CommandParameter="{Binding ElementName=LoginPageView}"/>
+
+                            </ComboBox.InputBindings>
+
+                        </ComboBox>
 
                         <!--Sign in-->
                         <Button Content="Sign in"
