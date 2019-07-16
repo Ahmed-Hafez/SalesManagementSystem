@@ -107,6 +107,7 @@ namespace SalesManagment
                 Open();
 
                 SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = Connection;
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.CommandText = stored_procedure;
 
