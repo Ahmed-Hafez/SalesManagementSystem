@@ -53,7 +53,7 @@ namespace SalesManagment
 
             user = new User();
 
-            SignInCommand = new RelayParameterizedCommand((parameter) => signInButtonClick(parameter));
+            SignInCommand = new RelayParameterizedCommand(signInButtonClick);
         }
 
         #endregion
