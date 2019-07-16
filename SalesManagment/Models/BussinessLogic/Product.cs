@@ -86,6 +86,10 @@ namespace SalesManagment
             return null;
         }
 
+        /// <summary>
+        /// Returns true if there is a product with this ID in the database
+        /// </summary>
+        /// <param name="productID">The ID of the product to search for</param>
         public static bool Find(long productID)
         {
             SqlParameter[] sqlParameters = new SqlParameter[1];
