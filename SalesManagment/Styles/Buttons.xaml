@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Colors.xaml"/>
         <ResourceDictionary Source="Fonts.xaml"/>
+        <ResourceDictionary Source="Texts.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Button}" x:Key="HoverlessButton"
@@ -72,28 +73,51 @@
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="Margin" Value="0 20 0 0" />
 
+        <Setter Property="local:IsBusyProperty.Value" Value="False"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
 
                     <Grid>
 
-
-                        <!--{TemplateBinding Background}-->
                         <Border x:Name="border"
                             CornerRadius="10"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="True">
-                            <TextBlock Text="{TemplateBinding Content}" 
+
+                            <Grid>
+                                
+                                <!--Content-->
+                                <TextBlock Text="{TemplateBinding Content}" 
                                    Focusable="False" 
                                    FontFamily="{TemplateBinding FontFamily}"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Margin="{TemplateBinding Padding}" 
                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                   Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibiltyValueConverter}}"/>
+
+                                <!--Spinner => visible when the button is busy-->
+                                <TextBlock 
+                                    Style="{StaticResource SpinningText}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibiltyValueConverter}, ConverterParameter=True}">
+
+                                    <TextBlock.RenderTransform>
+                                        <RotateTransform />
+                                    </TextBlock.RenderTransform>
+                                    
+                                </TextBlock>
+
+
+                            </Grid>
+                        
                         </Border>
+                        
                         <Border x:Name="ThreeD"
                                 CornerRadius="10"
                                 Opacity="0.2">
@@ -127,6 +151,7 @@
                         
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="border" Property="Background" Value="{StaticResource DarktSkyBrush}"/>
+                            <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ThreeD" Property="Opacity" Value="0.1"/>
