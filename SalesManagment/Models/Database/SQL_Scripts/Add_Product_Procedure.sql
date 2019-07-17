@@ -4,7 +4,8 @@ Create proc Add_Product_Procedure
 @Quantity_in_Stock int,
 @Price varchar(50),
 @Product_Image image,
-@Category_ID int
+@Category_ID int,
+@Product_Description varchar(max)
 as
 Insert into Products
 (Product_ID,
@@ -12,11 +13,13 @@ Product_Label,
 Quantity_in_Stock,
 Price,
 Product_Image,
-Category_ID)
+Category_ID,
+Product_Description)
 Values
 (@Product_ID,
 @Product_Label,
 @Quantity_in_Stock,
 @Price,
 @Product_Image,
-@Category_ID)
+@Category_ID,
+@Product_Description)
