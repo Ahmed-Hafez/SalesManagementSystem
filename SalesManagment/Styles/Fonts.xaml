@@ -10,6 +10,7 @@
     <FontFamily x:Key="LatoSemibold">pack://application;,,,/Fonts/#Lato Semibold</FontFamily>
     <FontFamily x:Key="LatoLight">pack://application;,,,/Fonts/#Lato Light</FontFamily>
     <FontFamily x:Key="LatoMedium">pack://application;,,,/Fonts/#Lato Medium</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://application;,,,/Fonts/#FontAwesome</FontFamily>
 
     <System:Double x:Key="FontSizeSmall">14</System:Double>
     <System:Double x:Key="FontSizeRegular">20</System:Double>
