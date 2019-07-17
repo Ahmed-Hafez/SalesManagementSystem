@@ -1,4 +1,6 @@
-﻿using System.Security;
+﻿using System;
+using System.Security;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SalesManagment
@@ -14,6 +16,11 @@ namespace SalesManagment
         /// The accpeted user
         /// </summary>
         private User user;
+
+        /// <summary>
+        /// A flag indicating that the login command is running
+        /// </summary>
+        private bool loginIsRunning = false;
 
         #endregion
 
@@ -35,9 +42,26 @@ namespace SalesManagment
         public UserType UserType { get; set; }
 
         /// <summary>
+        /// A flag indicating that the login command is running
+        /// </summary>
+        public bool LoginIsRunning
+        {
+            get { return loginIsRunning; }
+            set
+            {
+                loginIsRunning = value;
+                OnPropertyChanged(nameof(LoginIsRunning));
+            }
+        }
+
+        #region Commands
+
+        /// <summary>
         /// The used command for sign in button
         /// </summary>
         public RelayParameterizedCommand SignInCommand { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -53,7 +77,7 @@ namespace SalesManagment
 
             user = new User();
 
-            SignInCommand = new RelayParameterizedCommand(signInButtonClick);
+            SignInCommand = new RelayParameterizedCommand(async (parameter) => await SignIn(parameter));
         }
 
         #endregion
@@ -67,42 +91,45 @@ namespace SalesManagment
         /// The <see cref="SecureString"/> passed in from the view
         /// for the user password
         /// </param>
-        public void signInButtonClick(object parameter)
+        public async Task SignIn(object parameter)
         {
             try
             {
-                Password = (parameter as IHavePassword).SecurePassword.Unsecure();
-
-                if (string.IsNullOrEmpty(Username)
-                    || string.IsNullOrWhiteSpace(Username))
+                await RunCommand(() => this.LoginIsRunning, async () =>
                 {
-                    MessageBox.Show("Username is required.",
+                    Password = (parameter as IHavePassword).SecurePassword.Unsecure();
+
+                    if (string.IsNullOrEmpty(Username)
+                        || string.IsNullOrWhiteSpace(Username))
+                    {
+                        MessageBox.Show("Username is required.",
+                            "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    else if (string.IsNullOrEmpty(Password))
+                    {
+                        MessageBox.Show("Password is required.",
+                           "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    bool loginSuccesseded = await Task.Run(() => user.Login(Username, Password, this.UserType));
+
+                    if (loginSuccesseded)
+                    {
+                        // Change the current page
+                        ApplicationDirector.ApplicationShell.ChangeCurrentPage(ApplicationPage.Main, page);
+
+                        // Setting the current user of the app
+                        ApplicationDirector.CurrentUser = user;
+                    }
+                    else MessageBox.Show("Username, password or user type is incorrect.",
                         "Signing in failed");
-                    return;
-                }
-                else if (string.IsNullOrEmpty(Password))
-                {
-                    MessageBox.Show("Password is required.",
-                       "Signing in failed");
-                    return;
-                }
-
-                
-                if (user.Login(Username, Password, this.UserType))
-                {
-                    // Change the current page
-                    ApplicationDirector.ApplicationShell.ChangeCurrentPage(ApplicationPage.Main, page);
-
-                    // Setting the current user of the app
-                    ApplicationDirector.CurrentUser = user;
-                }
-                else MessageBox.Show("Username, password or user type is incorrect.",
-                    "Signing in failed");
+                });
             }
-            catch
+            catch(Exception e)
             {
-                // TODO Check the error code
-                MessageBox.Show("Unexpected error : login105");
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

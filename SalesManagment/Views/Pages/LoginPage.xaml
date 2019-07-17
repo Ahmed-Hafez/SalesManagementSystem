@@ -94,7 +94,8 @@
                                 HorizontalAlignment="Center"
                                 Style="{StaticResource RegularButton}"
                                 Command="{Binding SignInCommand}"
-                                CommandParameter="{Binding ElementName=LoginPageView}"/>
+                                CommandParameter="{Binding ElementName=LoginPageView}"
+                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"/>
 
                     </StackPanel>
 
