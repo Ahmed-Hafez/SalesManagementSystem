@@ -85,8 +85,11 @@ namespace SalesManagment
 
                 return dataTable;
             }
-            catch
+            catch(Exception e)
             {
+                // For debugging reasons
+                Console.WriteLine($"Exception is : {e.Message}");
+
                 throw new Exception("Database Connection Error");
             }
             finally
@@ -116,8 +119,11 @@ namespace SalesManagment
 
                 sqlCmd.ExecuteNonQuery();
             }
-            catch
+            catch(Exception e)
             {
+                // For debugging reasons
+                Console.WriteLine($"Exception is : {e.Message}");
+
                 throw new Exception("Database Connection Error");
             }
             finally
