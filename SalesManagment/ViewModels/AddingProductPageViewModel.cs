@@ -177,7 +177,7 @@ namespace SalesManagment
                 IsCategoryItemsComboBoxEnabled = true;
 
             SelectPhotoCommand = new RelayCommand(SelectPhoto);
-            AddProductCommand = new RelayCommand(AddButtonClick);
+            AddProductCommand = new RelayCommand(AddProduct);
         }
 
         #endregion
@@ -205,7 +205,7 @@ namespace SalesManagment
         /// <summary>
         /// Attempts to add a new product to the database
         /// </summary>
-        private void AddButtonClick()
+        private void AddProduct()
         {
             // Validate data
             if (ProductID == 0L)
