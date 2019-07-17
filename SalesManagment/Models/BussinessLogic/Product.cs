@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -19,6 +20,11 @@ namespace SalesManagment
         public string Name { get; set; }
 
         /// <summary>
+        /// Description about the product
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// The quantity of this product in the stock
         /// </summary>
         public double QuantityInStock { get; set; }
@@ -36,32 +42,44 @@ namespace SalesManagment
         /// <summary>
         /// The category ID of this product category
         /// </summary>
-        public long CategoryID { get; private set; }
+        public Category Category { get; private set; }
 
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance from <see cref="Product"/> class
+        /// </summary>
+        /// <param name="id">ID of the product</param>
+        /// <param name="name">Name of the product</param>
+        /// <param name="description">Description of the product</param>
+        /// <param name="quantityInStock">Quantity from the product in the stock</param>
+        /// <param name="price">Price of the product</param>
+        /// <param name="image">Image of the product</param>
+        /// <param name="categoryID">Category ID of this product</param>
         public Product(
-            long productID, string productName,
+            long id, string name,
+            string description,
             double quantityInStock, decimal price,
-            byte[] productImage, long categoryID)
+            byte[] image, long categoryID)
         {
-            if (productID == 0L || string.IsNullOrEmpty(productName)
-                || string.IsNullOrWhiteSpace(productName)
+            if (id == 0L || string.IsNullOrEmpty(name)
+                || string.IsNullOrWhiteSpace(name)
                 || quantityInStock == 0
-                || price == 0 || productImage == null
+                || price == 0 || image == null
                 || categoryID == 0)
             {
                 throw new Exception("Invalid Data");
             }
 
-            this.ID = productID;
-            this.Name = productName;
+            this.ID = id;
+            this.Name = name;
+            this.Description = description;
             this.QuantityInStock = quantityInStock;
             this.Price = price;
-            this.Image = productImage;
-            this.CategoryID = categoryID;
+            this.Image = image;
+            this.Category = Category.GetCategory(categoryID);
         }
 
         #endregion
@@ -74,13 +92,21 @@ namespace SalesManagment
         /// Getting all product categories from database
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetAllCategories()
+        public static List<Product> GetAllProducts()
         {
-            var categories = DataConnection.SelectData("Get_All_Categories_Procedure", null);
+            var products = DataConnection.SelectData("Get_All_Products_Procedure", null);
+            var productsList = new List<Product>();
 
             // If categories found, return it
-            if (categories.Rows.Count > 0)
-                return categories;
+            if (products.Rows.Count > 0)
+            {
+                for (int i = 0; i < products.Rows.Count; i++)
+                {
+                    long productID = Convert.ToInt64(products.Rows[i].Field<string>("Product_ID"));
+                    productsList.Add(GetProduct(productID));
+                }
+                return productsList;
+            }
 
             // Otherwise
             return null;
@@ -90,7 +116,7 @@ namespace SalesManagment
         /// Returns true if there is a product with this ID in the database
         /// </summary>
         /// <param name="productID">The ID of the product to search for</param>
-        public static bool Find(long productID)
+        public static bool IsFound(long productID)
         {
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Product_ID", SqlDbType.VarChar);
@@ -104,6 +130,42 @@ namespace SalesManagment
             return false;
         }
 
+        /// <summary>
+        /// Returns a product with the specified id if found
+        /// </summary>
+        /// <param name="productID">ID of the product</param>
+        public static Product GetProduct(long productID)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Product_ID", SqlDbType.VarChar);
+            sqlParameters[0].Value = productID;
+
+            var dt = DataConnection.SelectData("Find_Product_Procedure", sqlParameters);
+
+            if (dt.Rows.Count > 0)
+                return GetProduct(dt.Rows[0]);
+            else
+                throw new Exception($"Product with the ID = {productID} is not found");
+        }
+
+        /// <summary>
+        /// Returns a product with the specified id if found
+        /// </summary>
+        /// <param name="product">The data row in the database 
+        /// which hold the product</param>
+        private static Product GetProduct(DataRow product)
+        {
+            long id = Convert.ToInt64(product.Field<string>("Product_ID"));
+            string name = product.Field<string>("Product_Label");
+            string description = product.Field<string>("Product_Description");
+            double quantity = product.Field<int>("Quantity_in_Stock");
+            decimal price = Convert.ToDecimal(product.Field<string>("Price"));
+            byte[] image = product.Field<byte[]>("Product_Image");
+            long categoryId = product.Field<int>("Category_ID");
+
+            return new Product(id, name, description, quantity, price, image, categoryId);
+        }
+
         #endregion
 
         #region Instance Methods
@@ -112,10 +174,10 @@ namespace SalesManagment
 
         {
             // Check if there is already product with this ID in the database
-            if (Find(ID))
+            if (IsFound(ID))
                 return false;
 
-            SqlParameter[] sqlParameters = new SqlParameter[6];
+            SqlParameter[] sqlParameters = new SqlParameter[7];
             sqlParameters[0] = new SqlParameter("@Product_ID", SqlDbType.VarChar);
             sqlParameters[0].Value = ID;
             sqlParameters[1] = new SqlParameter("@Product_Label", SqlDbType.VarChar);
@@ -127,7 +189,9 @@ namespace SalesManagment
             sqlParameters[4] = new SqlParameter("@Product_Image", SqlDbType.Image);
             sqlParameters[4].Value = Image;
             sqlParameters[5] = new SqlParameter("@Category_ID", SqlDbType.Int);
-            sqlParameters[5].Value = CategoryID;
+            sqlParameters[5].Value = this.Category.ID;
+            sqlParameters[6] = new SqlParameter("@Product_Description", SqlDbType.VarChar);
+            sqlParameters[6].Value = Description;
 
             DataConnection.ExcuteCommand("Add_Product_Procedure", sqlParameters);
 
