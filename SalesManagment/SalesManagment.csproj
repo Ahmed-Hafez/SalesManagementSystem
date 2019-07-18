@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Management-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
@@ -79,6 +82,9 @@
     <Compile Include="UserControls\ButtonList.xaml.cs">
       <DependentUpon>ButtonList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProductRowViewer.xaml.cs">
+      <DependentUpon>ProductRowViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ValueConverters\ImageSourceToByteArrayValueConverter.cs" />
     <Compile Include="ViewModels\AddingProductPageViewModel.cs" />
@@ -116,9 +122,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ScrollViewers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ButtonList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ProductRowViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\AddingProductsPage.xaml">
       <SubType>Designer</SubType>
@@ -213,6 +227,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Management-icon.ico" />
+    <Resource Include="Images\samsunga10.jpg" />
+    <Content Include="Models\Database\SQL_Scripts\Add_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Find_Category_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Find_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Get_All_Categories_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Get_All_Products_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Get_CategoryName_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Login_Procedure.sql" />
     <Resource Include="TODO.txt" />
   </ItemGroup>

@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/add_product_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_category_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_product_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_all_categories_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_all_products_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_categoryname_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/login_procedure.sql")]
 
 

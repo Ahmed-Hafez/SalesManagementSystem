@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Icon="../Images/Management-icon.ico"
-        Title="Sales Management System" Height="700" Width="1100">
+        Title="Sales Management System" Height="700" Width="1100" WindowState="Maximized">
 
     <!--Created here (Not in a resource dictionary) because no need to them again-->
     <Window.Resources>
