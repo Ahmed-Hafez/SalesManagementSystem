@@ -16,6 +16,9 @@
     <System:Double x:Key="FontSizeRegular">20</System:Double>
     <System:Double x:Key="FontSizeMedium">32</System:Double>
     <System:Double x:Key="FontSizeLarge">52</System:Double>
+
+    <System:String x:Key="Spinner">&#xf110;</System:String>
+    <System:String x:Key="Bars">&#xf0c9;</System:String>
     
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="{StaticResource LatoMedium}"/>

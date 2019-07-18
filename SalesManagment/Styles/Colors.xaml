@@ -5,11 +5,14 @@
     <!--Colors-->
     <Color x:Key="LightSkyColor">#FF00BAFF</Color>
     <Color x:Key="DarkSkyColor">#FF0F252E</Color>
+    <Color x:Key="DarkLightSkyColor">#FF057FAD</Color>
     <Color x:Key="ForegroundLightColor">#FFFFFF</Color>
     <Color x:Key="ForegroundMainColor">#FFC4C4C4</Color>
     <Color x:Key="BackgroundVeryLightColor">#FAFAFA</Color>
     <Color x:Key="LightRedSelectionColor">#FFD7005D</Color>
     <Color x:Key="LightWhiteColor">#39FFFFFF</Color>
+    <Color x:Key="DarkLightDarkColor">#FF00BAFF</Color>
+    <Color x:Key="DataColor">#FFFFAE00</Color>
 
     <!--Solid Brushes-->
     <SolidColorBrush x:Key="LightSkyBrush" Color="{StaticResource LightSkyColor}"/>
@@ -20,7 +23,8 @@
     <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLightColor}" />
     <SolidColorBrush x:Key="ClickedLightSkyBrush" Color="{StaticResource LightSkyColor}" Opacity="0.5"/>
     <SolidColorBrush x:Key="LightRedSelectionBrush" Color="{StaticResource LightRedSelectionColor}"/>
-    <SolidColorBrush x:Key="LightWhiteBrush" Color="#39FFFFFF"/>
+    <SolidColorBrush x:Key="LightWhiteBrush" Color="{StaticResource LightWhiteColor}"/>
+    <SolidColorBrush x:Key="DataBrush" Color="{StaticResource DataColor}"/>
 
     <!--Gradient Brushes-->
     <LinearGradientBrush x:Key="DarkSkyToLightSky" EndPoint="0.5,1" StartPoint="0.5,0">
@@ -28,7 +32,17 @@
         <GradientStop Color="{StaticResource DarkSkyColor}" Offset="1"/>
     </LinearGradientBrush>
 
-    
+    <LinearGradientBrush x:Key="DarkSkyToLightSkyOpposite" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="{StaticResource LightSkyColor}" Offset="1"/>
+        <GradientStop Color="{StaticResource DarkSkyColor}" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DarkToLightToDarkSky" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="{StaticResource DarkSkyColor}" Offset="0"/>
+        <GradientStop Color="{StaticResource DarkSkyColor}" Offset="1"/>
+        <GradientStop Color="{StaticResource DarkLightSkyColor}" Offset="0.5"/>
+    </LinearGradientBrush>
+
     <!--Masks-->
     <SolidColorBrush x:Key="DarkSkyMask" Color="{StaticResource DarkSkyColor}" Opacity="0.5"/>
     <SolidColorBrush x:Key="VeryLightSkyMask" Color="{StaticResource LightSkyColor}" Opacity="0.25"/>

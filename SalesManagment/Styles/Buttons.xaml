@@ -89,7 +89,7 @@
                             SnapsToDevicePixels="True">
 
                             <Grid>
-                                
+
                                 <!--Content-->
                                 <TextBlock Text="{TemplateBinding Content}" 
                                    Focusable="False" 
@@ -110,14 +110,14 @@
                                     <TextBlock.RenderTransform>
                                         <RotateTransform />
                                     </TextBlock.RenderTransform>
-                                    
+
                                 </TextBlock>
 
 
                             </Grid>
-                        
+
                         </Border>
-                        
+
                         <Border x:Name="ThreeD"
                                 CornerRadius="10"
                                 Opacity="0.2">
@@ -148,7 +148,7 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        
+
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="border" Property="Background" Value="{StaticResource DarktSkyBrush}"/>
                             <Setter Property="Opacity" Value="0.5"/>
@@ -292,5 +292,37 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Button}" x:Key="OpenButton"
+           BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Opacity" Value="0.655"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                            <Setter Property="Background" Value="{StaticResource DarkSkyToLightSkyOpposite}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
 
 </ResourceDictionary>
