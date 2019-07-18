@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="SalesManagment.ProductRowViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesManagment"
+             mc:Ignorable="d" 
+             MinHeight="250" MinWidth="1200"
+             d:DesignHeight="300" d:DesignWidth="1300">
+
+    <Border BorderThickness="3" BorderBrush="White">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <!--Product Content-->
+                <RowDefinition Height="8*"/>
+
+                <!--Description-->
+                <RowDefinition Height="auto"/>
+
+                <!--Open Button-->
+                <RowDefinition Height="auto"/>
+
+                <!--Show and Delete Buttons-->
+                <RowDefinition Height="2*"/>
+
+            </Grid.RowDefinitions>
+
+            <!--Content-->
+            <Grid Grid.Row="0"
+              Background="{StaticResource DarkToLightToDarkSky}">
+
+                <Grid.ColumnDefinitions>
+
+                    <!--Product Image-->
+                    <ColumnDefinition Width="2*"/>
+
+                    <!--Product Details-->
+                    <ColumnDefinition Width="6*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                    Background="#29FFFFFF"
+                    BorderBrush="White"
+                    BorderThickness="4">
+
+                    <Image Source="../Images/samsunga10.jpg" Stretch="Fill" />
+
+                </Border>
+
+                <Border Grid.Column="1"
+                    Background="Transparent"
+                    BorderBrush="White"
+                    BorderThickness="4">
+
+                    <Grid Margin="15 15">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <!--ID Section-->
+                        <TextBlock Grid.Row="0" 
+                               Grid.Column="0"
+                               Text="ID"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="0" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="0" 
+                               Grid.Column="2"
+                               Text="1536796478"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Name Section-->
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="0"
+                               Text="Name"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="2"
+                               Text="Samsung Galaxy A10"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Quantity in stock Section-->
+                        <TextBlock Grid.Row="2" 
+                               Grid.Column="0"
+                               Text="Quantity in stock"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="2" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="2" 
+                               Grid.Column="2"
+                               Text="150"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Price Section-->
+                        <TextBlock Grid.Row="3" 
+                               Grid.Column="0"
+                               Text="Price"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="3" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="3" 
+                               Grid.Column="2"
+                               Text="2000 L.E"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Category name Section-->
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="0"
+                               Text="Category name"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="2"
+                               Text="Phones"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+                    </Grid>
+
+
+
+                </Border>
+
+            </Grid>
+
+            <TextBox Grid.Row="1"
+                 Height="0"
+                 FontSize="{StaticResource FontSizeRegular}"
+                 Foreground="{StaticResource ForegroundLightBrush}"
+                 Style="{StaticResource TextboxWithStylishScollBar}"
+                 CaretBrush="{StaticResource ForegroundLightBrush}"
+                 SelectionBrush="{StaticResource LightRedSelectionBrush}"/>
+
+            <Button Grid.Row="2"
+                Height="20"
+                Background="{StaticResource DarkSkyToLightSky}"
+                Content="{StaticResource Bars}"
+                FontFamily="{StaticResource FontAwesome}"
+                FontSize="{StaticResource FontSizeSmall}" Style="{StaticResource OpenButton}"/>
+
+            <Grid Grid.Row="3"
+              HorizontalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Grid.Column="0"
+                    Content="Show product" 
+                    Margin="0 0 50 0"
+                    Style="{StaticResource RegularButton}"/>
+                    <Button Content="Delete product" 
+                    Margin="50 0 0 0"
+                    Style="{StaticResource RegularButton}"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    
+    </Border>
+
+</UserControl>
