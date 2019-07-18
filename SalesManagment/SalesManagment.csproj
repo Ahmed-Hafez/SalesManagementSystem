@@ -63,10 +63,13 @@
     <Compile Include="Animation\PageAnimationHelpers.cs" />
     <Compile Include="Animation\StoryboardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="DataModels\ApplicationDirector.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="DataModels\IFactory.cs" />
+    <Compile Include="Expression\ExpressionHelpers.cs" />
+    <Compile Include="Models\BussinessLogic\Category.cs" />
     <Compile Include="Models\BussinessLogic\Product.cs" />
     <Compile Include="Models\BussinessLogic\User.cs" />
     <Compile Include="Models\BussinessLogic\UserType.cs" />
@@ -190,6 +193,7 @@
     <Resource Include="Fonts\Lato-SemiboldItalic.ttf" />
     <Resource Include="Fonts\Lato-Thin.ttf" />
     <Resource Include="Fonts\Lato-ThinItalic.ttf" />
+    <Resource Include="Fonts\FontAwesome.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

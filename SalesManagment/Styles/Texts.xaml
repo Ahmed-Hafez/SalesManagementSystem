@@ -45,7 +45,7 @@
                                    x:Name="placeholder"
                                    FontFamily="{StaticResource LatoThin}"
                                    Padding="{TemplateBinding Padding}"
-                                   VerticalAlignment="Center"
+                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                    Foreground="{StaticResource ForegroundMainBrush}"
                                    >

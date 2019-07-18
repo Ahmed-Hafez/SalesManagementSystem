@@ -36,7 +36,7 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        private ApplicationPage mCurrentPage = ApplicationPage.Login;
+        private ApplicationPage mCurrentPage = ApplicationPage.Main;
 
         #endregion
 
