@@ -33,13 +33,13 @@
                  ContextMenu="{x:Null}"/>
 
         <Border Grid.Row="1" BorderBrush="White" BorderThickness="3" Padding="10"
-            Margin="250 0 250 10">
+                Margin="250 0 250 10">
 
 
 
             <ScrollViewer Padding="10"
-                      Template="{DynamicResource RoundedScrollViewer}"
-                      VerticalScrollBarVisibility="Auto">
+                          Template="{DynamicResource RoundedScrollViewer}"
+                          VerticalScrollBarVisibility="Auto">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -49,6 +49,7 @@
                     </Grid.RowDefinitions>
                     <local:ProductRowViewer />
                     <local:ProductRowViewer Grid.Row="1"/>
+                    <local:ProductRowViewer Grid.Row="2"/>
                 </Grid>
 
             </ScrollViewer>

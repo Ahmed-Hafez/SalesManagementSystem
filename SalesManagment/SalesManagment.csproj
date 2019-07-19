@@ -237,6 +237,7 @@
   <ItemGroup>
     <Resource Include="Management-icon.ico" />
     <Resource Include="Images\samsunga10.jpg" />
+    <Resource Include="Images\Computer.jpg" />
     <Content Include="Models\Database\SQL_Scripts\Add_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Product_Procedure.sql" />
