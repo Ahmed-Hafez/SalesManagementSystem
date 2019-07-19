@@ -43,6 +43,16 @@
         <GradientStop Color="{StaticResource DarkLightSkyColor}" Offset="0.5"/>
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="SkyToBlue" EndPoint="0.99,0.489" StartPoint="-0.142,0.456">
+        <GradientStop Color="#FF0D5AAD"/>
+        <GradientStop Color="#FF6ED3D9" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="BlueToSky" EndPoint="-0.142,0.456" StartPoint="0.99,0.489">
+        <GradientStop Color="#FF0D5AAD"/>
+        <GradientStop Color="#FF6ED3D9" Offset="1"/>
+    </LinearGradientBrush>
+    
     <!--Masks-->
     <SolidColorBrush x:Key="DarkSkyMask" Color="{StaticResource DarkSkyColor}" Opacity="0.5"/>
     <SolidColorBrush x:Key="VeryLightSkyMask" Color="{StaticResource LightSkyColor}" Opacity="0.25"/>

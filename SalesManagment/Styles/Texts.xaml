@@ -231,6 +231,12 @@
 
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="FontAwesomeText" BasedOn="{StaticResource BaseTextBlockStyle}">
+
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+
+    </Style>
+
     <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
     <Style x:Key="TextboxWithStylishScollBar" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="#0EFFFFFF"/>
@@ -247,7 +253,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border x:Name="border" BorderBrush="#33FFFFFF" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Template="{StaticResource RoundedScrollViewer}" />
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Template="{DynamicResource RoundedScrollViewer}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
