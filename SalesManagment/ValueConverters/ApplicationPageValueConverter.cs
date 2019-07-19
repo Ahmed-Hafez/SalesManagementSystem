@@ -24,6 +24,8 @@ namespace SalesManagment
                     return new MainPage();
                 case ApplicationPage.AddingProducts:
                     return new AddingProductsPage();
+                case ApplicationPage.ProductsManagement:
+                    return new ProductManagementPage();
                 default:
                     Debugger.Break(); // For debugging reasons
                     return null;

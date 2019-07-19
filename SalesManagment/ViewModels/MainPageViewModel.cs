@@ -92,7 +92,7 @@ namespace SalesManagment
             await Task.Delay(100);
 
             // Setting the Frame page
-            CurrentPage = ApplicationPage.AddingProducts;
+            CurrentPage = ApplicationPage.ProductsManagement;
         }
 
         #endregion
@@ -123,10 +123,15 @@ namespace SalesManagment
                         new MenuItemViewModel
                         {
                             Header ="Add Product",
-                            Command = new RelayParameterizedCommand(new Action<object>(AddRelatedPage)),
+                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.AddingProducts
                         },
-                        new MenuItemViewModel { Header="Products Management"},
+                        new MenuItemViewModel
+                        {
+                            Header ="Products Management",
+                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.ProductsManagement
+                        },
                         new MenuItemViewModel { Header="Add Category" },
                         new MenuItemViewModel { Header="Categories Management"}
                     }
