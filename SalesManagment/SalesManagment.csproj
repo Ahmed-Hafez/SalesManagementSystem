@@ -90,6 +90,7 @@
     <Compile Include="ViewModels\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="ViewModels\ProductManagementPageViewModel.cs" />
     <Compile Include="Views\Pages\AddingProductsPage.xaml.cs">
       <DependentUpon>AddingProductsPage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +110,9 @@
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ProductManagementPage.xaml.cs">
+      <DependentUpon>ProductManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -165,6 +169,10 @@
     <Page Include="Views\Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\ProductManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>

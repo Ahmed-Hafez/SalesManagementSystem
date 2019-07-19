@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesManagment"
              mc:Ignorable="d" 
-             MinHeight="250" MinWidth="1200"
-             d:DesignHeight="300" d:DesignWidth="1300">
+             Height="250" MinWidth="900"
+             d:DesignHeight="300" d:DesignWidth="900"
+             Margin="0 0 0 10">
 
-    <Border BorderThickness="3" BorderBrush="White">
+    <Border BorderBrush="White">
 
         <Grid>
 
@@ -185,9 +186,9 @@
                  Height="0"
                  FontSize="{StaticResource FontSizeRegular}"
                  Foreground="{StaticResource ForegroundLightBrush}"
-                 Style="{StaticResource TextboxWithStylishScollBar}"
                  CaretBrush="{StaticResource ForegroundLightBrush}"
-                 SelectionBrush="{StaticResource LightRedSelectionBrush}"/>
+                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                     Style="{StaticResource TextboxWithStylishScollBar}"/>
 
             <Button Grid.Row="2"
                 Height="20"
@@ -199,15 +200,18 @@
             <Grid Grid.Row="3"
               HorizontalAlignment="Center">
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal"
+                            Margin="0 0 0 10">
 
                     <Button Grid.Column="0"
                     Content="Show product" 
-                    Margin="0 0 50 0"
-                    Style="{StaticResource RegularButton}"/>
+                    Margin="0 0 20 0"
+                    Style="{StaticResource RegularButton}"
+                            FontSize="{StaticResource FontSizeSmall}"/>
                     <Button Content="Delete product" 
-                    Margin="50 0 0 0"
-                    Style="{StaticResource RegularButton}"/>
+                    Margin="20 0 0 0"
+                    Style="{StaticResource RegularButton}"
+                            FontSize="{StaticResource FontSizeSmall}"/>
 
                 </StackPanel>
 

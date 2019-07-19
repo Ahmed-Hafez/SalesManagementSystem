@@ -15,14 +15,12 @@ F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.exe
 F:\C# projects\SalesManagment\SalesManagment\obj\Debug\SalesManagment.pdb
 F:\C# projects\SalesManagment\SalesManagment\obj\Debug\Views\ShellView.g.cs
 F:\C# projects\SalesManagment\SalesManagment\obj\Debug\Views\ShellView.baml
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe.config
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.pdb
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewer.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\LoginPage.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\MainPage.g.cs
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\ShellView.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\App.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment_Content.g.cs
@@ -41,12 +39,16 @@ F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\Sal
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Fonts.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Texts.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\MainPage.baml
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\ShellView.baml
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.exe
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.pdb
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe.config
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.pdb
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
+F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ScrollViewers.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.g.resources
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.Properties.Resources.resources
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.GenerateResource.cache
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.CoreCompileInputs.cache
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.exe
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.pdb
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ScrollViewers.baml
