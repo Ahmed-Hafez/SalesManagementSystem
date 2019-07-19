@@ -26,7 +26,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -50,7 +50,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -74,7 +74,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -98,7 +98,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -119,7 +119,7 @@ namespace SalesManagment
                 To = 1
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Opacity"));
 
             // Adding the animation to the storyboard
@@ -140,7 +140,7 @@ namespace SalesManagment
                 To = 0
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Opacity"));
 
             // Adding the animation to the storyboard
@@ -164,7 +164,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -188,7 +188,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
@@ -212,7 +212,7 @@ namespace SalesManagment
                 DecelerationRatio = decelerationRatio
             };
 
-            // Setting the value of the (TargetName) attached property on the storyboard
+            // Setting the value of the (TargetProperty) attached property on the storyboard
             Storyboard.SetTargetProperty(Animation, new PropertyPath("Margin"));
 
             // Adding the animation to the storyboard
