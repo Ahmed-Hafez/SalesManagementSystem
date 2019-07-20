@@ -259,9 +259,7 @@
                                       Template="{DynamicResource RoundedScrollViewer}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"/>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" TargetName="border" Value="#77FFFFFF"/>
                         </Trigger>
