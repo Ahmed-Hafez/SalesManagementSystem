@@ -80,11 +80,6 @@ namespace SalesManagment
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
 
         /// <summary>
-        /// TODO Remove this because it is not used
-        /// </summary>
-        public Thickness InnerContentPadding { get { return new Thickness(20); } }
-
-        /// <summary>
         /// The radius of the edges of the window
         /// </summary>
         public double WindowRadius
