@@ -14,9 +14,10 @@ namespace SalesManagment
         public string Header { get; set; }
 
         /// <summary>
-        /// The color of for ground brush
+        /// The color of foreground brush in ARGB fromat in (hex)
+        /// For example (00FF0000) represents Red
         /// </summary>
-        public Brush ForgroundBrush { get; set; } = Brushes.Black;
+        public string ForgroundBrushARGB { get; set; } = "00000000";
 
         /// <summary>
         /// The menu items falling under the menu item

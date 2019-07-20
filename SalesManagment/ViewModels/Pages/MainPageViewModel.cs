@@ -107,7 +107,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "File" ,
-                    ForgroundBrush = Brushes.White,
+                    ForgroundBrushARGB = Brushes.White,
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Create Backup" },
@@ -117,7 +117,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Products" ,
-                    ForgroundBrush = Brushes.White,
+                    ForgroundBrushARGB = Brushes.White,
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel
@@ -139,7 +139,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Clients" ,
-                    ForgroundBrush = Brushes.White,
+                    ForgroundBrushARGB = Brushes.White,
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Add Client" },
@@ -151,7 +151,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Users" ,
-                    ForgroundBrush = Brushes.White,
+                    ForgroundBrushARGB = Brushes.White,
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Add User" },
