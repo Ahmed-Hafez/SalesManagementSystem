@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesManagment"
              mc:Ignorable="d" 
-             MinWidth="900"
-             d:DesignHeight="400" d:DesignWidth="900"
+             MinWidth="1200"
+             MaxWidth="1200" 
+             d:DesignHeight="500" d:DesignWidth="900"
              Margin="0 0 0 10">
 
     <Border BorderBrush="White">
@@ -48,7 +49,7 @@
                     BorderBrush="White"
                     BorderThickness="4">
 
-                    <Image Source="../Images/samsunga10.jpg" Stretch="Fill" />
+                    <Image Source="../Images/fridge.jpg" Stretch="Fill" />
 
                 </Border>
 
@@ -66,28 +67,37 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            
+                            <!--Dummy row, it were used during design, you can ignore it-->
+                            <RowDefinition Height="auto" />
+                            
+                            <!--The actual design rows-->
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <!--________________________-->
+                            
+                            <!--Dummy row, it were used during design, you can ignore it-->
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
 
                         <!--ID Section-->
-                        <TextBlock Grid.Row="0" 
+                        <TextBlock Grid.Row="1" 
                                Grid.Column="0"
                                Text="ID"
                                FontWeight="Bold"
                                Foreground="{StaticResource DataBrush}"
                                FontFamily="{StaticResource LatoHeavy}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="0" 
+                        <TextBlock Grid.Row="1" 
                                Grid.Column="1"
                                Padding="10 0"
                                Text=":"
                                Foreground="{StaticResource DataBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="0" 
+                        <TextBlock Grid.Row="1" 
                                Grid.Column="2"
                                Text="1536796478"
                                Foreground="{StaticResource ForegroundLightBrush}"
@@ -95,20 +105,20 @@
 
 
                         <!--Name Section-->
-                        <TextBlock Grid.Row="1" 
+                        <TextBlock Grid.Row="2" 
                                Grid.Column="0"
                                Text="Name"
                                FontWeight="Bold"
                                Foreground="{StaticResource DataBrush}"
                                FontFamily="{StaticResource LatoHeavy}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="1" 
+                        <TextBlock Grid.Row="2" 
                                Grid.Column="1"
                                Padding="10 0"
                                Text=":"
                                Foreground="{StaticResource DataBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="1" 
+                        <TextBlock Grid.Row="2" 
                                Grid.Column="2"
                                Text="Samsung Galaxy A10"
                                Foreground="{StaticResource ForegroundLightBrush}"
@@ -116,19 +126,19 @@
 
 
                         <!--Quantity in stock Section-->
-                        <TextBlock Grid.Row="2" 
+                        <TextBlock Grid.Row="3" 
                                Grid.Column="0"
                                Text="Quantity in stock"
                                Foreground="{StaticResource DataBrush}"
                                FontFamily="{StaticResource LatoHeavy}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="2" 
+                        <TextBlock Grid.Row="3"
                                Grid.Column="1"
                                Padding="10 0"
                                Text=":"
                                Foreground="{StaticResource DataBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="2" 
+                        <TextBlock Grid.Row="3" 
                                Grid.Column="2"
                                Text="150"
                                Foreground="{StaticResource ForegroundLightBrush}"
@@ -136,19 +146,19 @@
 
 
                         <!--Price Section-->
-                        <TextBlock Grid.Row="3" 
+                        <TextBlock Grid.Row="4" 
                                Grid.Column="0"
                                Text="Price"
                                Foreground="{StaticResource DataBrush}"
                                FontFamily="{StaticResource LatoHeavy}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="3" 
+                        <TextBlock Grid.Row="4"
                                Grid.Column="1"
                                Padding="10 0"
                                Text=":"
                                Foreground="{StaticResource DataBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="3" 
+                        <TextBlock Grid.Row="4"
                                Grid.Column="2"
                                Text="2000 L.E"
                                Foreground="{StaticResource ForegroundLightBrush}"
@@ -156,19 +166,19 @@
 
 
                         <!--Category name Section-->
-                        <TextBlock Grid.Row="4" 
+                        <TextBlock Grid.Row="5" 
                                Grid.Column="0"
                                Text="Category name"
                                Foreground="{StaticResource DataBrush}"
                                FontFamily="{StaticResource LatoHeavy}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="4" 
+                        <TextBlock Grid.Row="5" 
                                Grid.Column="1"
                                Padding="10 0"
                                Text=":"
                                Foreground="{StaticResource DataBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Grid.Row="4" 
+                        <TextBlock Grid.Row="5" 
                                Grid.Column="2"
                                Text="Phones"
                                Foreground="{StaticResource ForegroundLightBrush}"
@@ -203,8 +213,8 @@
                          Foreground="{StaticResource ForegroundLightBrush}"
                          CaretBrush="{StaticResource ForegroundLightBrush}"
                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
-                         Style="{StaticResource TextboxWithStylishScollBar}"
-                         Height="100"/>
+                         Height="100" 
+                         Style="{DynamicResource StylishTextBox}"/>
 
             </Grid>
 
