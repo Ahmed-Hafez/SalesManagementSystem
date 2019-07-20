@@ -15,9 +15,9 @@ namespace SalesManagment
 
         /// <summary>
         /// The color of foreground brush in ARGB fromat in (hex)
-        /// For example (00FF0000) represents Red
+        /// For example (FFFF0000) represents Red
         /// </summary>
-        public string ForgroundBrushARGB { get; set; } = "00000000";
+        public string ForgroundBrushARGB { get; set; } = "FF000000";
 
         /// <summary>
         /// The menu items falling under the menu item
