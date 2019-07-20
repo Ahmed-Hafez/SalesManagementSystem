@@ -2,8 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace SalesManagment
 {
@@ -56,28 +54,6 @@ namespace SalesManagment
 
         #endregion
 
-        #region Inner Classes
-
-        /// <summary>
-        /// Simple Factory class to find a certain page
-        /// </summary>
-        private class PageFactory : IFactory
-        {
-            /// <summary>
-            /// The factory method
-            /// </summary>
-            /// <param name="page">The related <see cref="Page"/> object</param>
-            public object GetInstances(object page)
-            {
-                if (page is AddingProductsPage)
-                    return ApplicationPage.AddingProducts;
-
-                return ApplicationPage.None;
-            }
-        }
-
-        #endregion
-
         #region Methods
 
         #region Overriden Methods
@@ -107,7 +83,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "File" ,
-                    ForgroundBrushARGB = Brushes.White,
+                    ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Create Backup" },
@@ -117,7 +93,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Products" ,
-                    ForgroundBrushARGB = Brushes.White,
+                    ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel
@@ -139,7 +115,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Clients" ,
-                    ForgroundBrushARGB = Brushes.White,
+                    ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Add Client" },
@@ -151,7 +127,7 @@ namespace SalesManagment
                 new MenuItemViewModel
                 {
                     Header = "Users" ,
-                    ForgroundBrushARGB = Brushes.White,
+                    ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Add User" },
