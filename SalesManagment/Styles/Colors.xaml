@@ -13,6 +13,11 @@
     <Color x:Key="LightWhiteColor">#39FFFFFF</Color>
     <Color x:Key="DarkLightDarkColor">#FF00BAFF</Color>
     <Color x:Key="DataColor">#FFFFAE00</Color>
+    <Color x:Key="LightBlueColor">#FF0D5AAD</Color>
+    <Color x:Key="SkyColor">#FF6ED3D9</Color>
+    <Color x:Key="LessLightSkyColor">#FF69ADC3</Color>
+    <Color x:Key="PressedLightSkyColor">#5FC1D2</Color>
+    <Color x:Key="LightGrayColor">#33FFFFFF</Color>
 
     <!--Solid Brushes-->
     <SolidColorBrush x:Key="LightSkyBrush" Color="{StaticResource LightSkyColor}"/>
@@ -25,7 +30,10 @@
     <SolidColorBrush x:Key="LightRedSelectionBrush" Color="{StaticResource LightRedSelectionColor}"/>
     <SolidColorBrush x:Key="LightWhiteBrush" Color="{StaticResource LightWhiteColor}"/>
     <SolidColorBrush x:Key="DataBrush" Color="{StaticResource DataColor}"/>
-
+    <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGrayColor}"/>
+    <SolidColorBrush x:Key="LessLightSkyBrush" Color="{StaticResource LessLightSkyColor}"/>
+    <SolidColorBrush x:Key="PressedLightSkyBrush" Color="{StaticResource PressedLightSkyColor}"/>
+    
     <!--Gradient Brushes-->
     <LinearGradientBrush x:Key="DarkSkyToLightSky" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="{StaticResource LightSkyColor}" Offset="0"/>
