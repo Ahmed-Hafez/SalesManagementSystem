@@ -23,42 +23,35 @@
 
             <!--Header-->
             <TextBox Grid.Row="0" 
-                 Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 FontSize="{StaticResource FontSizeRegular}"
-                 FontFamily="{StaticResource LatoRegular}"
-                 Foreground="{StaticResource ForegroundLightBrush}"
-                 Text="{Binding ElementName=ProductManagementView, Path=Title, FallbackValue='Products Management'}" 
-                 HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 VerticalAlignment="Top"
-                 Margin="{Binding PageTitleMargin, FallbackValue='0 30 0 0'}"
-                 Height="50"
-                 Width="400"
-                 Style="{StaticResource RoundedTextBox}"
-                 BorderThickness="10,5"
-                 IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
-                 ContextMenu="{x:Null}"/>
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     FontFamily="{StaticResource LatoRegular}"
+                     Foreground="{StaticResource ForegroundLightBrush}"
+                     Text="{Binding ElementName=ProductManagementView, Path=Title, FallbackValue='Products Management'}" 
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     Margin="{Binding PageTitleMargin, FallbackValue='0 30 0 0'}"
+                     Height="50"
+                     Width="400"
+                     Style="{StaticResource RoundedTextBox}"
+                     BorderThickness="10,5"
+                     IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
+                     ContextMenu="{x:Null}"/>
 
             <!--Content-->
             <Border Grid.Row="1"
-                BorderBrush="White"
-                BorderThickness="3"
-                Padding="5" 
-                Margin="0 0 0 10"
-                HorizontalAlignment="Center">
+                    BorderBrush="White"
+                    BorderThickness="3"
+                    Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 10'}"
+                    Padding="{Binding BorderFramePadding, FallbackValue='5'}"
+                    HorizontalAlignment="Center">
 
                 <!--Content-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition MinHeight="250"/>
-                        <RowDefinition MinHeight="250"/>
-                        <RowDefinition MinHeight="250"/>
-                    </Grid.RowDefinitions>
-                    <local:ProductRowViewer />
-                    <local:ProductRowViewer Grid.Row="1"/>
-                    <local:ProductRowViewer Grid.Row="2"/>
-                </Grid>
+                <StackPanel>
+                    <local:ProductRowViewerList />
+                </StackPanel>
             </Border>
         </Grid>
 
