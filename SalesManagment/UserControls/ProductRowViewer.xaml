@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesManagment"
              mc:Ignorable="d" 
-             MinWidth="1200"
-             MaxWidth="1200" 
-             d:DesignHeight="500" d:DesignWidth="900"
-             Margin="0 0 0 10">
-
+             Width="{Binding ViewerWidth}"
+             d:DesignHeight="600" d:DesignWidth="900"
+             Margin="0 0 0 10" 
+             d:DataContext="{x:Static local:ProductRowViewerDesignModel.Instance}">
+    
     <Border BorderBrush="White">
 
         <Grid>
@@ -17,7 +17,7 @@
             <Grid.RowDefinitions>
 
                 <!--Product Content-->
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="auto"/>
 
                 <!--Description-->
                 <RowDefinition Height="auto"/>
@@ -26,7 +26,7 @@
                 <RowDefinition Height="auto"/>
 
                 <!--Show and Delete Buttons-->
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"/>
 
             </Grid.RowDefinitions>
 
@@ -34,6 +34,10 @@
             <Grid Grid.Row="0"
               Background="{StaticResource DarkToLightToDarkSky}">
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
 
                     <!--Product Image-->
@@ -44,21 +48,28 @@
 
                 </Grid.ColumnDefinitions>
 
+                <!--Image box frame-->
                 <Border Grid.Column="0"
-                    Background="#29FFFFFF"
-                    BorderBrush="White"
-                    BorderThickness="4">
+                        MaxWidth="400"
+                        MaxHeight="350"
+                        Background="#29FFFFFF"
+                        BorderBrush="White"
+                        BorderThickness="4">
 
-                    <Image Source="../Images/fridge.jpg" Stretch="Fill" />
+                    <Image Source="{Binding Picture}"
+                           Stretch="Fill" />
 
                 </Border>
 
+
+                <!--Details frame-->
                 <Border Grid.Column="1"
                     Background="Transparent"
                     BorderBrush="White"
                     BorderThickness="4">
 
-                    <Grid Margin="15 15">
+                    <!--Details-->
+                    <Grid Margin="15 15 15 0">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -67,10 +78,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            
+
                             <!--Dummy row, it were used during design, you can ignore it-->
                             <RowDefinition Height="auto" />
-                            
+
                             <!--The actual design rows-->
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
@@ -78,7 +89,7 @@
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
                             <!--________________________-->
-                            
+
                             <!--Dummy row, it were used during design, you can ignore it-->
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
@@ -99,7 +110,7 @@
                                FontSize="{StaticResource FontSizeRegular}"/>
                         <TextBlock Grid.Row="1" 
                                Grid.Column="2"
-                               Text="1536796478"
+                               Text="{Binding ID}"
                                Foreground="{StaticResource ForegroundLightBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
 
@@ -120,7 +131,7 @@
                                FontSize="{StaticResource FontSizeRegular}"/>
                         <TextBlock Grid.Row="2" 
                                Grid.Column="2"
-                               Text="Samsung Galaxy A10"
+                               Text="{Binding Name}"
                                Foreground="{StaticResource ForegroundLightBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
 
@@ -140,7 +151,7 @@
                                FontSize="{StaticResource FontSizeRegular}"/>
                         <TextBlock Grid.Row="3" 
                                Grid.Column="2"
-                               Text="150"
+                               Text="{Binding StoredQuantity}"
                                Foreground="{StaticResource ForegroundLightBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
 
@@ -160,7 +171,7 @@
                                FontSize="{StaticResource FontSizeRegular}"/>
                         <TextBlock Grid.Row="4"
                                Grid.Column="2"
-                               Text="2000 L.E"
+                               Text="{Binding FormatedPrice}"
                                Foreground="{StaticResource ForegroundLightBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
 
@@ -180,76 +191,79 @@
                                FontSize="{StaticResource FontSizeRegular}"/>
                         <TextBlock Grid.Row="5" 
                                Grid.Column="2"
-                               Text="Phones"
+                               Text="{Binding Category}"
                                Foreground="{StaticResource ForegroundLightBrush}"
                                FontSize="{StaticResource FontSizeRegular}"/>
 
                     </Grid>
 
-
-
                 </Border>
 
             </Grid>
 
-            <Grid x:Name="DescriptionGrid" Grid.Row="1"
-                  Height="126">
+            <Grid x:Name="DescriptionGrid" 
+                  Grid.Row="1">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Description" 
+
+                <!--Description label-->
+                <TextBlock x:Name="DescriptionLabel"
+                           Text="Description"
+                           IsHitTestVisible="False"
                            HorizontalAlignment="Center"
                            FontSize="{StaticResource FontSizeRegular}"
                            FontFamily="{StaticResource LatoHeavy}"
                            Foreground="{StaticResource DataBrush}"
                            Background="#3AFFFFFF"
                            Padding="10 0"/>
-                
-                <TextBox x:Name="DescriptionBox" 
+
+                <!--Description box-->
+                <TextBox x:Name="DescriptionBox"
                          Grid.Row="1"
+                         Text="{Binding Description}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
                          CaretBrush="{StaticResource ForegroundLightBrush}"
                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
-                         Height="100" 
+                         Height="170" 
+                         IsReadOnly="True"
                          Style="{DynamicResource StylishTextBox}"/>
 
             </Grid>
 
             <Button Grid.Row="2"
-                Height="20"
-                Background="{StaticResource DarkSkyToLightSky}"
-                Content="{StaticResource Bars}"
-                FontFamily="{StaticResource FontAwesome}"
-                FontSize="{StaticResource FontSizeSmall}" 
+                    Height="20"
+                    Background="{StaticResource DarkSkyToLightSky}"
+                    Content="{StaticResource Bars}"
+                    FontFamily="{StaticResource FontAwesome}"
+                    FontSize="{StaticResource FontSizeSmall}" 
                     Style="{StaticResource OpenButton}"
                     Click="notesBtn_Click"/>
 
-            <Grid Grid.Row="3"
-              HorizontalAlignment="Center">
+            <StackPanel Grid.Row="3"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
 
-                <StackPanel Orientation="Horizontal"
-                            Margin="0 0 0 10">
+                <Button Content="Edit product" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 10 20"
+                        Padding="10"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"/>
+                
+                <Button Content="Delete product" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 0 20"
+                        Padding="10"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"/>
 
-                    <Button Grid.Column="0"
-                            Content="Show product" 
-                            Margin="0 0 20 0"
-                            Padding="10"
-                            Style="{StaticResource RegularButton}"
-                            FontSize="{StaticResource FontSizeSmall}"/>
-                    <Button Content="Delete product" 
-                            Margin="20 0 0 0"
-                            Padding="10"
-                            Style="{StaticResource RegularButton}"
-                            FontSize="{StaticResource FontSizeSmall}"/>
-
-                </StackPanel>
-
+            </StackPanel>
+            
             </Grid>
-
-        </Grid>
     
     </Border>
 
