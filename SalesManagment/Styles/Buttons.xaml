@@ -187,7 +187,7 @@
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid Margin="{TemplateBinding Margin}">
                         <Border x:Name="border" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"  SnapsToDevicePixels="true">
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="2.366,0.471" StartPoint="-1.46,0.491">
@@ -196,7 +196,7 @@
                                     <GradientStop Color="{StaticResource DarkSkyColor}" Offset="0.643"/>
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <Border x:Name="ThreeD" CornerRadius="15" BorderThickness="0"  SnapsToDevicePixels="true">
                             <Border.Background>
