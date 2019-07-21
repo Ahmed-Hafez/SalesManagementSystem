@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace SalesManagment
     /// <summary>
     /// A base view model that fires Property Changed events as needed
     /// </summary>
+    [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>
