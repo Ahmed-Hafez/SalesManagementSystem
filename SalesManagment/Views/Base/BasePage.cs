@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 
 namespace SalesManagment
 {
@@ -86,7 +84,7 @@ namespace SalesManagment
         /// <summary>
         /// Performing animations when the page is loaded
         /// </summary>
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void BasePage_Loaded(object sender, RoutedEventArgs e)
         {
             await AnimateIn();
         }

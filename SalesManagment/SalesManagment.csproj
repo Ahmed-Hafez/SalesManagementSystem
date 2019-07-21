@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="PropertyChanged, Version=3.0.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.0.1\lib\net452\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -85,19 +91,28 @@
     <Compile Include="UserControls\ProductRowViewer.xaml.cs">
       <DependentUpon>ProductRowViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProductRowViewerList.xaml.cs">
+      <DependentUpon>ProductRowViewerList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
+    <Compile Include="ValueConverters\ByteArrayToImageSourceValueConverter.cs" />
     <Compile Include="ValueConverters\ImageSourceToByteArrayValueConverter.cs" />
-    <Compile Include="ViewModels\AddingProductPageViewModel.cs" />
+    <Compile Include="ValueConverters\StringARGBToBrushConverter.cs" />
+    <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
-    <Compile Include="ViewModels\MenuItemViewModel.cs" />
-    <Compile Include="ViewModels\ProductManagementPageViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
+    <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerDesignModel.cs" />
+    <Compile Include="ViewModels\UserControls\MenuItemViewModel.cs" />
+    <Compile Include="ViewModels\Pages\ProductManagementPageViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\ProductRowViewerListViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\ProductRowViewerViewModel.cs" />
     <Compile Include="Views\Pages\AddingProductsPage.xaml.cs">
       <DependentUpon>AddingProductsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\BasePage.cs" />
+    <Compile Include="Views\Base\BasePage.cs" />
     <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
-    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -106,7 +121,7 @@
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
-    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -135,6 +150,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ProductRowViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProductRowViewerList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,6 +235,7 @@
     <Resource Include="Fonts\Lato-Thin.ttf" />
     <Resource Include="Fonts\Lato-ThinItalic.ttf" />
     <Resource Include="Fonts\FontAwesome.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -238,6 +258,8 @@
     <Resource Include="Management-icon.ico" />
     <Resource Include="Images\samsunga10.jpg" />
     <Resource Include="Images\Computer.jpg" />
+    <Resource Include="Images\Book.jpg" />
+    <Resource Include="Images\Fridge.jpg" />
     <Content Include="Models\Database\SQL_Scripts\Add_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Product_Procedure.sql" />
@@ -248,4 +270,12 @@
     <Resource Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.5.0.6\build\Fody.targets" Condition="Exists('..\packages\Fody.5.0.6\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.5.0.6\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.5.0.6\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props'))" />
+  </Target>
 </Project>

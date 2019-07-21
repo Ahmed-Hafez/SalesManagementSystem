@@ -24,7 +24,7 @@ namespace SalesManagment
         private bool DescriptionGridOpened;
         private DoubleAnimation openDescriptionGrid;
         private DoubleAnimation closeDescriptionGrid;
-        private const double openingHeight = 126;
+        private readonly double descriptionGridOpeningHeight;
 
         public ProductRowViewer()
         {
@@ -33,10 +33,15 @@ namespace SalesManagment
             DescriptionGrid.Height = 0;
             DescriptionGridOpened = false;
 
-            openDescriptionGrid = new DoubleAnimation(0, openingHeight, TimeSpan.FromMilliseconds(300));
-            closeDescriptionGrid = new DoubleAnimation(openingHeight, 0, TimeSpan.FromMilliseconds(300));
+            descriptionGridOpeningHeight = 
+                DescriptionBox.Height + DescriptionLabel.FontSize + DescriptionBox.BorderThickness.Bottom ;
+
+            openDescriptionGrid = new DoubleAnimation(0, descriptionGridOpeningHeight, TimeSpan.FromMilliseconds(300));
+            closeDescriptionGrid = new DoubleAnimation(descriptionGridOpeningHeight, 0, TimeSpan.FromMilliseconds(300));
         }
 
+
+        // TODO : Fix this
         private void notesBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!DescriptionGridOpened)

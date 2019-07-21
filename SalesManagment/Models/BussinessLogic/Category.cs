@@ -41,6 +41,8 @@ namespace SalesManagment
 
         #region Methods
 
+        #region Static Methods
+
         /// <summary>
         /// Getting all product categories from database
         /// </summary>
@@ -105,6 +107,20 @@ namespace SalesManagment
             else
                 throw new Exception($"Category with the ID = {categoryID} is not found");
         }
+
+        #endregion
+
+        #region Instance Methods
+
+        /// <summary>
+        /// Returns the category name
+        /// </summary>
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        #endregion
 
         #endregion
     }

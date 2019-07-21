@@ -198,6 +198,14 @@ namespace SalesManagment
             return true;
         }
 
+        /// <summary>
+        /// Returns the category name
+        /// </summary>
+        public override string ToString()
+        {
+            return Name;
+        }
+
         #endregion
 
         #endregion
