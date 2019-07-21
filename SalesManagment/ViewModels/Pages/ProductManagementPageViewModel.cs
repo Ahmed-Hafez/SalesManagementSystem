@@ -26,5 +26,13 @@ namespace SalesManagment
         #endregion
 
         #endregion
+
+        /// <summary>
+        /// Initialize an instance from the <see cref="ProductManagementPageViewModel"/> class
+        /// </summary>
+        public ProductManagementPageViewModel()
+        {
+            this.LoadAnimation = PageAnimation.SlideInFromLeft;
+        }
     }
 }

@@ -1,7 +1,18 @@
-﻿namespace SalesManagment
+﻿using System.Windows.Media;
+
+namespace SalesManagment
 {
     public class ProductRowViewerDesignModel : ProductRowViewerViewModel
     {
+        #region Singleton
+
+        /// <summary>
+        /// A single instance of the design model
+        /// </summary>
+        public static ProductRowViewerDesignModel Instance { get { return new ProductRowViewerDesignModel(); } }
+
+        #endregion
+
         #region Contructor
 
         /// <summary>
@@ -9,7 +20,15 @@
         /// </summary>
         public ProductRowViewerDesignModel()
         {
-            
+            ID = 25156;
+            Name = "Samsung Galaxy A10";
+            StoredQuantity = 13;
+            Price = 2000;
+            Category = new Category(312, "Phones");
+
+            var converter = new ImageSourceToByteArrayValueConverter();
+            string picturePath = @"E:\Computer.jpg";
+            Picture = (byte[])converter.Convert(picturePath, null, null, null);
         }
 
         #endregion
