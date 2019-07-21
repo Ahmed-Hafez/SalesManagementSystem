@@ -95,12 +95,12 @@ namespace SalesManagment
         /// <summary>
         /// The height of the image frame
         /// </summary>
-        public double ProductImageFrameHeight { get; set; } = 170;
+        public double ProductImageFrameHeight { get; set; } = 250;
 
         /// <summary>
         /// The width of the image frame
         /// </summary>
-        public double ProductImageFrameWidth { get; set; } = 300;
+        public double ProductImageFrameWidth { get; set; } = 200;
 
         #endregion
 
