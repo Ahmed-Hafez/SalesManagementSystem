@@ -21,7 +21,6 @@ namespace SalesManagment
         /// </summary>
         public ProductRowViewerListDesignModel()
         {
-            var converter = new ImageSourceToByteArrayValueConverter();
             Items = new List<ProductRowViewerViewModel>
             {
                 new ProductRowViewerViewModel
@@ -32,7 +31,7 @@ namespace SalesManagment
                     Price = 2000,
                     Category = new Category(231, "Phones"),
                     Description = "This is an awesome android mobile \nIt have a 16GB RAM",
-                    Picture = (byte[])converter.Convert(@"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg", null, null, null)
+                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg"
                 },
                 new ProductRowViewerViewModel
                 {
@@ -44,7 +43,7 @@ namespace SalesManagment
                     Description = "Slim Width for a Slim fit\nFit your French door fridge without renovating your fridge alcove." +
                     " The new 830mm wide Slim French door fridge is designed to fit alcoves 850mm in width. Provide that seamless" +
                     " premium look to your kitchen with the new Slim French door fridge, while allowing 10mm on either side for venting.",
-                    Picture = (byte[])converter.Convert(@"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Fridge.jpg", null, null, null)
+                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Fridge.jpg"
                 },
                 new ProductRowViewerViewModel
                 {
@@ -54,7 +53,7 @@ namespace SalesManagment
                     Price = 150000,
                     Category = new Category(231, "Computers"),
                     Description = "This is an awesome PC \nIt have an amazing features",
-                    Picture = (byte[])converter.Convert(@"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Computer.jpg", null, null, null)
+                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Computer.jpg"
                 },
                 new ProductRowViewerViewModel
                 {
@@ -64,7 +63,7 @@ namespace SalesManagment
                     Price = 137.16,
                     Category = new Category(231, "Books"),
                     Description = "Very wonderful book",
-                    Picture = (byte[])converter.Convert(@"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Book.jpg", null, null, null)
+                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Book.jpg"
                 }
             };
         }

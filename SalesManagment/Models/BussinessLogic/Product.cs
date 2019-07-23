@@ -170,6 +170,10 @@ namespace SalesManagment
 
         #region Instance Methods
 
+        /// <summary>
+        /// Adds a new product to the database,
+        /// Returns True if the product was added otherwise false
+        /// </summary>
         public bool Add()
 
         {

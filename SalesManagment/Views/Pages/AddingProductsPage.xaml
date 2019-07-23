@@ -10,6 +10,10 @@
                 d:DesignHeight="700" d:DesignWidth="1000"
                 Title="Add New Product">
 
+    <ScrollViewer Template="{StaticResource RoundedScrollViewer}"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto">
+        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -247,8 +251,8 @@
                         BorderBrush="{StaticResource ForegroundLightBrush}"
                         Background="{StaticResource LightWhiteBrush}">
 
-                    <Image Source="{Binding ProductImageSource}" 
-                           Stretch="Fill"/>
+                        <Image Source="{Binding ImagePath, Converter={local:ImagePathToImageSourceValueConverter}}" 
+                               Stretch="Fill"/>
 
                 </Border>
                 <Button Grid.Row="4"
@@ -280,4 +284,7 @@
         </Border>
 
     </Grid>
+
+    </ScrollViewer>
+
 </local:BasePage>

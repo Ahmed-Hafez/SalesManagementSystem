@@ -9,12 +9,6 @@
                 d:DesignHeight="1100" d:DesignWidth="1500"
                 Title="Product Management">
 
-
-    <ScrollViewer Margin="15" Padding="10"
-                  HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto"
-                  Template="{DynamicResource RoundedScrollViewer}">
-        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
@@ -55,6 +49,4 @@
             </Border>
         </Grid>
 
-    </ScrollViewer>
-    
 </local:BasePage>

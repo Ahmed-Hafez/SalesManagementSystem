@@ -18,6 +18,11 @@ namespace SalesManagment
         /// </summary>
         public event Action<DependencyObject, DependencyPropertyChangedEventArgs> ValueChanged = (sender, e) => { };
 
+        /// <summary>
+        /// Fires when the value is changed, even when the value is still the same
+        /// </summary>
+        public event Action<DependencyObject, object> ValueUpdated = (sender, value) => { };
+
         #endregion
 
         #region Public properties
@@ -39,7 +44,23 @@ namespace SalesManagment
         /// The attached property for this class
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.RegisterAttached("Value", typeof(Property), typeof(BaseAttachedProperty<Parent, Property>), new PropertyMetadata(new PropertyChangedCallback(OnValuePropertyChanged)));
+            DependencyProperty.RegisterAttached(
+                "Value",
+                typeof(Property),
+                typeof(BaseAttachedProperty<Parent, Property>),
+                new UIPropertyMetadata
+                (
+                    default(Property),
+                    new PropertyChangedCallback(OnValuePropertyChanged),
+
+                    /*
+                     * Note : CoerceValueCallback delegate is called when 
+                     * value of the attached property being set even if the new value
+                     * is the same as the old value
+                     * **/
+                    new CoerceValueCallback(OnValuePropertyUpdated)
+                )
+            );
 
         /// <summary>
         /// The callback event when The <see cref="ValueProperty"/> is changed
@@ -53,6 +74,23 @@ namespace SalesManagment
 
             // Call the event listeners
             Instance.ValueChanged(d, e);
+        }
+
+        /// <summary>
+        /// The callback event when The <see cref="ValueProperty"/> is changed, even if it is the same value
+        /// </summary>
+        /// <param name="d">The UI element that had it's property changed</param>
+        /// <param name="value">The new value</param>
+        private static object OnValuePropertyUpdated(DependencyObject d, object value)
+        {
+            // Call the parent function
+            Instance.OnValueUpdated(d, value);
+
+            // Call the event listeners
+            Instance.ValueUpdated(d, value);
+
+            // Return the new value
+            return value;
         }
 
         /// <summary>
@@ -78,6 +116,15 @@ namespace SalesManagment
         /// <param name="sender">The UI element that this property was changed for</param>
         /// <param name="e">The arguments for this event</param>
         public virtual void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) { }
+
+
+        /// <summary>
+        /// The method that is called when any attached property of this type is changed,
+        /// even when the value is still the same
+        /// </summary>
+        /// <param name="sender">The UI element that this property was changed for</param>
+        /// <param name="value">The new value</param>
+        public virtual void OnValueUpdated(DependencyObject sender, object value) { }
 
         #endregion
     }

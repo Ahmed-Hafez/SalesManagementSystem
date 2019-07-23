@@ -67,14 +67,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Animation\AnimationType\GridLengthAnimation.cs" />
     <Compile Include="Animation\PageAnimation.cs" />
-    <Compile Include="Animation\PageAnimationHelpers.cs" />
+    <Compile Include="Animation\FrameworkElementAnimationHelpers.cs" />
     <Compile Include="Animation\StoryboardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
-    <Compile Include="DataModels\ApplicationDirector.cs" />
+    <Compile Include="ViewModels\ApplicationDirectorViewModel.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="DataModels\IFactory.cs" />
     <Compile Include="Expression\ExpressionHelpers.cs" />
@@ -88,6 +88,9 @@
     <Compile Include="UserControls\ButtonList.xaml.cs">
       <DependentUpon>ButtonList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PageAnimator.xaml.cs">
+      <DependentUpon>PageAnimator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ProductRowViewer.xaml.cs">
       <DependentUpon>ProductRowViewer.xaml</DependentUpon>
     </Compile>
@@ -96,7 +99,7 @@
     </Compile>
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ValueConverters\ByteArrayToImageSourceValueConverter.cs" />
-    <Compile Include="ValueConverters\ImageSourceToByteArrayValueConverter.cs" />
+    <Compile Include="ValueConverters\ImagePathToImageSourceValueConverter.cs" />
     <Compile Include="ValueConverters\StringARGBToBrushConverter.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
@@ -112,7 +115,6 @@
     <Compile Include="Views\Base\BasePage.cs" />
     <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
-    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -123,9 +125,6 @@
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\Pages\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Pages\ProductManagementPage.xaml.cs">
       <DependentUpon>ProductManagementPage.xaml</DependentUpon>
     </Compile>
@@ -148,6 +147,10 @@
     <Page Include="UserControls\ButtonList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PageAnimator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ProductRowViewer.xaml">
       <SubType>Designer</SubType>
@@ -184,10 +187,6 @@
     <Page Include="Styles\Texts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Pages\ProductManagementPage.xaml">
       <SubType>Designer</SubType>

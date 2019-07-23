@@ -56,7 +56,7 @@
                         BorderBrush="White"
                         BorderThickness="4">
 
-                    <Image Source="{Binding Picture}"
+                    <Image Source="{Binding Picture, Converter={local:ImagePathToImageSourceValueConverter}}"
                            Stretch="Fill" />
 
                 </Border>

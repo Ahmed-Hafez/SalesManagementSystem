@@ -51,14 +51,14 @@
                                     </Grid.RowDefinitions>
 
                                     <!--Title bar-->
-                                    <Border CornerRadius="{Binding TitleBarCornerRadius}"
+                                    <Border CornerRadius="{Binding TitleBarCornerRadius}" 
                                             Background="{StaticResource DarkSkyToLightSky}">
 
                                         <!--Title bar-->
                                         <Grid Grid.Column="0"
-                                          Panel.ZIndex="1"
-                                          Margin="-0.2"
-                                          Background="Transparent">
+                                              Panel.ZIndex="1"
+                                              Margin="-0.2"
+                                              Background="Transparent">
 
                                             <Grid.ColumnDefinitions>
 
@@ -209,7 +209,7 @@
         <WindowChrome 
             CornerRadius="{Binding WindowCornerRadius}"
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
-            CaptionHeight="{Binding TitleHeight}"
+            CaptionHeight="47"
             GlassFrameThickness="0"/>
 
     </WindowChrome.WindowChrome>
@@ -230,10 +230,50 @@
             </VisualBrush>
         </Border.OpacityMask>
 
-        <Grid Background="Transparent" Margin="-5">
+        <Grid Background="{StaticResource DarkToLightToDarkSky}">
 
-            <Frame NavigationUIVisibility="Hidden"
-                   Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Menu local:AnimateFrom_ToTopProperty.Value=
+                  "{
+                    Binding IsMenuVisible, 
+                    Source={x:Static local:ApplicationDirectorViewModel.Instance}
+                   }"
+                
+                  FontSize="20" 
+                  ItemsSource="{Binding MenuItems}"
+                  Foreground="{StaticResource ForegroundLightBrush}"
+                  Background="{StaticResource DarktSkyBrush}">
+
+                <!--Editing the menu items to be adaptive with the view model-->
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Setter Property="Command" Value="{Binding Command}" />
+                        <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                    </Style>
+                </Menu.ItemContainerStyle>
+                <Menu.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:MenuItemViewModel}" ItemsSource="{Binding Path=MenuItems}">
+                        <TextBlock Text="{Binding Header}" 
+                               Foreground="{Binding ForgroundBrushARGB, Converter={local:StringARGBToBrushConverter}}"/>
+
+                    </HierarchicalDataTemplate>
+                </Menu.ItemTemplate>
+
+            </Menu>
+
+            <ScrollViewer Grid.Row="1"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          Template="{DynamicResource RoundedScrollViewer}">
+                
+                <local:PageAnimator TabIndex="0"
+                                    CurrentPage="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+                
+            </ScrollViewer>
 
         </Grid>
     </Border>

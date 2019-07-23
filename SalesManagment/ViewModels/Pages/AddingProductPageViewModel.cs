@@ -1,12 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace SalesManagment
 {
@@ -15,43 +12,9 @@ namespace SalesManagment
     /// </summary>
     public class AddingProductPageViewModel : BasePageViewModel
     {
-        #region PrivateMember
+        #region Private Members
 
-        /*
-         * Note that : Numeric fields was set to be nullable types to 
-         * allow for textboxes in the view to be empty 
-         * (not default numeric value for each type)
-         */
-
-        /// <summary>
-        /// The product image
-        /// </summary>
-        private ImageSource mProductImageSource;
-
-        /// <summary>
-        /// ID of the product
-        /// </summary>
-        private long? mProductID = null;
-
-        /// <summary>
-        /// Name of the product
-        /// </summary>
-        private string mProductName = "";
-
-        /// <summary>
-        /// Description of the product
-        /// </summary>
-        private string mProductDescription = "";
-
-        /// <summary>
-        /// Stored quantity from this product
-        /// </summary>
-        private double? mStoredQuantity = null;
-
-        /// <summary>
-        /// Price of the product
-        /// </summary>
-        private decimal? mPrice = null;
+        private byte[] mProductImage;
 
         #endregion
 
@@ -104,19 +67,6 @@ namespace SalesManagment
 
         #endregion
 
-        /// <summary>
-        /// The product image source
-        /// </summary>
-        public ImageSource ProductImageSource
-        {
-            get { return mProductImageSource; }
-            set
-            {
-                mProductImageSource = value;
-                OnPropertyChanged(nameof(ProductImageSource));
-            }
-        }
-
         #endregion
 
         #endregion
@@ -154,15 +104,7 @@ namespace SalesManagment
         /// <summary>
         /// ID of the product
         /// </summary>
-        public long? ProductID
-        {
-            get { return mProductID; }
-            set
-            {
-                mProductID = value;
-                OnPropertyChanged(nameof(ProductID));
-            }
-        }
+        public long? ProductID { get; set; }
 
         /// <summary>
         /// The category of the product
@@ -172,64 +114,27 @@ namespace SalesManagment
         /// <summary>
         /// Name of the product
         /// </summary>
-        public string ProductName
-        {
-            get { return mProductName; }
-            set
-            {
-                mProductName = value;
-                OnPropertyChanged(nameof(ProductName));
-            }
-        }
+        public string ProductName { get; set; }
 
         /// <summary>
         /// Description of the product
         /// </summary>
-        public string ProductDescription
-        {
-            get { return mProductDescription; }
-            set
-            {
-                mProductDescription = value;
-                OnPropertyChanged(nameof(ProductDescription));
-            }
-        }
+        public string ProductDescription { get; set; }
 
         /// <summary>
         /// Stored quantity from this product
         /// </summary>
-        public double? StoredQuantity
-        {
-            get { return mStoredQuantity; }
-            set
-            {
-                mStoredQuantity = value;
-                OnPropertyChanged(nameof(StoredQuantity));
-            }
-        }
+        public double? StoredQuantity { get; set; }
 
         /// <summary>
         /// Price of the product
         /// </summary>
-        public decimal? Price
-        {
-            get { return mPrice; }
-            set
-            {
-                mPrice = value;
-                OnPropertyChanged(nameof(Price));
-            }
-        }
+        public decimal? Price { get; set; }
 
         /// <summary>
-        /// The product image path on the pc
+        /// The path of the image on the PC
         /// </summary>
-        public byte[] ProductImage { get; private set; }
-
-        /// <summary>
-        /// Indicates whether image is selected or not
-        /// </summary>
-        public bool IsImageSelected { get; private set; } = false;
+        public string ImagePath { get; set; }
 
         #endregion
 
@@ -242,7 +147,6 @@ namespace SalesManagment
         /// </summary>
         public AddingProductPageViewModel()
         {
-            this.LoadAnimation = PageAnimation.SlideInFromLeft;
             CategoryItems = Category.GetAllCategories();
             if (CategoryItems != null)
                 IsCategoryItemsComboBoxEnabled = true;
@@ -264,12 +168,10 @@ namespace SalesManagment
             openFileDialog.Filter = " |*.JPG; *.PNG; *.JPEG";
             if (openFileDialog.ShowDialog() == true)
             {
-                IsImageSelected = true;
+                ImagePath = openFileDialog.FileName;
 
-                var converter = new ImageSourceToByteArrayValueConverter();
-                ProductImage = (byte[])converter.Convert(openFileDialog.FileName, null, null, null);
-
-                ProductImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
+                // Storing the image for use
+                mProductImage = ConvertImageToByteArray();
             }
         }
 
@@ -304,7 +206,7 @@ namespace SalesManagment
                 MessageBox.Show("Set the price of the product correctly", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (!IsImageSelected)
+            if (ImagePath == null)
             {
                 MessageBox.Show("Product should have an image", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -315,22 +217,39 @@ namespace SalesManagment
                 ProductDescription, 
                 StoredQuantity.Value, 
                 Price.Value,
-                ProductImage,
+                mProductImage,
                 ProductCategory.ID);
 
             if (product.Add())
             {
                 MessageBox.Show("Product was added", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 ProductID = null;
-                ProductName = "";
-                ProductDescription = "";
+                ProductName = null;
+                ProductDescription = null;
                 StoredQuantity = null;
                 Price = null;
-                ProductImageSource = null;
-                IsImageSelected = false;
+                ImagePath = null;
             }
             else
                 MessageBox.Show("There is already a product with the same ID", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        #endregion
+
+        #region Private Helpers
+
+        /// <summary>
+        /// Converts the image in the specified image path to a byte array to store in the database
+        /// </summary>
+        private byte[] ConvertImageToByteArray()
+        {
+            // Get the image from the specified path
+            FileStream fileStream = new FileStream(ImagePath, FileMode.Open);
+            BinaryReader reader = new BinaryReader(fileStream);
+
+            byte[] binaryData = reader.ReadBytes(Convert.ToInt32(reader.BaseStream.Length - 1));
+            reader.Close();
+            return binaryData;
         }
 
         #endregion

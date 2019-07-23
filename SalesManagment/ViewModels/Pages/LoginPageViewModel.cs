@@ -73,7 +73,8 @@ namespace SalesManagment
         public LoginPageViewModel()
         {
             this.LoadAnimation = PageAnimation.SlideOpening;
-            this.UnloadAnimation = PageAnimation.SlideClosing;
+            this.UnloadAnimation = PageAnimation.SlideOutToTop;
+            this.SlideAnimationDuration = 800;
 
             user = new User();
 
@@ -118,13 +119,16 @@ namespace SalesManagment
                     if (loginSuccesseded)
                     {
                         // Change the current page
-                        ApplicationDirector.ApplicationShell.ChangeCurrentPage(ApplicationPage.Main, page);
+                        ApplicationDirectorViewModel.Instance.ApplicationShell.CurrentPage = ApplicationPage.ProductsManagement;
 
                         // Setting the current user of the app
-                        ApplicationDirector.CurrentUser = user;
+                        ApplicationDirectorViewModel.Instance.CurrentUser = user;
+
+                        // Showing the menu`1`
+                        ApplicationDirectorViewModel.Instance.IsMenuVisible = true;
                     }
                     else MessageBox.Show("Username, password or user type is incorrect.",
-                        "Signing in failed");
+                        "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }
             catch(Exception e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +9,11 @@ namespace SalesManagment
 {
     /// <summary>
     /// The view model that controls the shell view
+    /// 
+    /// 
+    /// 
+    /// <!--Note : This view model is the only one which have a WPF components
+    ///     and this is exception for the main widow of the program-->
     /// </summary>
     public class ShellViewModel : BaseViewModel
     {
@@ -26,17 +32,12 @@ namespace SalesManagment
         /// <summary>
         /// The radius of the edges of the window
         /// </summary>
-        private double mWindowRadius = 10;
+        private double mWindowRadius = 15;
 
         /// <summary>
         /// The height of the title bar
         /// </summary>
-        private double mTitleHeight = 46;
-
-        /// <summary>
-        /// The current page of the application
-        /// </summary>
-        private ApplicationPage mCurrentPage = ApplicationPage.Login;
+        private double mTitleHeight = 45;
 
         #endregion
 
@@ -45,17 +46,17 @@ namespace SalesManagment
         /// <summary>
         /// The smallest width for the window
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 1100;
+        public double WindowMinimumWidth { get; set; } = 800;
 
         /// <summary>
         /// The smallest height for the window
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 700;
+        public double WindowMinimumHeight { get; set; } = 500;
 
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome
         /// </summary>
-        public double ResizeBorder { get; set; } = 12;
+        public double ResizeBorder { get; set; } = 5;
 
         /// <summary>
         /// The size of ResizeBorder property on WindowChrome
@@ -75,7 +76,7 @@ namespace SalesManagment
         }
 
         /// <summary>
-        /// The margin around the window to allow for a drop shadow
+        /// The margin around the window to allow a drop shadow
         /// </summary>
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
 
@@ -118,7 +119,7 @@ namespace SalesManagment
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? new CornerRadius(0) : new CornerRadius(0, 0, 29, 29);
+                return mWindow.WindowState == WindowState.Maximized ? new CornerRadius(0) : new CornerRadius(0);
             }
         }
 
@@ -128,7 +129,6 @@ namespace SalesManagment
         public double TitleHeight
         {
             get { return mTitleHeight; }
-            set { mTitleHeight = value + mOuterMarginSize; }
         }
 
         /// <summary>
@@ -138,22 +138,19 @@ namespace SalesManagment
         {
             get
             {
-                return new GridLength(mTitleHeight - mOuterMarginSize + ResizeBorder);
+                return new GridLength(TitleHeight);
             }
         }
 
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage
-        {
-            get { return mCurrentPage; }
-            private set
-            {
-                mCurrentPage = value;
-                OnPropertyChanged(nameof(CurrentPage));
-            }
-        }
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+
+        /// <summary>
+        /// Items of the top menu
+        /// </summary>
+        public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
 
         #endregion
 
@@ -194,14 +191,8 @@ namespace SalesManagment
             mWindow.StateChanged += (sender, e) =>
             {
                 // Editting properties when window state changed
-                OnPropertyChanged(nameof(ResizeBorderThickness));
                 OnPropertyChanged(nameof(OuterMarginSize));
-                OnPropertyChanged(nameof(OuterMarginSizeThickness));
-                OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
-                OnPropertyChanged(nameof(TitleBarCornerRadius));
-                OnPropertyChanged(nameof(ShellContentCornerRadius));
-                OnPropertyChanged(nameof(CloseButtonCornerRadius));
                 OnPropertyChanged(nameof(FrameCornerRadius));
             };
 
@@ -210,6 +201,8 @@ namespace SalesManagment
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+
+            InitializeComponent();
 
             // Fixing window maximizing issue (hiding the bottom content)
             var resizer = new WindowResizer(mWindow);
@@ -220,20 +213,81 @@ namespace SalesManagment
         #region Methods
 
         /// <summary>
-        /// Changes the frame content
+        /// Initializes the Menu component
         /// </summary>
-        /// <param name="targetPage">The target page</param>
-        /// <param name="currentPage">The current page refernce</param>
-        public async void ChangeCurrentPage(ApplicationPage targetPage, Page currentPage)
+        private void InitializeComponent()
         {
-            // Raise unload animation if found 
-            currentPage.RaiseEvent(new RoutedEventArgs(Page.UnloadedEvent));
+            MenuItems = new ObservableCollection<MenuItemViewModel>
+            {
+                new MenuItemViewModel
+                {
+                    Header = "File" ,
+                    ForgroundBrushARGB = "FFFFFFFF",
+                    MenuItems = new ObservableCollection<MenuItemViewModel>
+                    {
+                        new MenuItemViewModel { Header="Create Backup" },
+                        new MenuItemViewModel { Header="Restore Saved Copy" }
+                    }
+                },
+                new MenuItemViewModel
+                {
+                    Header = "Products" ,
+                    ForgroundBrushARGB = "FFFFFFFF",
+                    MenuItems = new ObservableCollection<MenuItemViewModel>
+                    {
+                        new MenuItemViewModel
+                        {
+                            Header ="Add Product",
+                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.AddingProducts
+                        },
+                        new MenuItemViewModel
+                        {
+                            Header ="Products Management",
+                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.ProductsManagement
+                        },
+                        new MenuItemViewModel { Header="Add Category" },
+                        new MenuItemViewModel { Header="Categories Management"}
+                    }
+                },
+                new MenuItemViewModel
+                {
+                    Header = "Clients" ,
+                    ForgroundBrushARGB = "FFFFFFFF",
+                    MenuItems = new ObservableCollection<MenuItemViewModel>
+                    {
+                        new MenuItemViewModel { Header="Add Client" },
+                        new MenuItemViewModel { Header="Clients Management"},
+                        new MenuItemViewModel { Header="Add Sale" },
+                        new MenuItemViewModel { Header="Sales Management"}
+                    }
+                },
+                new MenuItemViewModel
+                {
+                    Header = "Users" ,
+                    ForgroundBrushARGB = "FFFFFFFF",
+                    MenuItems = new ObservableCollection<MenuItemViewModel>
+                    {
+                        new MenuItemViewModel { Header="Add User" },
+                        new MenuItemViewModel { Header="Users Management"}
+                    }
+                }
+            };
+        }
 
-            // Wait to the unload animation to finish if found
-            await Task.Delay(500);
-
-            // Changes the frame content
-            this.CurrentPage = targetPage;
+        /// <summary>
+        /// Adding the related page to the selected Menu Item
+        /// </summary>
+        private void AddRelatedPage(object page)
+        {
+            if (page is ApplicationPage)
+                CurrentPage = (ApplicationPage)page;
+            else
+            {
+                // TODO : Set Error Code
+                throw new Exception("Invalid Parameters: The parameter should be Page Object");
+            }
         }
 
         #endregion

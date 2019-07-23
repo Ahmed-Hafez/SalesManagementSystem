@@ -7,20 +7,9 @@ namespace SalesManagment
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    /// <typeparam name="VM">The type of view model associated with this page</typeparam>
-    public class BasePage<VM> : Page
-        where VM : BasePageViewModel, new()
+    public class BasePage : Page
     {
-        #region Private members
-
-        /// <summary>
-        /// The view model associated with this page
-        /// </summary>
-        private VM mViewModel;
-
-        #endregion
-
-        #region Public properties
+        #region Public Properties
 
         /// <summary>
         /// The animation to play when the page is loaded
@@ -35,26 +24,14 @@ namespace SalesManagment
         /// <summary>
         /// The duration of the slide animation in milliseconds
         /// </summary>
-        public int SlideAnimationDuration { get; set; } = 800;
+        public int SlideAnimationDuration { get; set; } = 300;
 
         /// <summary>
-        /// The view model associated with this page
+        /// A flag used to indicate that page should animate out during loading
+        /// 
+        /// <!--Used in changing the container frame in PageAnimator-->
         /// </summary>
-        public VM ViewModel
-        {
-            get { return mViewModel; }
-            set
-            {
-                // If nothing has changed, return....
-                if (mViewModel == value)
-                    return;
-
-                mViewModel = value;
-
-                this.DataContext = mViewModel;
-                mViewModel.SpecifyAssociatedPage(this);
-            }
-        }
+        public bool ShouldAnimateOut { get; set; }
 
         #endregion
 
@@ -70,11 +47,6 @@ namespace SalesManagment
 
             // Listen out for the page laoding
             this.Loaded += BasePage_Loaded;
-            this.Unloaded += BasePage_Unloaded;
-
-            this.ViewModel = new VM();
-            PageLoadAnimation = this.ViewModel.LoadAnimation;
-            PageUnloadAnimation = this.ViewModel.UnloadAnimation;
         }
 
         #endregion
@@ -86,17 +58,14 @@ namespace SalesManagment
         /// </summary>
         private async void BasePage_Loaded(object sender, RoutedEventArgs e)
         {
-            await AnimateIn();
-        }
-
-        /// <summary>
-        /// Performing animations when the page is unloaded
-        /// </summary>
-        public async void BasePage_Unloaded(object sender, RoutedEventArgs e)
-        {
-            // Determine if the page was unloaded
-            if (!IsLoaded) return;
-            await AnimateOut();
+            // If we are setup to animate out on load
+            if (ShouldAnimateOut)
+                // Animate out the page
+                await AnimateOut();
+            // Otherwise...
+            else
+                // Animate the page in
+                await AnimateIn();
         }
 
         /// <summary>
@@ -117,6 +86,9 @@ namespace SalesManagment
                 case PageAnimation.SlideInFromLeft:
                     await this.SlideAndFadeInFromLeft(this.SlideAnimationDuration);
                     break;
+                case PageAnimation.SlideInFromTop:
+                    await this.SlideAndFadeInFromTop(this.SlideAnimationDuration);
+                    break;
                 case PageAnimation.SlideShrinkage:
                     await this.SlideShrinkage(this.SlideAnimationDuration);
                     break;
@@ -124,9 +96,10 @@ namespace SalesManagment
                     await this.SlideOpening(this.SlideAnimationDuration);
                     break;
                 case PageAnimation.SlideClosing:
-                    await this.SlideClosing(350);
+                    await this.SlideClosing(this.SlideAnimationDuration);
                     break;
                 default:
+                    await Task.Delay(this.SlideAnimationDuration);
                     break;
             }
         }
@@ -136,10 +109,6 @@ namespace SalesManagment
         /// </summary>
         public async Task AnimateOut()
         {
-            // Make sure that we have something to do
-            if (this.PageUnloadAnimation == PageAnimation.None)
-                return;
-
             // Resolves the unload animation type
             switch (this.PageUnloadAnimation)
             {
@@ -149,12 +118,75 @@ namespace SalesManagment
                 case PageAnimation.SlideOutToRight:
                     await this.SlideAndFadeOutToRight(this.SlideAnimationDuration);
                     break;
+                case PageAnimation.SlideOutToTop:
+                    await this.SlideAndFadeOutToTop(this.SlideAnimationDuration);
+                    break;
                 case PageAnimation.SlideClosing:
                     await this.SlideClosing(this.SlideAnimationDuration);
                     break;
                 default:
                     break;
             }
+
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        #endregion
+    }
+
+
+
+    /// <summary>
+    /// A base page for all pages to gain base functionality 
+    /// with added a view model support
+    /// </summary>
+    /// <typeparam name="VM">The type of view model associated with this page</typeparam>
+    public class BasePage<VM> : BasePage
+        where VM : BasePageViewModel, new()
+    {
+        #region Private members
+
+        /// <summary>
+        /// The view model associated with this page
+        /// </summary>
+        private VM mViewModel;
+
+        #endregion
+
+        #region Public properties
+
+        /// <summary>
+        /// The view model associated with this page
+        /// </summary>
+        public VM ViewModel
+        {
+            get { return mViewModel; }
+            set
+            {
+                // If nothing has changed, return....
+                if (mViewModel == value)
+                    return;
+
+                mViewModel = value;
+
+                this.DataContext = mViewModel;
+            }
+        }
+
+        #endregion
+        
+        #region Constructor
+
+        /// <summary>
+        /// Initialize a new instance from the <see cref="BasePage"/> class
+        /// with added a view model support
+        /// </summary>
+        public BasePage() : base()
+        {
+            this.ViewModel = new VM();
+            PageLoadAnimation = this.ViewModel.LoadAnimation;
+            PageUnloadAnimation = this.ViewModel.UnloadAnimation;
+            SlideAnimationDuration = this.ViewModel.SlideAnimationDuration;
         }
 
         #endregion

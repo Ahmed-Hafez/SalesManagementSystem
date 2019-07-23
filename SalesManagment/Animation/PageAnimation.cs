@@ -8,41 +8,51 @@
         /// <summary>
         /// No Animation Mode
         /// </summary>
-        None = 0,
+        None,
 
         /// <summary>
-        /// The page slides in and fades from the right
+        /// The page slides in and fades in from the right
         /// </summary>
-        SlideInFromRight = 1,
+        SlideInFromRight,
 
         /// <summary>
-        /// The page slides in and fades from the left
+        /// The page slides in and fades in from the left
         /// </summary>
-        SlideInFromLeft = 2,
+        SlideInFromLeft,
 
         /// <summary>
-        /// The page slides out and fades to the left
+        /// The page slides in and fades in from the top
         /// </summary>
-        SlideOutToLeft = 3,
+        SlideInFromTop,
 
         /// <summary>
-        /// The page slides out and fades to the right
+        /// The page slides out and fades out to the left
         /// </summary>
-        SlideOutToRight = 4,
+        SlideOutToLeft,
+
+        /// <summary>
+        /// The page slides out and fades out to the right
+        /// </summary>
+        SlideOutToRight,
+
+        /// <summary>
+        /// The page slides out and fades out from the top
+        /// </summary>
+        SlideOutToTop,
 
         /// <summary>
         /// The page shrinks
         /// </summary>
-        SlideShrinkage = 5,
+        SlideShrinkage,
 
         /// <summary>
         /// The page opens
         /// </summary>
-        SlideOpening = 6,
+        SlideOpening,
 
         /// <summary>
         /// The page closes
         /// </summary>
-        SlideClosing = 7,
+        SlideClosing
     }
 }

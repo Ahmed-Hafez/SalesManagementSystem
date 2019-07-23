@@ -14,6 +14,9 @@ namespace SalesManagment
         /// </summary>
         public bool HasDecimalPoint { get; set; } = true;
 
+        /// <summary>
+        /// Initializes a new instance from <see cref="NumericTextBox"/> class
+        /// </summary>
         public NumericTextBox()
         {
             this.PreviewTextInput += NumericTextBox_PreviewTextInput;

@@ -4,27 +4,14 @@ namespace SalesManagment
 {
     public class ProductRowViewerViewModel : BaseViewModel
     {
-        #region Private Members
-
-        /// <summary>
-        /// The Price of the product
-        /// </summary>
-        private double mPrice;
-
-        /// <summary>
-        /// The width of the control
-        /// </summary>
-        // Get the monitor width to make the width adaptive to it
-        protected double mViewerWidth = SystemParameters.PrimaryScreenWidth - 150;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         /// The width of the control
         /// </summary>
-        public double ViewerWidth { get { return mViewerWidth; } }
+        /// 
+        /// Get the monitor width to make the width adaptive to it
+        public double ViewerWidth { get; } = SystemParameters.PrimaryScreenWidth - 150;
 
         #region Product Data
 
@@ -46,15 +33,7 @@ namespace SalesManagment
         /// <summary>
         /// The Price of the product
         /// </summary>
-        public double Price
-        {
-            get { return mPrice; }
-            set
-            {
-                mPrice = value;
-                OnPropertyChanged(nameof(Price));
-            }
-        }
+        public double Price { get; set; }
 
         /// <summary>
         /// The formated price of the product
@@ -74,11 +53,10 @@ namespace SalesManagment
         /// <summary>
         /// The Picture of the product
         /// </summary>
-        public byte[] Picture { get; set; }
+        public string Picture { get; set; }
 
         #endregion
 
         #endregion
-
     }
 }

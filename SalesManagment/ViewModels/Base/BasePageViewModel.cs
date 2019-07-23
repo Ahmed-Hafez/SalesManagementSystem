@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace SalesManagment
 {
@@ -18,32 +17,18 @@ namespace SalesManagment
         /// <summary>
         /// The page load animation
         /// </summary>
-        public PageAnimation LoadAnimation { get; set; } = PageAnimation.None;
+        public PageAnimation LoadAnimation { get; set; } = PageAnimation.SlideInFromLeft;
 
         /// <summary>
         /// The page unload animation
         /// </summary>
-        public PageAnimation UnloadAnimation { get; set; } = PageAnimation.None;
-
-        #endregion
-
-        #region Methods
+        public PageAnimation UnloadAnimation { get; set; } = PageAnimation.SlideOutToRight;
 
         /// <summary>
-        /// Specify the associated page to this view model
+        /// The duration of the animation in milliseconds
         /// </summary>
-        /// <param name="page">The associated page to this view model</param>
-        public void SpecifyAssociatedPage(Page page)
-        {
-            this.page = page;
-            this.page.Loaded += Page_Loaded;
-        }
+        public int SlideAnimationDuration { get; set; } = 300;
 
-        /// <summary>
-        /// Called when page loaded
-        /// </summary>
-        protected virtual void Page_Loaded(object sender, RoutedEventArgs e) { }
-      
         #endregion
     }
 }

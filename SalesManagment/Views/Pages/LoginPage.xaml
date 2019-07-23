@@ -10,7 +10,7 @@
 
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="..\..\Images\space_galaxy_shine.jpg"/>
+            <ImageBrush ImageSource="..\..\Images\computer.jpg"/>
         </Border.Background>
 
         <Grid>
@@ -76,7 +76,7 @@
                                   Margin="0 30 0 0"
                                   FontSize="{StaticResource FontSizeRegular}"
                                   BorderBrush="{StaticResource ForegroundLightBrush}" 
-                                  Foreground="{StaticResource ForegroundMainBrush}" 
+                                  Foreground="{StaticResource ForegroundLightBrush}" 
                                   Style="{StaticResource HollowComboBox}"
                                   ItemsSource="{Binding Source={StaticResource UserTypeEnumMenu}}"
                                   SelectedItem="{Binding UserType}"

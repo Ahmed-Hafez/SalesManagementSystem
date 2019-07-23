@@ -3,3 +3,5 @@
 
 TODO Tasks
 	1- Make a class AnimatedTextBox to add two dependency properties for the animated colors
+	2- Make Dependecy injection
+	3- Animate the menu of the shell to enter from top when sign in

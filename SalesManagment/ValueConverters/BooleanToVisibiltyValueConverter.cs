@@ -14,6 +14,8 @@ namespace SalesManagment
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if ((string)parameter == "Collapsed")
+                return (bool)value ? Visibility.Visible : Visibility.Collapsed;
             if (parameter == null)
                 return (bool)value ? Visibility.Hidden : Visibility.Visible;
             else

@@ -25,10 +25,7 @@ namespace SalesManagment
             StoredQuantity = 13;
             Price = 2000;
             Category = new Category(312, "Phones");
-
-            var converter = new ImageSourceToByteArrayValueConverter();
-            string picturePath = @"E:\Computer.jpg";
-            Picture = (byte[])converter.Convert(picturePath, null, null, null);
+            Picture = @"E:\samsunga10.jpg";
         }
 
         #endregion

@@ -8,6 +8,5 @@ namespace SalesManagment
         /// The container of the product row view items
         /// </summary>
         public List<ProductRowViewerViewModel> Items { get; set; }
-
     }
 }
