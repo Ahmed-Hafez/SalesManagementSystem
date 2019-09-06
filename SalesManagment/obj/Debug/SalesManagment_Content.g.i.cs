@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/add_product_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/deleteproduct.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/edit_product_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_category_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_product_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_all_categories_procedure.sql")]

@@ -36,13 +36,15 @@ namespace SalesManagment
             descriptionGridOpeningHeight = 
                 DescriptionBox.Height + DescriptionLabel.FontSize + DescriptionBox.BorderThickness.Bottom ;
 
-            openDescriptionGrid = new DoubleAnimation(0, descriptionGridOpeningHeight, TimeSpan.FromMilliseconds(300));
-            closeDescriptionGrid = new DoubleAnimation(descriptionGridOpeningHeight, 0, TimeSpan.FromMilliseconds(300));
+            openDescriptionGrid = new DoubleAnimation(0, descriptionGridOpeningHeight, TimeSpan.FromMilliseconds(100));
+            closeDescriptionGrid = new DoubleAnimation(descriptionGridOpeningHeight, 0, TimeSpan.FromMilliseconds(100));
         }
 
-
-        // TODO : Fix this
-        private void notesBtn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Open the description section as it is closed Line 33
+        /// by set the grid height to zero
+        /// </summary>
+        private void OpenDescription_Click(object sender, RoutedEventArgs e)
         {
             if (!DescriptionGridOpened)
             {

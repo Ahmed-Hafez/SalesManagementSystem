@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
 namespace SalesManagment
@@ -22,7 +23,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.AddSlideFromRight(milliseconds, element.ActualWidth, decelerationRatio, keepMargin);
+            sb.AddSlideFromRight(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio, keepMargin);
             sb.AddFadeIn(milliseconds);
 
             sb.Begin(element);
@@ -45,7 +46,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.RemoveSlideToRight(milliseconds, element.ActualWidth, decelerationRatio, keepMargin);
+            sb.RemoveSlideToRight(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio, keepMargin);
             sb.AddFadeOut(milliseconds);
 
             sb.Begin(element);
@@ -69,7 +70,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.AddSlideFromLeft(milliseconds, element.ActualWidth, decelerationRatio, keepMargin);
+            sb.AddSlideFromLeft(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio, keepMargin);
             sb.AddFadeIn(milliseconds);
 
             sb.Begin(element);
@@ -91,7 +92,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.RemoveSlideToLeft(milliseconds, element.ActualWidth, decelerationRatio, keepMargin);
+            sb.RemoveSlideToLeft(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio, keepMargin);
             sb.AddFadeOut(milliseconds);
 
             sb.Begin(element);
@@ -115,7 +116,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.AddSlideFromTop(milliseconds, element.ActualHeight, decelerationRatio, keepMargin);
+            sb.AddSlideFromTop(milliseconds, (element is Page page) ? page.WindowHeight : element.ActualHeight, decelerationRatio, keepMargin);
             sb.AddFadeIn(milliseconds);
 
             sb.Begin(element);
@@ -137,7 +138,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.RemoveSlideToTop(milliseconds, element.ActualHeight, decelerationRatio, keepMargin);
+            sb.RemoveSlideToTop(milliseconds, (element is Page page) ? page.WindowHeight : element.ActualHeight, decelerationRatio, keepMargin);
             sb.AddFadeOut(milliseconds);
 
             sb.Begin(element);
@@ -161,7 +162,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.AddSlideWithOpening(milliseconds, element.ActualWidth / 2, decelerationRatio);
+            sb.AddSlideWithOpening(milliseconds, (element is Page page) ? page.WindowWidth * 2: element.ActualWidth, decelerationRatio);
 
             sb.Begin(element);
 
@@ -182,7 +183,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.RemoveSlideWithClosing(milliseconds, element.ActualWidth, decelerationRatio);
+            sb.RemoveSlideWithClosing(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio);
 
             sb.Begin(element);
 
@@ -205,7 +206,7 @@ namespace SalesManagment
             Storyboard sb = new Storyboard();
 
             // Adding animations to the storyboard
-            sb.AddSlideWithShrinkage(milliseconds, element.ActualWidth, decelerationRatio);
+            sb.AddSlideWithShrinkage(milliseconds, (element is Page page) ? page.WindowWidth : element.ActualWidth, decelerationRatio);
 
             sb.Begin(element);
 

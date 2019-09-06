@@ -13,5 +13,13 @@ namespace SalesManagment
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            // Let the application do what it need
+            base.OnStartup(e);
+
+            // Initializing all required data in the begining
+            var ApplicationShell = ApplicationDirector.Instance;
+        }
     }
 }

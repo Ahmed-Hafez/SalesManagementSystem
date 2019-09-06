@@ -60,8 +60,11 @@ namespace SalesManagment
         {
             // If we are setup to animate out on load
             if (ShouldAnimateOut)
+            {
+                ShouldAnimateOut = false;
                 // Animate out the page
                 await AnimateOut();
+            }
             // Otherwise...
             else
                 // Animate the page in
@@ -73,10 +76,6 @@ namespace SalesManagment
         /// </summary>
         public async Task AnimateIn()
         {
-            // Make sure that we have something to do
-            if (this.PageLoadAnimation == PageAnimation.None)
-                return;
-
             // Resolves the load animation type
             switch (this.PageLoadAnimation)
             {
@@ -102,6 +101,8 @@ namespace SalesManagment
                     await Task.Delay(this.SlideAnimationDuration);
                     break;
             }
+
+            this.Visibility = Visibility.Visible;
         }
 
         /// <summary>

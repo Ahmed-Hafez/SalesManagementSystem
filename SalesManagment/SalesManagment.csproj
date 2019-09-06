@@ -74,9 +74,11 @@
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
-    <Compile Include="ViewModels\ApplicationDirectorViewModel.cs" />
+    <Compile Include="Models\BussinessLogic\ProductSearchType.cs" />
+    <Compile Include="UI_Manager\IUI_Manager.cs" />
+    <Compile Include="UI_Manager\UI_Manager.cs" />
+    <Compile Include="ValueConverters\ImagePathToImageByteArrayValueConverter.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
-    <Compile Include="DataModels\IFactory.cs" />
     <Compile Include="Expression\ExpressionHelpers.cs" />
     <Compile Include="Models\BussinessLogic\Category.cs" />
     <Compile Include="Models\BussinessLogic\Product.cs" />
@@ -100,7 +102,14 @@
     <Compile Include="ValueConverters\BooleanToVisibiltyValueConverter.cs" />
     <Compile Include="ValueConverters\ByteArrayToImageSourceValueConverter.cs" />
     <Compile Include="ValueConverters\ImagePathToImageSourceValueConverter.cs" />
+    <Compile Include="ValueConverters\ObjectToImageSourceValueConverter.cs" />
     <Compile Include="ValueConverters\StringARGBToBrushConverter.cs" />
+    <Compile Include="ViewModels\ApplicationDirector.cs" />
+    <Compile Include="ViewModels\Base\BaseWindowViewModel.cs" />
+    <Compile Include="ViewModels\Base\ObseverPattern\Observer.cs" />
+    <Compile Include="ViewModels\Base\ObseverPattern\Subject.cs" />
+    <Compile Include="ViewModels\Base\PagesFactory.cs" />
+    <Compile Include="ViewModels\Base\WindowsFactory.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
@@ -128,10 +137,14 @@
     <Compile Include="Views\Pages\ProductManagementPage.xaml.cs">
       <DependentUpon>ProductManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShellView.xaml.cs">
+    <Compile Include="Views\Windows\EditProductWindow.xaml.cs">
+      <DependentUpon>EditProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Windows\EditProductWindowViewModel.cs" />
+    <Compile Include="Views\Windows\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window\WindowResizer.cs" />
+    <Compile Include="WindowHelpers\WindowResizer.cs" />
     <Page Include="PropertyResources\PropertyResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,7 +205,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ShellView.xaml">
+    <Page Include="Views\Windows\EditProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +277,8 @@
     <Resource Include="Images\Book.jpg" />
     <Resource Include="Images\Fridge.jpg" />
     <Content Include="Models\Database\SQL_Scripts\Add_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\DeleteProduct.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Edit_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Find_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\Get_All_Categories_Procedure.sql" />

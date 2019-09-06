@@ -10,7 +10,7 @@
         MinWidth="{Binding WindowMinimumWidth}"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Icon="../Images/Management-icon.ico"
+        Icon="../../Images/Management-icon.ico"
         Title="Sales Management System" Height="700" Width="1100" WindowState="Maximized">
 
     <!--Created here (Not in a resource dictionary) because no need to them again-->
@@ -76,7 +76,7 @@
                                                     Padding="2"
                                                     Command="{Binding MenuCommand}">
 
-                                                <Image Source="../Images/Management-icon.png">
+                                                <Image Source="../../Images/Management-icon.png">
                                                     <Image.Effect>
                                                         <DropShadowEffect ShadowDepth="0" Opacity="1"/>
                                                     </Image.Effect>
@@ -240,7 +240,7 @@
             <Menu local:AnimateFrom_ToTopProperty.Value=
                   "{
                     Binding IsMenuVisible, 
-                    Source={x:Static local:ApplicationDirectorViewModel.Instance}
+                    Source={x:Static local:ApplicationDirector.Instance}
                    }"
                 
                   FontSize="20" 
@@ -268,6 +268,7 @@
             <ScrollViewer Grid.Row="1"
                           HorizontalScrollBarVisibility="Auto"
                           VerticalScrollBarVisibility="Auto"
+                          Margin="0 0 4 4"
                           Template="{DynamicResource RoundedScrollViewer}">
                 
                 <local:PageAnimator TabIndex="0"

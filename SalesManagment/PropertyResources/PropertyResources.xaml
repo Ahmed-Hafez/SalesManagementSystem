@@ -13,4 +13,14 @@
 
     </ObjectDataProvider>
 
+    <ObjectDataProvider MethodName="GetValues" 
+                        ObjectType="{x:Type System:Enum}" 
+                        x:Key="ProductSearchEnumMenu">
+
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="local:ProductSearchType"/>
+        </ObjectDataProvider.MethodParameters>
+
+    </ObjectDataProvider>
+
 </ResourceDictionary>

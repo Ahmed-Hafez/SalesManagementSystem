@@ -39,7 +39,7 @@
 
                         <!--Username-->
                         <TextBox Tag="Username"
-                                 Text="{Binding Username, Mode=OneWayToSource}"
+                                 Text="{Binding Username, Mode=TwoWay}"
                                  MinWidth="150"
                                  Style="{StaticResource TextBoxPlaceHolder}"
                                  HorizontalContentAlignment="Center"

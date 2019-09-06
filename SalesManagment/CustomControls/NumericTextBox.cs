@@ -24,8 +24,13 @@ namespace SalesManagment
 
         private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex;
-            if(HasDecimalPoint)
+            // Make sure that the number has only one decimal point at most
+            bool HasDot = false;
+            Regex regex = new Regex(@"\d*\.\d*");
+            if (regex.IsMatch(((NumericTextBox)sender).Text))
+                HasDot = true;
+
+            if(HasDecimalPoint && !HasDot)
                 regex = new Regex("[^0-9.]");
             else regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);

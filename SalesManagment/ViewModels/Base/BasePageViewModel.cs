@@ -1,18 +1,11 @@
-﻿using System.Windows.Controls;
-
-namespace SalesManagment
+﻿namespace SalesManagment
 {
     /// <summary>
-    /// The base class for all view model associated with pages
+    /// The base class for all view models associated with pages
     /// </summary>
     public class BasePageViewModel : BaseViewModel, IPageAnimation
     {
         #region Public Properties
-
-        /// <summary>
-        /// The page associated with this view model
-        /// </summary>
-        public Page page { get; set; }
 
         /// <summary>
         /// The page load animation

@@ -10,10 +10,13 @@ namespace SalesManagment
     /// <summary>
     /// The view model that controls the  AddingProductPage View
     /// </summary>
-    public class AddingProductPageViewModel : BasePageViewModel
+    public class AddingProductPageViewModel : BasePageViewModel, Subject
     {
         #region Private Members
 
+        /// <summary>
+        /// The binary representation of the product image
+        /// </summary>
         private byte[] mProductImage;
 
         #endregion
@@ -79,7 +82,7 @@ namespace SalesManagment
         public bool IsCategoryItemsComboBoxEnabled { get; private set; } = false;
 
         /// <summary>
-        /// Category of the 
+        /// Categories of the products
         /// </summary>
         public List<Category> CategoryItems { get; set; }
 
@@ -109,7 +112,7 @@ namespace SalesManagment
         /// <summary>
         /// The category of the product
         /// </summary>
-        public Category ProductCategory { get; set; }
+        public Category? ProductCategory { get; set; }
 
         /// <summary>
         /// Name of the product
@@ -124,17 +127,17 @@ namespace SalesManagment
         /// <summary>
         /// Stored quantity from this product
         /// </summary>
-        public double? StoredQuantity { get; set; }
+        public double? ProductStoredQuantity { get; set; }
 
         /// <summary>
         /// Price of the product
         /// </summary>
-        public decimal? Price { get; set; }
+        public decimal? ProductPrice { get; set; }
 
         /// <summary>
         /// The path of the image on the PC
         /// </summary>
-        public string ImagePath { get; set; }
+        public string ProductImagePath { get; set; }
 
         #endregion
 
@@ -153,6 +156,9 @@ namespace SalesManagment
 
             SelectPhotoCommand = new RelayCommand(SelectPhoto);
             AddProductCommand = new RelayCommand(AddProduct);
+
+            // Initializing the observers list
+            Observers = new List<Observer>();
         }
 
         #endregion
@@ -168,10 +174,12 @@ namespace SalesManagment
             openFileDialog.Filter = " |*.JPG; *.PNG; *.JPEG";
             if (openFileDialog.ShowDialog() == true)
             {
-                ImagePath = openFileDialog.FileName;
-
+                var path = openFileDialog.FileName;
                 // Storing the image for use
-                mProductImage = ConvertImageToByteArray();
+                mProductImage =
+                    (byte[])new ImagePathToImageByteArrayValueConverter().Convert(path, null, null, null);
+
+                ProductImagePath = path;
             }
         }
 
@@ -196,17 +204,17 @@ namespace SalesManagment
                 MessageBox.Show("Product must have a name", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (StoredQuantity == 0)
+            if (ProductStoredQuantity == 0)
             {
                 MessageBox.Show("Stored quantity should be at least 1", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (Price == null)
+            if (ProductPrice == null)
             {
                 MessageBox.Show("Set the price of the product correctly", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (ImagePath == null)
+            if (ProductImagePath == null)
             {
                 MessageBox.Show("Product should have an image", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -214,21 +222,22 @@ namespace SalesManagment
             if (ProductDescription == null) ProductDescription = "";
 
             Product product = new Product(ProductID.Value, ProductName,
-                ProductDescription, 
-                StoredQuantity.Value, 
-                Price.Value,
+                ProductDescription,
+                ProductStoredQuantity.Value,
+                ProductPrice.Value,
                 mProductImage,
-                ProductCategory.ID);
+                ProductCategory.Value.ID);
 
             if (product.Add())
             {
                 MessageBox.Show("Product was added", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                NotifyObservers();
                 ProductID = null;
                 ProductName = null;
                 ProductDescription = null;
-                StoredQuantity = null;
-                Price = null;
-                ImagePath = null;
+                ProductStoredQuantity = null;
+                ProductPrice = null;
+                ProductImagePath = null;
             }
             else
                 MessageBox.Show("There is already a product with the same ID", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -236,20 +245,38 @@ namespace SalesManagment
 
         #endregion
 
-        #region Private Helpers
+        #region Observer Pattern
 
         /// <summary>
-        /// Converts the image in the specified image path to a byte array to store in the database
+        /// Observers which this subject provide data to them
         /// </summary>
-        private byte[] ConvertImageToByteArray()
-        {
-            // Get the image from the specified path
-            FileStream fileStream = new FileStream(ImagePath, FileMode.Open);
-            BinaryReader reader = new BinaryReader(fileStream);
+        private List<Observer> Observers;
 
-            byte[] binaryData = reader.ReadBytes(Convert.ToInt32(reader.BaseStream.Length - 1));
-            reader.Close();
-            return binaryData;
+        public void RegisterObserver(Observer observer)
+        {
+            Observers.Add(observer);
+        }
+
+        public void RemoveObserver(Observer observer)
+        {
+            if (Observers.Contains(observer))
+                Observers.Remove(observer);
+        }
+
+        public void NotifyObservers()
+        {
+            Observers.ForEach((observer) => observer.Update(
+                new ProductRowViewerViewModel
+                {
+                    ID = ProductID.GetValueOrDefault(),
+                    Name = ProductName,
+                    Category = ProductCategory.Value,
+                    Description = ProductDescription,
+                    Price = ProductPrice.GetValueOrDefault(),
+                    StoredQuantity = ProductStoredQuantity.GetValueOrDefault(),
+                    Picture = mProductImage
+                })
+            );
         }
 
         #endregion

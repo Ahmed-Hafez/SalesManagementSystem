@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
 
 namespace SalesManagment
 {
@@ -15,15 +14,12 @@ namespace SalesManagment
 
             if (value is string path)
             {
-                FileStream fileStream = new FileStream(path, FileMode.Open);
-                BinaryReader reader = new BinaryReader(fileStream);
+                var PathToByteArray = new ImagePathToImageByteArrayValueConverter();
+                var ByteArrayToImageSource = new ByteArrayToImageSourceValueConverter();
 
-                byte[] binaryData = reader.ReadBytes(System.Convert.ToInt32(reader.BaseStream.Length - 1));
-                reader.Close();
+                var binaryData = PathToByteArray.Convert(path, null, null, null);
 
-                var converter = new ByteArrayToImageSourceValueConverter();
-
-                return converter.Convert(binaryData, null, null, null);
+                return ByteArrayToImageSource.Convert(binaryData, null, null, null);
             }
 
             return null;

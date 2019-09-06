@@ -203,7 +203,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="0"
-                         Text="{Binding StoredQuantity}"
+                         Text="{Binding ProductStoredQuantity}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
@@ -231,7 +231,7 @@
                          Margin="0"
                          Background="Transparent"
                          Tag="0"
-                         Text="{Binding Price}"
+                         Text="{Binding ProductPrice}"
                          FontFamily="{StaticResource LatoRegular}"
                          FontSize="{StaticResource FontSizeRegular}"
                          Foreground="{StaticResource ForegroundLightBrush}"
@@ -251,7 +251,7 @@
                         BorderBrush="{StaticResource ForegroundLightBrush}"
                         Background="{StaticResource LightWhiteBrush}">
 
-                        <Image Source="{Binding ImagePath, Converter={local:ImagePathToImageSourceValueConverter}}" 
+                        <Image Source="{Binding ProductImagePath}" 
                                Stretch="Fill"/>
 
                 </Border>
@@ -276,7 +276,6 @@
                         Style="{StaticResource  RegularButton}"
                         FontSize="{StaticResource FontSizeRegular}"
                         Command="{Binding AddProductCommand}"
-                        CommandParameter="{Binding ElementName=AddingProductView}"
                         TabIndex="7"/>
 
             </Grid>

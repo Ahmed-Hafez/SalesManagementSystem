@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Media;
 
 namespace SalesManagment
@@ -21,7 +22,7 @@ namespace SalesManagment
         /// </summary>
         public ProductRowViewerListDesignModel()
         {
-            Items = new List<ProductRowViewerViewModel>
+            Items = new ObservableCollection<ProductRowViewerViewModel>
             {
                 new ProductRowViewerViewModel
                 {
@@ -31,7 +32,10 @@ namespace SalesManagment
                     Price = 2000,
                     Category = new Category(231, "Phones"),
                     Description = "This is an awesome android mobile \nIt have a 16GB RAM",
-                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg"
+                    Picture = 
+                    (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
+                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg",
+                        null, null, null)
                 },
                 new ProductRowViewerViewModel
                 {
@@ -43,7 +47,10 @@ namespace SalesManagment
                     Description = "Slim Width for a Slim fit\nFit your French door fridge without renovating your fridge alcove." +
                     " The new 830mm wide Slim French door fridge is designed to fit alcoves 850mm in width. Provide that seamless" +
                     " premium look to your kitchen with the new Slim French door fridge, while allowing 10mm on either side for venting.",
-                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Fridge.jpg"
+                    Picture = 
+                    (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
+                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Fridge.jpg",
+                        null, null, null)
                 },
                 new ProductRowViewerViewModel
                 {
@@ -53,17 +60,23 @@ namespace SalesManagment
                     Price = 150000,
                     Category = new Category(231, "Computers"),
                     Description = "This is an awesome PC \nIt have an amazing features",
-                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Computer.jpg"
+                    Picture =
+                    (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
+                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Computer.jpg",
+                        null, null, null)
                 },
                 new ProductRowViewerViewModel
                 {
                     ID = 1423899,
                     Name = "Modern Graphics programming primer",
                     StoredQuantity = 78,
-                    Price = 137.16,
+                    Price = 137.16m,
                     Category = new Category(231, "Books"),
                     Description = "Very wonderful book",
-                    Picture = @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Book.jpg"
+                    Picture = 
+                    (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
+                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Book.jpg",
+                        null, null, null)
                 }
             };
         }

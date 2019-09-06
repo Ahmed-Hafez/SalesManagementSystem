@@ -20,7 +20,9 @@ namespace SalesManagment
     /// </summary>
     public partial class ProductManagementPage : BasePage<ProductManagementPageViewModel>
     {
-        public ProductManagementPage()
+        public static ProductManagementPage GetInstance { get; private set; } = new ProductManagementPage();
+
+        private ProductManagementPage()
         {
             InitializeComponent();
         }

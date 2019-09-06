@@ -203,6 +203,30 @@ namespace SalesManagment
         }
 
         /// <summary>
+        /// Edits the product data in the database
+        /// </summary>
+        public void Edit()
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[7];
+            sqlParameters[0] = new SqlParameter("@Product_ID", SqlDbType.VarChar);
+            sqlParameters[0].Value = ID;
+            sqlParameters[1] = new SqlParameter("@Product_Label", SqlDbType.VarChar);
+            sqlParameters[1].Value = Name;
+            sqlParameters[2] = new SqlParameter("@Quantity_in_Stock", SqlDbType.Int);
+            sqlParameters[2].Value = QuantityInStock;
+            sqlParameters[3] = new SqlParameter("@Price", SqlDbType.VarChar);
+            sqlParameters[3].Value = Price;
+            sqlParameters[4] = new SqlParameter("@Product_Image", SqlDbType.Image);
+            sqlParameters[4].Value = Image;
+            sqlParameters[5] = new SqlParameter("@Category_ID", SqlDbType.Int);
+            sqlParameters[5].Value = this.Category.ID;
+            sqlParameters[6] = new SqlParameter("@Product_Description", SqlDbType.VarChar);
+            sqlParameters[6].Value = Description;
+
+            DataConnection.ExcuteCommand("Edit_Product_Procedure", sqlParameters);
+        }
+
+        /// <summary>
         /// Returns the category name
         /// </summary>
         public override string ToString()

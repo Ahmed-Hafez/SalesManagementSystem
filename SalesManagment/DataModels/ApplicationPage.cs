@@ -8,76 +8,71 @@
         /// <summary>
         /// Display no pages
         /// </summary>
-        None = 0,
+        None,
 
         /// <summary>
         /// The initial login page
         /// </summary>
-        Login = 1,
-
-        /// <summary>
-        /// The main page of the program
-        /// </summary>
-        Main = 2,
+        Login,
 
         /// <summary>
         /// The page used to add a new product
         /// </summary>
-        AddingProducts = 3,
+        AddingProducts,
 
         /// <summary>
         /// The page used to manage products
         /// </summary>
-        ProductsManagement = 4,
+        ProductsManagement,
 
         /// <summary>
         /// The page used to add a new class
         /// </summary>
-        AddingCategory = 5,
+        AddingCategory,
 
         /// <summary>
         /// The page used to manage classes
         /// </summary>
-        CategoriesManagement = 6,
+        CategoriesManagement,
 
         /// <summary>
         /// The page used to add a new client
         /// </summary>
-        AddingClient = 7,
+        AddingClient,
 
         /// <summary>
         /// The page used to manage clients
         /// </summary>
-        ClientsManagement = 8,
+        ClientsManagement,
 
         /// <summary>
         /// The page used to add a new sale
         /// </summary>
-        AddingSale = 9,
+        AddingSale,
 
         /// <summary>
         /// The page used to manage products
         /// </summary>
-        SalesManagement = 10,
+        SalesManagement,
 
         /// <summary>
         /// The page used to add a new user
         /// </summary>
-        AddingUser = 11,
+        AddingUser,
 
         /// <summary>
         /// The page used to manage users
         /// </summary>
-        UsersManagement = 12,
+        UsersManagement,
 
         /// <summary>
         /// The page used to creat backup
         /// </summary>
-        CreatingBackup = 13,
+        CreatingBackup,
 
         /// <summary>
         /// The page used to restore saved copy
         /// </summary>
-        RestoringSavedCopy = 14
+        RestoringSavedCopy
     }
 }

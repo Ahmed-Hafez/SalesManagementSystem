@@ -17,11 +17,6 @@ namespace SalesManagment
         /// </summary>
         private User user;
 
-        /// <summary>
-        /// A flag indicating that the login command is running
-        /// </summary>
-        private bool loginIsRunning = false;
-
         #endregion
 
         #region Public properties
@@ -44,22 +39,14 @@ namespace SalesManagment
         /// <summary>
         /// A flag indicating that the login command is running
         /// </summary>
-        public bool LoginIsRunning
-        {
-            get { return loginIsRunning; }
-            set
-            {
-                loginIsRunning = value;
-                OnPropertyChanged(nameof(LoginIsRunning));
-            }
-        }
+        public bool LoginIsRunning { get; set; } = false;
 
         #region Commands
 
         /// <summary>
         /// The used command for sign in button
         /// </summary>
-        public RelayParameterizedCommand SignInCommand { get; set; }
+        public ParameterizedRelayCommand SignInCommand { get; set; }
 
         #endregion
 
@@ -73,12 +60,12 @@ namespace SalesManagment
         public LoginPageViewModel()
         {
             this.LoadAnimation = PageAnimation.SlideOpening;
-            this.UnloadAnimation = PageAnimation.SlideOutToTop;
+            this.UnloadAnimation = PageAnimation.SlideClosing;
             this.SlideAnimationDuration = 800;
 
             user = new User();
 
-            SignInCommand = new RelayParameterizedCommand(async (parameter) => await SignIn(parameter));
+            SignInCommand = new ParameterizedRelayCommand(async (parameter) => await SignIn(parameter));
         }
 
         #endregion
@@ -118,17 +105,18 @@ namespace SalesManagment
 
                     if (loginSuccesseded)
                     {
+                        var applicationViewModel = ApplicationDirector.Instance;
                         // Change the current page
-                        ApplicationDirectorViewModel.Instance.ApplicationShell.CurrentPage = ApplicationPage.ProductsManagement;
+                        applicationViewModel.ApplicationShell.CurrentPage = ApplicationPage.AddingProducts;
 
                         // Setting the current user of the app
-                        ApplicationDirectorViewModel.Instance.CurrentUser = user;
-
-                        // Showing the menu`1`
-                        ApplicationDirectorViewModel.Instance.IsMenuVisible = true;
+                        applicationViewModel.CurrentUser = user;
                     }
                     else MessageBox.Show("Username, password or user type is incorrect.",
                         "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    // Reset
+                    Username = null;
                 });
             }
             catch(Exception e)

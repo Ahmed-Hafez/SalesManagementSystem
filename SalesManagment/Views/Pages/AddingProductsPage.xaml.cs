@@ -22,7 +22,9 @@ namespace SalesManagment
     /// </summary>
     public partial class AddingProductsPage : BasePage<AddingProductPageViewModel>
     {
-        public AddingProductsPage()
+        public static AddingProductsPage GetInstance { get; private set; } = new AddingProductsPage();
+
+        private AddingProductsPage()
         {
             InitializeComponent();
         }

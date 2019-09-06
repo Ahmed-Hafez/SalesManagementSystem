@@ -8,7 +8,7 @@ namespace SalesManagment
     /// <summary>
     /// The categories of product
     /// </summary>
-    public class Category
+    public struct Category
     {
         #region Public properties
 

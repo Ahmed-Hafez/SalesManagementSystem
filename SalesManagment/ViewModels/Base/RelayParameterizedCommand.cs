@@ -6,7 +6,7 @@ namespace SalesManagment
     /// <summary>
     /// A basic command that runs an action
     /// </summary>
-    public class RelayParameterizedCommand : ICommand
+    public class ParameterizedRelayCommand : ICommand
     {
         #region Private Members
 
@@ -20,10 +20,10 @@ namespace SalesManagment
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance from the <see cref="RelayParameterizedCommand"/> class
+        /// Initializes a new instance from the <see cref="ParameterizedRelayCommand"/> class
         /// </summary>
         /// <param name="action">The action to run</param>
-        public RelayParameterizedCommand(Action<object> action)
+        public ParameterizedRelayCommand(Action<object> action)
         {
             mAction = action;
         }

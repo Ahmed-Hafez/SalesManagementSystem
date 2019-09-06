@@ -9,7 +9,7 @@
              d:DesignHeight="600" d:DesignWidth="900"
              Margin="0 0 0 10" 
              d:DataContext="{x:Static local:ProductRowViewerDesignModel.Instance}">
-    
+
     <Border BorderBrush="White">
 
         <Grid>
@@ -56,7 +56,7 @@
                         BorderBrush="White"
                         BorderThickness="4">
 
-                    <Image Source="{Binding Picture, Converter={local:ImagePathToImageSourceValueConverter}}"
+                    <Image Source="{Binding Picture, Converter={local:ByteArrayToImageSourceValueConverter}}"
                            Stretch="Fill" />
 
                 </Border>
@@ -241,7 +241,7 @@
                     FontFamily="{StaticResource FontAwesome}"
                     FontSize="{StaticResource FontSizeSmall}" 
                     Style="{StaticResource OpenButton}"
-                    Click="notesBtn_Click"/>
+                    Click="OpenDescription_Click"/>
 
             <StackPanel Grid.Row="3"
                         Orientation="Horizontal"
@@ -252,14 +252,16 @@
                         Margin="0 0 10 20"
                         Padding="10"
                         Style="{StaticResource RegularButton}"
-                        FontSize="{StaticResource FontSizeSmall}"/>
-                
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding EditCommand}"/>
+
                 <Button Content="Delete product" 
                         HorizontalAlignment="Right"
                         Margin="0 0 0 20"
                         Padding="10"
                         Style="{StaticResource RegularButton}"
-                        FontSize="{StaticResource FontSizeSmall}"/>
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding DeleteCommand}"/>
 
             </StackPanel>
             

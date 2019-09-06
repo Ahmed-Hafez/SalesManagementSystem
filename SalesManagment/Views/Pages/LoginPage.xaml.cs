@@ -21,7 +21,9 @@ namespace SalesManagment
     /// </summary>
     public partial class LoginPage : BasePage<LoginPageViewModel>, IHavePassword
     {
-        public LoginPage()
+        public static LoginPage GetInstance { get; private set; } = new LoginPage();
+
+        private LoginPage()
         {
             InitializeComponent();
         }

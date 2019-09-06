@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SalesManagment
@@ -37,7 +35,12 @@ namespace SalesManagment
         /// <summary>
         /// The height of the title bar
         /// </summary>
-        private double mTitleHeight = 45;
+        private readonly double mTitleHeight = 45;
+
+        /// <summary>
+        /// The current page of the application
+        /// </summary>
+        public ApplicationPage mCurrentPage = ApplicationPage.ProductsManagement;
 
         #endregion
 
@@ -145,7 +148,23 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        public ApplicationPage CurrentPage
+        {
+            get
+            {
+                // TODO: Remove this
+                ApplicationDirector.Instance.IsMenuVisible = true;
+                return mCurrentPage;
+            }
+            set
+            {
+                ApplicationDirector.Instance.IsMenuVisible = true;
+                if (value == ApplicationPage.Login)
+                    ApplicationDirector.Instance.IsMenuVisible = false;
+
+                mCurrentPage = value;
+            }
+        }
 
         /// <summary>
         /// Items of the top menu
@@ -226,7 +245,13 @@ namespace SalesManagment
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
                         new MenuItemViewModel { Header="Create Backup" },
-                        new MenuItemViewModel { Header="Restore Saved Copy" }
+                        new MenuItemViewModel { Header="Restore Saved Copy" },
+                        new MenuItemViewModel
+                        {
+                            Header ="Sign Out",
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.Login
+                        }
                     }
                 },
                 new MenuItemViewModel
@@ -238,13 +263,13 @@ namespace SalesManagment
                         new MenuItemViewModel
                         {
                             Header ="Add Product",
-                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.AddingProducts
                         },
                         new MenuItemViewModel
                         {
                             Header ="Products Management",
-                            Command = new RelayParameterizedCommand((parameter) => AddRelatedPage(parameter)),
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.ProductsManagement
                         },
                         new MenuItemViewModel { Header="Add Category" },

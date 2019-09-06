@@ -9,14 +9,14 @@
                 d:DesignHeight="1100" d:DesignWidth="1500"
                 Title="Product Management">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition />
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-            <!--Header-->
-            <TextBox Grid.Row="0" 
+        <!--Header-->
+        <TextBox Grid.Row="0" 
                      Grid.Column="0"
                      Grid.ColumnSpan="2"
                      FontSize="{StaticResource FontSizeRegular}"
@@ -34,19 +34,21 @@
                      IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
                      ContextMenu="{x:Null}"/>
 
-            <!--Content-->
-            <Border Grid.Row="1"
+
+        <!--Content-->
+        <Border Grid.Row="1"
                     BorderBrush="White"
                     BorderThickness="3"
+                    MinWidth="{Binding MinFrameWidth}"
                     Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 10'}"
                     Padding="{Binding BorderFramePadding, FallbackValue='5'}"
                     HorizontalAlignment="Center">
 
-                <!--Content-->
-                <StackPanel>
-                    <local:ProductRowViewerList />
-                </StackPanel>
-            </Border>
-        </Grid>
+            <!--Content-->
+            <StackPanel>
+                <local:ProductRowViewerList x:Name="ProductsList" x:FieldModifier="public"/>
+            </StackPanel>
+        </Border>
+    </Grid>
 
 </local:BasePage>

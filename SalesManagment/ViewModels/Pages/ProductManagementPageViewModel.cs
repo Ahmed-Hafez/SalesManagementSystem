@@ -14,6 +14,11 @@ namespace SalesManagment
         #region BorderFrame
 
         /// <summary>
+        /// The minimum width for the frame
+        /// </summary>
+        public double MinFrameWidth { get { return SystemParameters.PrimaryScreenWidth - 150; } }
+
+        /// <summary>
         /// The margin of the frame which contains the content of the page
         /// </summary>
         public Thickness BorderFrameMargin { get { return new Thickness(0, 0, 0, 10); } }
@@ -34,7 +39,8 @@ namespace SalesManagment
         /// </summary>
         public ProductManagementPageViewModel()
         {
-            SlideAnimationDuration = 500;
+            this.LoadAnimation = PageAnimation.None;
+            this.UnloadAnimation = PageAnimation.None;
         }
 
         #endregion
