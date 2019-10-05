@@ -1,0 +1,24 @@
+USE [ProductDB]
+GO
+
+CREATE TABLE [dbo].[Orders](
+	[Order_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Order_Date] [datetime] NULL,
+	[Customer_ID] [int] NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[Order_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers] FOREIGN KEY([Customer_ID])
+REFERENCES [dbo].[Customers] ([Customer_ID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers]
+GO
+
+
