@@ -8,6 +8,10 @@ namespace SalesManagment
 {
     public class ProductRowViewerListViewModel : BaseViewModel, Observer
     {
+        //
+        // TODO: There is a lot of work here for searching, Searching is so slow because of rendering
+        //
+
         /// <summary>
         /// The type of search on the products in the list
         /// </summary>
@@ -106,6 +110,7 @@ namespace SalesManagment
         #endregion
 
         #region Methods
+        private bool NewSearch = false;
         readonly object hh = new object();
         /// <summary>
         /// Searches in the products list
@@ -117,7 +122,7 @@ namespace SalesManagment
             lock (hh)
             {
                 SearchList.Clear();
-                for (int i = 0; i < AllProducts.Count; i++)
+                for (int i = 0; i < AllProducts.Count && !NewSearch; i++)
                 {
                     switch (type)
                     {
