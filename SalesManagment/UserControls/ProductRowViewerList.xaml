@@ -69,7 +69,7 @@
         </Border>
 
         <ItemsControl Grid.Row="2" 
-                      ItemsSource="{Binding Items}"
+                      ItemsSource="{Binding Items, AsyncState=true, UpdateSourceTrigger=PropertyChanged}"
                       Focusable="False">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>

@@ -57,3 +57,44 @@ F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\Sal
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\ShellView.g.cs
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\EditProductWindow.baml
 F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\ShellView.baml
+C:\New folder\SalesManagment\bin\Debug\SalesManagment.exe.config
+C:\New folder\SalesManagment\bin\Debug\SalesManagment.exe
+C:\New folder\SalesManagment\bin\Debug\SalesManagment.pdb
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
+C:\New folder\SalesManagment\obj\Debug\UserControls\ButtonList.g.cs
+C:\New folder\SalesManagment\obj\Debug\UserControls\PageAnimator.g.cs
+C:\New folder\SalesManagment\obj\Debug\UserControls\ProductRowViewer.g.cs
+C:\New folder\SalesManagment\obj\Debug\UserControls\ProductRowViewerList.g.cs
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.g.cs
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\LoginPage.g.cs
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.g.cs
+C:\New folder\SalesManagment\obj\Debug\Views\Windows\EditProductWindow.g.cs
+C:\New folder\SalesManagment\obj\Debug\Views\Windows\ShellView.g.cs
+C:\New folder\SalesManagment\obj\Debug\App.g.cs
+C:\New folder\SalesManagment\obj\Debug\SalesManagment_Content.g.cs
+C:\New folder\SalesManagment\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\New folder\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.cache
+C:\New folder\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.lref
+C:\New folder\SalesManagment\obj\Debug\App.baml
+C:\New folder\SalesManagment\obj\Debug\PropertyResources\PropertyResources.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\ComboBoxes.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\ScrollViewers.baml
+C:\New folder\SalesManagment\obj\Debug\UserControls\ButtonList.baml
+C:\New folder\SalesManagment\obj\Debug\UserControls\PageAnimator.baml
+C:\New folder\SalesManagment\obj\Debug\UserControls\ProductRowViewer.baml
+C:\New folder\SalesManagment\obj\Debug\UserControls\ProductRowViewerList.baml
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.baml
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\LoginPage.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\Buttons.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\Colors.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\Fonts.baml
+C:\New folder\SalesManagment\obj\Debug\Styles\Texts.baml
+C:\New folder\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.baml
+C:\New folder\SalesManagment\obj\Debug\Views\Windows\EditProductWindow.baml
+C:\New folder\SalesManagment\obj\Debug\Views\Windows\ShellView.baml
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.g.resources
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.Properties.Resources.resources
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.csproj.GenerateResource.cache
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.csproj.Fody.CopyLocal.cache
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.exe
+C:\New folder\SalesManagment\obj\Debug\SalesManagment.pdb

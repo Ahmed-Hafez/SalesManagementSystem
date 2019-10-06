@@ -35,11 +35,6 @@ namespace SalesManagment
         public ObservableCollection<ProductRowViewerViewModel> AllProducts { get; set; }
 
         /// <summary>
-        /// The container of the product row viewer items which the user searches about
-        /// </summary>
-        public ObservableCollection<ProductRowViewerViewModel> SearchList { get; set; }
-
-        /// <summary>
         /// The type of search on the products in the list
         /// </summary>
         public ProductSearchType ProductSearchType
@@ -51,7 +46,7 @@ namespace SalesManagment
                 if (SearchText == "")
                     SearchTag = "Write the product " + mProductSearchType.ToString();
                 else
-                    Task.Run(() => context.Post((obj) => Search(this.ProductSearchType, mSearchText), null));
+                    Search(this.ProductSearchType, mSearchText);
             }
         }
 
@@ -68,14 +63,16 @@ namespace SalesManagment
             get
             {
                 if (mSearchText == "")
-                    Task.Run(() => Items = AllProducts);
+                    Items = AllProducts;
                 return mSearchText;
             }
             set
             {
                 mSearchText = value;
                 if (mSearchText != "")
-                    Task.Run(() => context.Post((obj) => Search(this.ProductSearchType, mSearchText), null));
+                {
+                    Search(this.ProductSearchType, mSearchText);
+                }
             }
         }
 
@@ -83,18 +80,14 @@ namespace SalesManagment
 
         #region Constructor
 
-        SynchronizationContext context;
-
         /// <summary>
         /// Initializes a new instance from the <see cref="ProductRowViewerViewModel"/> class
         /// </summary>
         public ProductRowViewerListViewModel()
         {
-            context = SynchronizationContext.Current;
-
             this.ProductSearchType = ProductSearchType.ID;
 
-            SearchList = new ObservableCollection<ProductRowViewerViewModel>();
+            //SearchList = new ObservableCollection<ProductRowViewerViewModel>();
 
             var list = Product.GetAllProducts()?.ConvertAll(
                     (product) => ConvertToProductRowViewer(product));
@@ -104,14 +97,16 @@ namespace SalesManagment
             else
                 AllProducts = new ObservableCollection<ProductRowViewerViewModel>();
 
-            Items = AllProducts;
+            Items = new ObservableCollection<ProductRowViewerViewModel>();
+
+            while (Items.Count != AllProducts.Count)
+                Items.Add(AllProducts[Items.Count]);
         }
 
         #endregion
 
         #region Methods
-        private bool NewSearch = false;
-        readonly object hh = new object();
+
         /// <summary>
         /// Searches in the products list
         /// </summary>
@@ -119,32 +114,27 @@ namespace SalesManagment
         /// <param name="searchText">The text to search about it</param>
         private void Search(ProductSearchType type, string searchText)
         {
-            lock (hh)
+            Items = new ObservableCollection<ProductRowViewerViewModel>();
+            for (int i = 0; i < AllProducts.Count; i++)
             {
-                SearchList.Clear();
-                for (int i = 0; i < AllProducts.Count && !NewSearch; i++)
+                switch (type)
                 {
-                    switch (type)
-                    {
-                        case ProductSearchType.ID:
-                            if (AllProducts[i].ID.ToString().ToLower().StartsWith(searchText.ToLower()))
-                                SearchList.Add(AllProducts[i]);
-                            break;
-                        case ProductSearchType.Name:
-                            if (AllProducts[i].Name.ToString().ToLower().StartsWith(searchText.ToLower()))
-                                SearchList.Add(AllProducts[i]);
-                            break;
-                        case ProductSearchType.Category:
-                            if (AllProducts[i].Category.Name.ToString().ToLower().StartsWith(searchText.ToLower()))
-                                SearchList.Add(AllProducts[i]);
-                            break;
-                        default:
-                            break;
-                    }
-
+                    case ProductSearchType.ID:
+                        if (AllProducts[i].ID.ToString().ToLower().StartsWith(searchText.ToLower()))
+                            Items.Add(AllProducts[i]);
+                        break;
+                    case ProductSearchType.Name:
+                        if (AllProducts[i].Name.ToString().ToLower().StartsWith(searchText.ToLower()))
+                            Items.Add(AllProducts[i]);
+                        break;
+                    case ProductSearchType.Category:
+                        if (AllProducts[i].Category.Name.ToString().ToLower().StartsWith(searchText.ToLower()))
+                            Items.Add(AllProducts[i]);
+                        break;
+                    default:
+                        break;
                 }
             }
-            Items = SearchList;
         }
 
         /// <summary>
