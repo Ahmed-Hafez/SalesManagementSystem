@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\obj\Debug\
+C:\New folder\SalesManagment\obj\Debug\
 SalesManagment
 none
 false
 DEBUG;TRACE
-F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\App.xaml
+C:\New folder\SalesManagment\App.xaml
 16-477448322
 91339883113
-65-2123641507
-17-1771449964
+67369154825
+17-1145177315
 PropertyResources\PropertyResources.xaml;Styles\ComboBoxes.xaml;Styles\ScrollViewers.xaml;UserControls\ButtonList.xaml;UserControls\PageAnimator.xaml;UserControls\ProductRowViewer.xaml;UserControls\ProductRowViewerList.xaml;Views\Pages\AddingProductsPage.xaml;Views\Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Views\Pages\ProductManagementPage.xaml;Views\Windows\EditProductWindow.xaml;Views\Windows\ShellView.xaml;
 
-True
+False
 

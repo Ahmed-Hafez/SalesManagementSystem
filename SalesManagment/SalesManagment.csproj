@@ -112,6 +112,8 @@
     <Compile Include="ViewModels\Base\WindowsFactory.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\BaseRowViewerListViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\BaseRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\MenuItemViewModel.cs" />

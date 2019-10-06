@@ -22,7 +22,7 @@ namespace SalesManagment
         /// </summary>
         public ProductRowViewerListDesignModel()
         {
-            Items = new ObservableCollection<ProductRowViewerViewModel>
+            Items = new ObservableCollection<BaseRowViewerViewModel>
             {
                 new ProductRowViewerViewModel
                 {

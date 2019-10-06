@@ -265,7 +265,7 @@ namespace SalesManagment
 
         public void NotifyObservers()
         {
-            Observers.ForEach((observer) => observer.Update(
+            Observers.ForEach((observer) => observer.Update<ProductRowViewerViewModel>(
                 new ProductRowViewerViewModel
                 {
                     ID = ProductID.GetValueOrDefault(),

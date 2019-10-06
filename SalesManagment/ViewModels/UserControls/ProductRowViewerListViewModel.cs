@@ -1,12 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SalesManagment
 {
-    public class ProductRowViewerListViewModel : BaseViewModel, Observer
+    public class ProductRowViewerListViewModel : BaseRowViewerListViewModel
     {
         //
         // TODO: There is a lot of work here for searching, Searching is so slow because of rendering
@@ -17,27 +15,22 @@ namespace SalesManagment
         /// </summary>
         private ProductSearchType mProductSearchType = ProductSearchType.Name;
 
-        /// <summary>
-        /// The text in the search box
-        /// </summary>
-        private string mSearchText = "";
-
         #region Public Properties 
 
         /// <summary>
         /// The container of the product row viewer items to show
         /// </summary>
-        public ObservableCollection<ProductRowViewerViewModel> Items { get; set; }
+        public override ObservableCollection<BaseRowViewerViewModel> Items { get; set; }
 
         /// <summary>
         /// The container of all product row viewer items for all products
         /// </summary>
-        public ObservableCollection<ProductRowViewerViewModel> AllProducts { get; set; }
+        public override ObservableCollection<BaseRowViewerViewModel> AllProducts { get; set; }
 
         /// <summary>
         /// The type of search on the products in the list
         /// </summary>
-        public ProductSearchType ProductSearchType
+        public override ProductSearchType ProductSearchType
         {
             get { return mProductSearchType; }
             set
@@ -53,12 +46,12 @@ namespace SalesManagment
         /// <summary>
         /// The search tag of the search box
         /// </summary>
-        public string SearchTag { get; set; }
+        public override string SearchTag { get; set; }
 
         /// <summary>
         /// The text in the search box
         /// </summary>
-        public string SearchText
+        public override string SearchText
         {
             get
             {
@@ -93,11 +86,11 @@ namespace SalesManagment
                     (product) => ConvertToProductRowViewer(product));
 
             if (list != null)
-                AllProducts = new ObservableCollection<ProductRowViewerViewModel>(list);
+                AllProducts = new ObservableCollection<BaseRowViewerViewModel>(list);
             else
-                AllProducts = new ObservableCollection<ProductRowViewerViewModel>();
+                AllProducts = new ObservableCollection<BaseRowViewerViewModel>();
 
-            Items = new ObservableCollection<ProductRowViewerViewModel>();
+            Items = new ObservableCollection<BaseRowViewerViewModel>();
 
             while (Items.Count != AllProducts.Count)
                 Items.Add(AllProducts[Items.Count]);
@@ -112,23 +105,23 @@ namespace SalesManagment
         /// </summary>
         /// <param name="type">The search type</param>
         /// <param name="searchText">The text to search about it</param>
-        private void Search(ProductSearchType type, string searchText)
+        protected override void Search(ProductSearchType type, string searchText)
         {
-            Items = new ObservableCollection<ProductRowViewerViewModel>();
+            Items = new ObservableCollection<BaseRowViewerViewModel>();
             for (int i = 0; i < AllProducts.Count; i++)
             {
                 switch (type)
                 {
                     case ProductSearchType.ID:
-                        if (AllProducts[i].ID.ToString().ToLower().StartsWith(searchText.ToLower()))
+                        if (((ProductRowViewerViewModel)AllProducts[i]).ID.ToString().ToLower().StartsWith(searchText.ToLower()))
                             Items.Add(AllProducts[i]);
                         break;
                     case ProductSearchType.Name:
-                        if (AllProducts[i].Name.ToString().ToLower().StartsWith(searchText.ToLower()))
+                        if (((ProductRowViewerViewModel)AllProducts[i]).Name.ToString().ToLower().StartsWith(searchText.ToLower()))
                             Items.Add(AllProducts[i]);
                         break;
                     case ProductSearchType.Category:
-                        if (AllProducts[i].Category.Name.ToString().ToLower().StartsWith(searchText.ToLower()))
+                        if (((ProductRowViewerViewModel)AllProducts[i]).Category.Name.ToString().ToLower().StartsWith(searchText.ToLower()))
                             Items.Add(AllProducts[i]);
                         break;
                     default:
@@ -141,7 +134,7 @@ namespace SalesManagment
         /// Deletes the specified item from the list
         /// </summary>
         /// <param name="viewModel">The view model of the item to delete</param>
-        private void DeleteItem(ProductRowViewerViewModel viewModel)
+        protected override void DeleteItem(BaseRowViewerViewModel viewModel)
         {
             // Delete from the items list
             Items.Remove(viewModel);
@@ -149,7 +142,7 @@ namespace SalesManagment
             // Delete from the database
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Product_ID", SqlDbType.VarChar);
-            sqlParameters[0].Value = viewModel.ID.ToString();
+            sqlParameters[0].Value = ((ProductRowViewerViewModel)viewModel).ID.ToString();
 
             DataConnection.ExcuteCommand("DeleteProduct", sqlParameters);
         }
@@ -157,30 +150,32 @@ namespace SalesManagment
         /// <summary>
         /// Edits the specified item in the list
         /// </summary>
-        /// <param name="viewModel">The view model of the item to edit</param>
-        private void EditItem(ProductRowViewerViewModel viewModel)
+        /// <param name="productRowViewerViewmodel">The view model of the item to edit</param>
+        protected override void EditItem(BaseRowViewerViewModel viewmodel)
         {
+            var productRowViewerViewmodel = viewmodel as ProductRowViewerViewModel;
+
             Product product = new Product(
-                viewModel.ID,
-                viewModel.Name,
-                viewModel.Description,
-                viewModel.StoredQuantity,
-                viewModel.Price,
-                viewModel.Picture,
-                viewModel.Category.ID);
+                productRowViewerViewmodel.ID,
+                productRowViewerViewmodel.Name,
+                productRowViewerViewmodel.Description,
+                productRowViewerViewmodel.StoredQuantity,
+                productRowViewerViewmodel.Price,
+                productRowViewerViewmodel.Picture,
+                productRowViewerViewmodel.Category.ID);
 
             EditProductWindowViewModel editProductWindowViewModel
                 = new EditProductWindowViewModel(product);
             UI_Manager ui_Manager = new UI_Manager();
             ui_Manager.ShowDialog(editProductWindowViewModel);
 
-            viewModel.ID = editProductWindowViewModel.NewProductData.ID;
-            viewModel.Name = editProductWindowViewModel.NewProductData.Name;
-            viewModel.Description = editProductWindowViewModel.NewProductData.Description;
-            viewModel.StoredQuantity = editProductWindowViewModel.NewProductData.QuantityInStock;
-            viewModel.Price = editProductWindowViewModel.NewProductData.Price;
-            viewModel.Picture = editProductWindowViewModel.NewProductData.Image;
-            viewModel.Category = editProductWindowViewModel.NewProductData.Category;
+            productRowViewerViewmodel.ID = editProductWindowViewModel.NewProductData.ID;
+            productRowViewerViewmodel.Name = editProductWindowViewModel.NewProductData.Name;
+            productRowViewerViewmodel.Description = editProductWindowViewModel.NewProductData.Description;
+            productRowViewerViewmodel.StoredQuantity = editProductWindowViewModel.NewProductData.QuantityInStock;
+            productRowViewerViewmodel.Price = editProductWindowViewModel.NewProductData.Price;
+            productRowViewerViewmodel.Picture = editProductWindowViewModel.NewProductData.Image;
+            productRowViewerViewmodel.Category = editProductWindowViewModel.NewProductData.Category;
         }
 
         #endregion
@@ -209,18 +204,6 @@ namespace SalesManagment
             viewModel.Edited += EditItem;
 
             return viewModel;
-        }
-
-        #endregion
-
-        #region Observer Pattern
-
-        public void Update(params object[] parameters)
-        {
-            var viewModel = (ProductRowViewerViewModel)parameters[0];
-            viewModel.Deleted += DeleteItem;
-            viewModel.Edited += EditItem;
-            Items.Add(viewModel);
         }
 
         #endregion
