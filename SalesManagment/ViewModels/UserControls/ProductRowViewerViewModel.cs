@@ -60,32 +60,5 @@ namespace SalesManagment
         #endregion
 
         #endregion
-
-        //#region Public Events
-
-        //public override event Action<BaseRowViewerViewModel> Deleted;
-        //public override event Action<BaseRowViewerViewModel> Edited;
-
-        //#endregion
-
-        //#region Methods
-
-        ///// <summary>
-        ///// Notifing the list which containing this item to delete it
-        ///// </summary>
-        //private void Delete()
-        //{
-        //    // Notify all lists which contains this item to delete it
-        //    Deleted?.Invoke(this);
-        //}
-
-
-        //private void Edit()
-        //{
-        //    // Notify all lists which contains this item to delete it
-        //    Edited?.Invoke(this);
-        //}
-
-        //#endregion
     }
 }
