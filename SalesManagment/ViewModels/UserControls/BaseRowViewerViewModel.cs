@@ -75,7 +75,7 @@ namespace SalesManagment
         /// </summary>
         private void Edit()
         {
-            // Notify all lists which contains this item to delete it
+            // Notify all lists which contains this item to edit it
             Edited?.Invoke(this);
         }
 
