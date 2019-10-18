@@ -1,36 +1,28 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace SalesManagment
 {
     public class ProductRowViewerListViewModel : BaseRowViewerListViewModel
     {
-        //
-        // TODO: There is a lot of work here for searching, Searching is so slow because of rendering
-        //
+        #region Private Members
 
         /// <summary>
         /// The type of search on the products in the list
         /// </summary>
         private ProductSearchType mProductSearchType = ProductSearchType.Name;
 
+        #endregion
+
         #region Public Properties 
-
-        /// <summary>
-        /// The container of the product row viewer items to show
-        /// </summary>
-        public override ObservableCollection<BaseRowViewerViewModel> Items { get; set; }
-
-        /// <summary>
-        /// The container of all product row viewer items for all products
-        /// </summary>
-        public override ObservableCollection<BaseRowViewerViewModel> AllProducts { get; set; }
 
         /// <summary>
         /// The type of search on the products in the list
         /// </summary>
-        public override ProductSearchType ProductSearchType
+        public ProductSearchType ProductSearchType
         {
             get { return mProductSearchType; }
             set
@@ -39,33 +31,7 @@ namespace SalesManagment
                 if (SearchText == "")
                     SearchTag = "Write the product " + mProductSearchType.ToString();
                 else
-                    Search(this.ProductSearchType, mSearchText);
-            }
-        }
-
-        /// <summary>
-        /// The search tag of the search box
-        /// </summary>
-        public override string SearchTag { get; set; }
-
-        /// <summary>
-        /// The text in the search box
-        /// </summary>
-        public override string SearchText
-        {
-            get
-            {
-                if (mSearchText == "")
-                    Items = AllProducts;
-                return mSearchText;
-            }
-            set
-            {
-                mSearchText = value;
-                if (mSearchText != "")
-                {
-                    Search(this.ProductSearchType, mSearchText);
-                }
+                    searchHandler.Invoke();
             }
         }
 
@@ -80,20 +46,27 @@ namespace SalesManagment
         {
             this.ProductSearchType = ProductSearchType.ID;
 
-            //SearchList = new ObservableCollection<ProductRowViewerViewModel>();
-
             var list = Product.GetAllProducts()?.ConvertAll(
                     (product) => ConvertToProductRowViewer(product));
 
             if (list != null)
-                AllProducts = new ObservableCollection<BaseRowViewerViewModel>(list);
+                AllItems = new ObservableCollection<BaseRowViewerViewModel>(list);
             else
-                AllProducts = new ObservableCollection<BaseRowViewerViewModel>();
+                AllItems = new ObservableCollection<BaseRowViewerViewModel>();
 
             Items = new ObservableCollection<BaseRowViewerViewModel>();
 
-            while (Items.Count != AllProducts.Count)
-                Items.Add(AllProducts[Items.Count]);
+            Action AddingAction = new Action(() => Items.Add(AllItems[Items.Count]));
+
+            SearcherThread = new Thread(() =>
+            {
+                while (Items.Count != AllItems.Count)
+                {
+                    ApplicationDirector.MainThread.BeginInvoke(AddingAction);
+                    Thread.Sleep(300);
+                }
+            });
+            SearcherThread.Start();
         }
 
         #endregion
@@ -105,29 +78,57 @@ namespace SalesManagment
         /// </summary>
         /// <param name="type">The search type</param>
         /// <param name="searchText">The text to search about it</param>
-        protected override void Search(ProductSearchType type, string searchText)
+        protected override ObservableCollection<BaseRowViewerViewModel> Search()
         {
-            Items = new ObservableCollection<BaseRowViewerViewModel>();
-            for (int i = 0; i < AllProducts.Count; i++)
+            var foundedItems = new ObservableCollection<BaseRowViewerViewModel>();
+            for (int i = 0; i < AllItems.Count; i++)
             {
-                switch (type)
+                switch (ProductSearchType)
                 {
                     case ProductSearchType.ID:
-                        if (((ProductRowViewerViewModel)AllProducts[i]).ID.ToString().ToLower().StartsWith(searchText.ToLower()))
-                            Items.Add(AllProducts[i]);
+                        if (((ProductRowViewerViewModel)AllItems[i]).ID.ToString().ToLower().StartsWith(SearchText.ToLower()))
+                            foundedItems.Add(AllItems[i]);
                         break;
                     case ProductSearchType.Name:
-                        if (((ProductRowViewerViewModel)AllProducts[i]).Name.ToString().ToLower().StartsWith(searchText.ToLower()))
-                            Items.Add(AllProducts[i]);
+                        if (((ProductRowViewerViewModel)AllItems[i]).Name.ToString().ToLower().StartsWith(SearchText.ToLower()))
+                            foundedItems.Add(AllItems[i]);
                         break;
                     case ProductSearchType.Category:
-                        if (((ProductRowViewerViewModel)AllProducts[i]).Category.Name.ToString().ToLower().StartsWith(searchText.ToLower()))
-                            Items.Add(AllProducts[i]);
+                        if (((ProductRowViewerViewModel)AllItems[i]).Category.Name.ToString().ToLower().StartsWith(SearchText.ToLower()))
+                            foundedItems.Add(AllItems[i]);
                         break;
                     default:
                         break;
                 }
             }
+            return foundedItems;
+        }
+
+        /// <summary>
+        /// Matches the passed view model with the text in the searchBox depending on
+        /// the type of search
+        /// </summary>
+        /// <param name="viewModel">The view model to match with</param>
+        protected override bool IsMatch(BaseRowViewerViewModel viewModel)
+        {
+            switch (ProductSearchType)
+            {
+                case ProductSearchType.ID:
+                    if (((ProductRowViewerViewModel)viewModel).ID.ToString().ToLower().StartsWith(SearchText))
+                        return true;
+                    break;
+                case ProductSearchType.Name:
+                    if (((ProductRowViewerViewModel)viewModel).Name.ToString().ToLower().StartsWith(SearchText))
+                        return true;
+                    break;
+                case ProductSearchType.Category:
+                    if (((ProductRowViewerViewModel)viewModel).Category.Name.ToString().ToLower().StartsWith(SearchText))
+                        return true;
+                    break;
+                default:
+                    break;
+            }
+            return false;
         }
 
         /// <summary>
