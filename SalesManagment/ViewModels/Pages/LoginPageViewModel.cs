@@ -105,12 +105,11 @@ namespace SalesManagment
 
                     if (loginSuccesseded)
                     {
-                        var applicationViewModel = ApplicationDirector.Instance;
                         // Change the current page
-                        applicationViewModel.ApplicationShell.CurrentPage = ApplicationPage.AddingProducts;
+                        ApplicationDirector.ApplicationShell.CurrentPage = ApplicationPage.AddingProducts;
 
                         // Setting the current user of the app
-                        applicationViewModel.CurrentUser = user;
+                        ApplicationDirector.CurrentUser = user;
                     }
                     else MessageBox.Show("Username, password or user type is incorrect.",
                         "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
