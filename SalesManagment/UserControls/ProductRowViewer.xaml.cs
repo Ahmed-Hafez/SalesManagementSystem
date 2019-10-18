@@ -38,6 +38,13 @@ namespace SalesManagment
 
             openDescriptionGrid = new DoubleAnimation(0, descriptionGridOpeningHeight, TimeSpan.FromMilliseconds(100));
             closeDescriptionGrid = new DoubleAnimation(descriptionGridOpeningHeight, 0, TimeSpan.FromMilliseconds(100));
+
+            this.Loaded += ProductRowViewer_Loaded;
+        }
+
+        private async void ProductRowViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.SlideAndFadeInFromLeft(400, keepMargin:false);
         }
 
         /// <summary>
@@ -58,5 +65,6 @@ namespace SalesManagment
             }
         }
 
+        
     }
 }
