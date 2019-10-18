@@ -74,6 +74,7 @@
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="DataModels\SystemDelegates.cs" />
     <Compile Include="Models\BussinessLogic\ProductSearchType.cs" />
     <Compile Include="UI_Manager\IUI_Manager.cs" />
     <Compile Include="UI_Manager\UI_Manager.cs" />
