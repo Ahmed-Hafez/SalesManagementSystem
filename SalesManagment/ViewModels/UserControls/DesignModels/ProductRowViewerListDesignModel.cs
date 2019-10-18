@@ -34,7 +34,7 @@ namespace SalesManagment
                     Description = "This is an awesome android mobile \nIt have a 16GB RAM",
                     Picture = 
                     (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg",
+                        @"..\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg",
                         null, null, null)
                 },
                 new ProductRowViewerViewModel
@@ -49,7 +49,7 @@ namespace SalesManagment
                     " premium look to your kitchen with the new Slim French door fridge, while allowing 10mm on either side for venting.",
                     Picture = 
                     (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Fridge.jpg",
+                        @"..\SalesManagementSystem\SalesManagment\Images\Fridge.jpg",
                         null, null, null)
                 },
                 new ProductRowViewerViewModel
@@ -62,7 +62,7 @@ namespace SalesManagment
                     Description = "This is an awesome PC \nIt have an amazing features",
                     Picture =
                     (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Computer.jpg",
+                        @"..\SalesManagementSystem\SalesManagment\Images\Computer.jpg",
                         null, null, null)
                 },
                 new ProductRowViewerViewModel
@@ -75,7 +75,7 @@ namespace SalesManagment
                     Description = "Very wonderful book",
                     Picture = 
                     (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                        @"F:\GitHubProjects\SalesManagementSystem\SalesManagment\SalesManagementSystem\SalesManagment\Images\Book.jpg",
+                        @"..\SalesManagementSystem\SalesManagment\Images\Book.jpg",
                         null, null, null)
                 }
             };

@@ -27,7 +27,7 @@ namespace SalesManagment
             Category = new Category(312, "Phones");
             Picture =
                 (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                    @"E:\samsunga10.jpg", null, null, null);
+                    @"..\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg", null, null, null);
         }
 
         #endregion
