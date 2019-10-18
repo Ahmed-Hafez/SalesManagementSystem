@@ -40,7 +40,7 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage mCurrentPage = ApplicationPage.ProductsManagement;
+        public ApplicationPage mCurrentPage = ApplicationPage.Login;
 
         #endregion
 
@@ -150,12 +150,7 @@ namespace SalesManagment
         /// </summary>
         public ApplicationPage CurrentPage
         {
-            get
-            {
-                // TODO: Remove this
-                ApplicationDirector.Instance.IsMenuVisible = true;
-                return mCurrentPage;
-            }
+            get => mCurrentPage;
             set
             {
                 ApplicationDirector.Instance.IsMenuVisible = true;
@@ -224,7 +219,7 @@ namespace SalesManagment
             InitializeComponent();
 
             // Fixing window maximizing issue (hiding the bottom content)
-            var resizer = new WindowResizer(mWindow);
+            // var resizer = new WindowResizer(mWindow);
         }
 
         #endregion
