@@ -101,7 +101,6 @@ C:\New folder\SalesManagment\obj\Debug\SalesManagment.pdb
 C:\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe.config
 C:\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe
 C:\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.pdb
-C:\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
 C:\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.g.cs
 C:\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\PageAnimator.g.cs
 C:\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewer.g.cs

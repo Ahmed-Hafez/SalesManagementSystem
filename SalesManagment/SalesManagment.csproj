@@ -78,6 +78,7 @@
     <Compile Include="Models\BussinessLogic\ProductSearchType.cs" />
     <Compile Include="UI_Manager\IUI_Manager.cs" />
     <Compile Include="UI_Manager\UI_Manager.cs" />
+    <Compile Include="UserControls\Base\BaseRowViewer.cs" />
     <Compile Include="ValueConverters\ImagePathToImageByteArrayValueConverter.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Expression\ExpressionHelpers.cs" />
@@ -113,8 +114,8 @@
     <Compile Include="ViewModels\Base\WindowsFactory.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
-    <Compile Include="ViewModels\UserControls\BaseRowViewerListViewModel.cs" />
-    <Compile Include="ViewModels\UserControls\BaseRowViewerViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\Base\BaseRowViewerListViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\Base\BaseRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\MenuItemViewModel.cs" />

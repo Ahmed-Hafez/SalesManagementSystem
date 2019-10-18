@@ -1,6 +1,4 @@
-﻿using System.Windows.Media;
-
-namespace SalesManagment
+﻿namespace SalesManagment
 {
     public class ProductRowViewerDesignModel : ProductRowViewerViewModel
     {
