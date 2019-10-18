@@ -39,8 +39,8 @@ namespace SalesManagment
         /// </summary>
         public ProductManagementPageViewModel()
         {
-            this.LoadAnimation = PageAnimation.None;
-            this.UnloadAnimation = PageAnimation.None;
+            this.LoadAnimation = PageAnimation.SlideInFromLeft;
+            this.UnloadAnimation = PageAnimation.SlideOutToLeft;
         }
 
         #endregion
