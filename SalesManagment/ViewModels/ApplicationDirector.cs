@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace SalesManagment
 {
@@ -37,7 +38,7 @@ namespace SalesManagment
         /// <summary>
         /// Getting the Shell view model of the application shell
         /// </summary>
-        public ShellViewModel ApplicationShell
+        public static ShellViewModel ApplicationShell
         {
             get
             {
@@ -46,9 +47,20 @@ namespace SalesManagment
         }
 
         /// <summary>
+        /// Returns the main thread
+        /// </summary>
+        public static Dispatcher MainThread
+        {
+            get
+            {
+                return Application.Current.Dispatcher;
+            }
+        }
+
+        /// <summary>
         /// The current user of the application after login
         /// </summary>
-        public User CurrentUser { get; set; }
+        public static User CurrentUser { get; set; }
 
         #endregion
 
