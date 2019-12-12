@@ -4,7 +4,7 @@ This system is in development mode till now but it uses **Iterative development*
 
 ---
 # How to run
-First you need to run the SQL scripts in the directory **\SalesManagment\Models\Database\SQL_Scripts** After that open the solution in Visual Studio and press CTRL+F5 to run it.
+First you need to import the .bak file in the directory **\SalesManagment\Models\Database\SQL_Scripts\Backup** in SSMS (SQL Server Management Studio) to add the database After that open the solution in Visual Studio and press CTRL+F5 to run it.
 
 ---
 # Used tools, technologies and programming languages
