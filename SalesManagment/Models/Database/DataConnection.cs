@@ -30,7 +30,7 @@ namespace SalesManagment
         /// </summary>
         static DataConnection()
         {
-            connectionString = @"Data Source=.\SQLEXPRESS01;Initial Catalog=ProductDB;Integrated Security=True;";
+            connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=ProductDB;Integrated Security=True;";
             Connection = new SqlConnection(connectionString);
         }
 

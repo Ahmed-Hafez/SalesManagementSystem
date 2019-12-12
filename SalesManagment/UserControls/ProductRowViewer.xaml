@@ -50,7 +50,6 @@
 
                 <!--Image box frame-->
                 <Border Grid.Column="0"
-                        MaxWidth="400"
                         MaxHeight="350"
                         Background="#29FFFFFF"
                         BorderBrush="White"

@@ -138,3 +138,44 @@ C:\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.Generate
 C:\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.Fody.CopyLocal.cache
 C:\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.exe
 C:\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.pdb
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe.config
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.exe
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\SalesManagment.pdb
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\PageAnimator.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewer.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewerList.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\LoginPage.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\EditProductWindow.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\ShellView.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\App.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment_Content.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.cache
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment_MarkupCompile.lref
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\App.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\PropertyResources\PropertyResources.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ComboBoxes.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ScrollViewers.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\PageAnimator.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewer.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ProductRowViewerList.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingProductsPage.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\LoginPage.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Buttons.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Colors.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Fonts.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\Texts.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ProductManagementPage.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\EditProductWindow.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\ShellView.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.g.resources
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.Properties.Resources.resources
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.GenerateResource.cache
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csproj.Fody.CopyLocal.cache
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.exe
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.pdb

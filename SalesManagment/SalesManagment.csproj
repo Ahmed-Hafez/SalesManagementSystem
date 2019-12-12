@@ -255,6 +255,7 @@
     <Resource Include="Fonts\Lato-Thin.ttf" />
     <Resource Include="Fonts\Lato-ThinItalic.ttf" />
     <Resource Include="Fonts\FontAwesome.ttf" />
+    <None Include="Models\Database\SQL_Scripts\Backup\ProductDB.bak" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -275,6 +276,21 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\DeleteProduct.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Category_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_All_Categories_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_All_Products_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_CategoryName_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Login_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\CategoriesTable.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\CustomersTable.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\OrdersTable.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\Orders_DetailsTable.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\ProductsTable.sql" />
+    <Content Include="Models\Database\SQL_Scripts\Tables\UsersTable.sql" />
     <Resource Include="Management-icon.ico" />
     <Resource Include="Images\samsunga10.jpg" />
     <Resource Include="Images\Computer.jpg" />

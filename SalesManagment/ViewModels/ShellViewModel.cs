@@ -219,7 +219,7 @@ namespace SalesManagment
             InitializeComponent();
 
             // Fixing window maximizing issue (hiding the bottom content)
-            // var resizer = new WindowResizer(mWindow);
+            var resizer = new WindowResizer(mWindow);
         }
 
         #endregion
