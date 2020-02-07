@@ -20,6 +20,7 @@ namespace SalesManagment
 
             // Initializing all required data in the begining
             var ApplicationShell = ApplicationDirector.Instance;
+            ApplicationShell.InitializePages();
         }
     }
 }

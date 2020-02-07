@@ -17,6 +17,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -274,7 +289,18 @@
   <ItemGroup>
     <Resource Include="Images\space_galaxy_shine.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\DeleteProduct.sql" />
@@ -296,15 +322,6 @@
     <Resource Include="Images\Computer.jpg" />
     <Resource Include="Images\Book.jpg" />
     <Resource Include="Images\Fridge.jpg" />
-    <Content Include="Models\Database\SQL_Scripts\Add_Product_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\DeleteProduct.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Edit_Product_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Find_Category_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Find_Product_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Get_All_Categories_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Get_All_Products_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Get_CategoryName_Procedure.sql" />
-    <Content Include="Models\Database\SQL_Scripts\Login_Procedure.sql" />
     <Resource Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

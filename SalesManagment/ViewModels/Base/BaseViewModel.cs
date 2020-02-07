@@ -31,7 +31,7 @@ namespace SalesManagment
         /// <summary>
         /// Runs a command if the updating falg is not set.
         /// 
-        /// If the flag is true (indicating that the function is already running then the action is not run.
+        /// If the flag is true (indicating that the function is already running) then the action is not run.
         /// If the flag is false (indicating that no running function) then the action is run.
         /// 
         /// Once the action is finished if it was run, then the flag is reset to false.

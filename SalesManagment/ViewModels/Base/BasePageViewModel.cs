@@ -22,6 +22,16 @@
         /// </summary>
         public int SlideAnimationDuration { get; set; } = 300;
 
+        /// <summary>
+        /// The width of the page
+        /// </summary>
+        public double Width { get; set; }
+
+        /// <summary>
+        /// The Height of the page
+        /// </summary>
+        public double Height { get; set; }
+
         #endregion
     }
 }

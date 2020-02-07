@@ -8,17 +8,6 @@ namespace SalesManagment
     {
         #region Public Properties
 
-        #region Design
-
-        /// <summary>
-        /// The width of the control
-        /// </summary>
-        /// 
-        /// Get the monitor width to make the width adaptive to it
-        public double ViewerWidth { get; } = SystemParameters.PrimaryScreenWidth - 150;
-
-        #endregion
-
         #region Commands
 
         /// <summary>

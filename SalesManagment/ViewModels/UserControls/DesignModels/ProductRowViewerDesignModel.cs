@@ -25,7 +25,7 @@
             Category = new Category(312, "Phones");
             Picture =
                 (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
-                    @"..\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg", null, null, null);
+                    @"F:\GitHub Projects\SalesManagementSystem\SalesManagment\Images\samsunga10.jpg", null, null, null);
         }
 
         #endregion

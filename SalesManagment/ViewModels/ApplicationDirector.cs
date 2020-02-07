@@ -69,10 +69,7 @@ namespace SalesManagment
         /// <summary>
         /// Initializes a new instance from <see cref="ApplicationDirector"/> class
         /// </summary>
-        private ApplicationDirector()
-        {
-            InitializePages();
-        }
+        private ApplicationDirector() { }
 
         #endregion
 
@@ -83,7 +80,7 @@ namespace SalesManagment
         /// Also making just one instance from all pages to get it every time and also update it
         /// with simplicity in use
         /// </summary>
-        private void InitializePages()
+        public void InitializePages()
         {
             mApplicationPages = new Dictionary<ApplicationPage, Page>(20);
             mApplicationPages[ApplicationPage.Login] = LoginPage.GetInstance;

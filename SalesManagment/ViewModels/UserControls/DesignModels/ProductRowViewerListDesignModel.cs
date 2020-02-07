@@ -59,7 +59,7 @@ namespace SalesManagment
                     StoredQuantity = 10,
                     Price = 150000,
                     Category = new Category(231, "Computers"),
-                    Description = "This is an awesome PC \nIt have an amazing features",
+                    Description = "This is an awesome PC \nIt has an amazing features",
                     Picture =
                     (byte[])new ImagePathToImageByteArrayValueConverter().Convert(
                         @"..\SalesManagementSystem\SalesManagment\Images\Computer.jpg",

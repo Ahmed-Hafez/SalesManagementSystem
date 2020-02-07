@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SalesManagment"
              mc:Ignorable="d" 
-             Width="{Binding ViewerWidth}"
              d:DesignHeight="600" d:DesignWidth="900"
              Margin="0 0 0 10" 
              d:DataContext="{x:Static local:ProductRowViewerDesignModel.Instance}">

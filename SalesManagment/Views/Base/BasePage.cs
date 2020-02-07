@@ -188,8 +188,17 @@ namespace SalesManagment
             PageLoadAnimation = this.ViewModel.LoadAnimation;
             PageUnloadAnimation = this.ViewModel.UnloadAnimation;
             SlideAnimationDuration = this.ViewModel.SlideAnimationDuration;
+            this.Loaded += BasePage_Loaded;
+        }
+
+        private void BasePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.mViewModel.Width = this.WindowWidth;
+            this.mViewModel.Height = this.WindowHeight;
         }
 
         #endregion
+
+
     }
 }

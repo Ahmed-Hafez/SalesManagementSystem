@@ -18,11 +18,6 @@ namespace SalesManagment
         #region Private Members
 
         /// <summary>
-        /// The window which this view model controls
-        /// </summary>
-        private Window mWindow;
-
-        /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
         private double mOuterMarginSize = 10;
@@ -47,9 +42,14 @@ namespace SalesManagment
         #region Public Properties
 
         /// <summary>
+        /// The window which this view model controls
+        /// </summary>
+        public Window Shell { get; private set; }
+
+        /// <summary>
         /// The smallest width for the window
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 800;
+        public double WindowMinimumWidth { get; set; } = 1000;
 
         /// <summary>
         /// The smallest height for the window
@@ -73,7 +73,7 @@ namespace SalesManagment
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? 0 : mOuterMarginSize;
+                return Shell.WindowState == WindowState.Maximized ? 0 : mOuterMarginSize;
             }
             set { mOuterMarginSize = value; }
         }
@@ -90,7 +90,7 @@ namespace SalesManagment
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? 0 : mWindowRadius;
+                return Shell.WindowState == WindowState.Maximized ? 0 : mWindowRadius;
             }
             set { mWindowRadius = value; }
         }
@@ -122,7 +122,7 @@ namespace SalesManagment
         {
             get
             {
-                return mWindow.WindowState == WindowState.Maximized ? new CornerRadius(0) : new CornerRadius(0);
+                return Shell.WindowState == WindowState.Maximized ? new CornerRadius(0) : new CornerRadius(0);
             }
         }
 
@@ -200,9 +200,9 @@ namespace SalesManagment
         /// <param name="window">The window to control, i.e the shell view</param>
         public ShellViewModel(Window window)
         {
-            this.mWindow = window;
+            this.Shell = window;
 
-            mWindow.StateChanged += (sender, e) =>
+            Shell.StateChanged += (sender, e) =>
             {
                 // Editting properties when window state changed
                 OnPropertyChanged(nameof(OuterMarginSize));
@@ -211,15 +211,15 @@ namespace SalesManagment
             };
 
             // Initailize commands
-            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
-            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => mWindow.Close());
-            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            MinimizeCommand = new RelayCommand(() => Shell.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => Shell.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => Shell.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(Shell, GetMousePosition()));
 
             InitializeComponent();
 
             // Fixing window maximizing issue (hiding the bottom content)
-            var resizer = new WindowResizer(mWindow);
+            var resizer = new WindowResizer(Shell);
         }
 
         #endregion
@@ -319,9 +319,9 @@ namespace SalesManagment
         /// </summary>
         private Point GetMousePosition()
         {
-            Point position = Mouse.GetPosition(mWindow);
-            if (mWindow.WindowState == WindowState.Normal)
-                return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
+            Point position = Mouse.GetPosition(Shell);
+            if (Shell.WindowState == WindowState.Normal)
+                return new Point(position.X + Shell.Left, position.Y + Shell.Top);
             else
                 return new Point(position.X, position.Y);
         }

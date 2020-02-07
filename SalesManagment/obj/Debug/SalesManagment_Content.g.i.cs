@@ -23,14 +23,5 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/tables/orders_detailstable.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/tables/productstable.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/tables/userstable.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/add_product_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/deleteproduct.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/edit_product_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_category_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/find_product_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_all_categories_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_all_products_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/get_categoryname_procedure.sql")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/login_procedure.sql")]
 
 
