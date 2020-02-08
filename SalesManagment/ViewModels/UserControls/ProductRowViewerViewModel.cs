@@ -56,6 +56,7 @@ namespace SalesManagment
 
         public override ICommand DeleteCommand { get; set; }
         public override ICommand EditCommand { get; set;}
+        public override ICommand PrintCommand { get; set;}
 
         #endregion
 

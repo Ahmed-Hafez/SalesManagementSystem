@@ -8,10 +8,10 @@ namespace SalesManagment
     public interface IUI_Manager
     {
         /// <summary>
-        /// Displays a dialog window to the user
+        /// Shows the realted dialog window with this view model
         /// </summary>
-        /// <typeparam name="VMType">The type of the related view model of the dialog window</typeparam>
-        /// <param name="viewModel"></param>
+        /// <typeparam name="VMType">The view model type</typeparam>
+        /// <param name="viewModel">The view model to associate with</param>
         void ShowDialog<VMType>(VMType viewModel)
             where VMType : BaseWindowViewModel<VMType>;
     }

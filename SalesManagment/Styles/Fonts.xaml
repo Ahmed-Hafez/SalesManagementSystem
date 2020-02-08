@@ -12,7 +12,7 @@
     <FontFamily x:Key="LatoMedium">pack://application;,,,/Fonts/#Lato Medium</FontFamily>
     <FontFamily x:Key="FontAwesome">pack://application;,,,/Fonts/#FontAwesome</FontFamily>
 
-    <System:Double x:Key="FontSizeSmall">14</System:Double>
+    <System:Double x:Key="FontSizeSmall">16</System:Double>
     <System:Double x:Key="FontSizeRegular">20</System:Double>
     <System:Double x:Key="FontSizeMedium">32</System:Double>
     <System:Double x:Key="FontSizeLarge">52</System:Double>

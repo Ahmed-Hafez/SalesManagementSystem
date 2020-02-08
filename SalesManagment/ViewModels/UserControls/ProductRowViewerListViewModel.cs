@@ -152,9 +152,9 @@ namespace SalesManagment
         /// Edits the specified item in the list
         /// </summary>
         /// <param name="productRowViewerViewmodel">The view model of the item to edit</param>
-        protected override void EditItem(BaseRowViewerViewModel viewmodel)
+        protected override void EditItem(BaseRowViewerViewModel viewModel)
         {
-            var productRowViewerViewmodel = viewmodel as ProductRowViewerViewModel;
+            var productRowViewerViewmodel = viewModel as ProductRowViewerViewModel;
 
             Product product = new Product(
                 productRowViewerViewmodel.ID,
@@ -177,6 +177,20 @@ namespace SalesManagment
             productRowViewerViewmodel.Price = editProductWindowViewModel.NewProductData.Price;
             productRowViewerViewmodel.Picture = editProductWindowViewModel.NewProductData.Image;
             productRowViewerViewmodel.Category = editProductWindowViewModel.NewProductData.Category;
+        }
+
+        /// <summary>
+        /// Prints the specified item from the list
+        /// </summary>
+        /// <param name="viewModel">The view model of the item to print</param>
+        protected override void PrintItem(BaseRowViewerViewModel viewModel)
+        {
+            var productRowViewerViewmodel = viewModel as ProductRowViewerViewModel;
+
+            ProductReportingWindowViewModel productReportingWindowViewModel 
+                = new ProductReportingWindowViewModel(productRowViewerViewmodel.ID);
+            UI_Manager ui_Manager = new UI_Manager();
+            ui_Manager.ShowDialog(productReportingWindowViewModel);
         }
 
         #endregion
@@ -203,6 +217,7 @@ namespace SalesManagment
 
             viewModel.Deleted += DeleteItem;
             viewModel.Edited += EditItem;
+            viewModel.Printed += PrintItem;
 
             return viewModel;
         }

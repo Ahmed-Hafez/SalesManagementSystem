@@ -91,7 +91,7 @@ namespace SalesManagment
             mApplicationPages[ApplicationPage.AddingProducts] = addingProductsPage;
             mApplicationPages[ApplicationPage.ProductsManagement] = productManagementPage;
 
-            (addingProductsPage.ViewModel).RegisterObserver(
+            addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
 
         }

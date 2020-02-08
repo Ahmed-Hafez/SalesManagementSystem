@@ -170,9 +170,17 @@ namespace SalesManagment
             RelatedWindow.Close();
         }
 
+        /// <summary>
+        /// Cancel the editing action
+        /// </summary>
         private void CancelEditting()
         {
             RelatedWindow.Close();
+        }
+
+        public override object WindowLoaded(params object[] parameters)
+        {
+            return null;
         }
 
         #endregion

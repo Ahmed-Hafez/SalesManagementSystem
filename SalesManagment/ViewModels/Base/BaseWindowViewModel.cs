@@ -75,6 +75,18 @@ namespace SalesManagment
 
         #endregion
 
+        #region Protected Methods
+
+        /// <summary>
+        /// The action performed when window loaded.
+        /// Returns Null if no data should be returned to the window otherwise
+        /// returns the which data should be passed
+        /// </summary>
+        /// <param name="parameters">Parameters to be passed if found</param>
+        public abstract object WindowLoaded(params object[] parameters);
+
+        #endregion
+
         #endregion
     }
 }

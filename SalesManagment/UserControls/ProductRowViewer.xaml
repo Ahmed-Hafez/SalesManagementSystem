@@ -40,7 +40,7 @@
                 <Grid.ColumnDefinitions>
 
                     <!--Product Image-->
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*" MaxWidth="700"/>
 
                     <!--Product Details-->
                     <ColumnDefinition Width="6*"/>
@@ -55,16 +55,16 @@
                         BorderThickness="4">
 
                     <Image Source="{Binding Picture, Converter={local:ByteArrayToImageSourceValueConverter}}"
-                           Stretch="Fill" />
+                           Stretch="Fill"/>
 
                 </Border>
 
 
                 <!--Details frame-->
                 <Border Grid.Column="1"
-                    Background="Transparent"
-                    BorderBrush="White"
-                    BorderThickness="4">
+                        Background="Transparent"
+                        BorderBrush="White"
+                        BorderThickness="4">
 
                     <!--Details-->
                     <Grid Margin="15 15 15 0">
@@ -245,18 +245,29 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
 
-                <Button Content="Edit product" 
+                <Button Content="Print" 
                         HorizontalAlignment="Right"
                         Margin="0 0 10 20"
                         Padding="10"
+                        Width="150"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding PrintCommand}"/>
+                
+                <Button Content="Edit" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 10 20"
+                        Padding="10"
+                        Width="150"
                         Style="{StaticResource RegularButton}"
                         FontSize="{StaticResource FontSizeSmall}"
                         Command="{Binding EditCommand}"/>
 
-                <Button Content="Delete product" 
+                <Button Content="Delete" 
                         HorizontalAlignment="Right"
                         Margin="0 0 0 20"
                         Padding="10"
+                        Width="150"
                         Style="{StaticResource RegularButton}"
                         FontSize="{StaticResource FontSizeSmall}"
                         Command="{Binding DeleteCommand}"/>

@@ -140,6 +140,12 @@ namespace SalesManagment
         /// <param name="viewModel">The view model of the item to delete</param>
         protected abstract void DeleteItem(BaseRowViewerViewModel viewModel);
 
+        /// <summary>
+        /// Prints the specified item in the list
+        /// </summary>
+        /// <param name="viewModel">The view model of the item to print</param>
+        protected abstract void PrintItem(BaseRowViewerViewModel viewModel);
+
         #endregion
 
         #region Private Methods
@@ -240,10 +246,12 @@ namespace SalesManagment
         public void Update<T>(params object[] parameters)
             where T : BaseRowViewerViewModel
         {
-            var viewModel = (T)parameters[0];
+            var viewModel = parameters[0] as T;
             viewModel.Deleted += DeleteItem;
             viewModel.Edited += EditItem;
+            viewModel.Printed += PrintItem;
             Items.Add(viewModel);
+            AllItems.Add(viewModel);
         }
 
         #endregion
