@@ -13,12 +13,6 @@ namespace SalesManagment
 
         #region BorderFrame
 
-
-        /// <summary>
-        /// The minimum width for the frame
-        /// </summary>
-        public double MinFrameWidth { get { return Width - 150; } }
-
         /// <summary>
         /// The margin of the frame which contains the content of the page
         /// </summary>

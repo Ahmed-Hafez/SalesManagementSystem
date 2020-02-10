@@ -7,7 +7,7 @@ namespace SalesManagment
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage : Page
+    public abstract class BasePage : Page
     {
         #region Public Properties
 
@@ -132,6 +132,11 @@ namespace SalesManagment
             this.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Updates the page dimensions
+        /// </summary>
+        public abstract void UpdatePageDimensions();
+
         #endregion
     }
 
@@ -193,8 +198,22 @@ namespace SalesManagment
 
         private void BasePage_Loaded(object sender, RoutedEventArgs e)
         {
-            this.mViewModel.Width = this.WindowWidth;
-            this.mViewModel.Height = this.WindowHeight;
+            UpdatePageDimensions();
+        }
+
+        public override void UpdatePageDimensions()
+        {
+            try
+            {
+                ViewModel.Width = this.WindowWidth;
+                ViewModel.Height = this.WindowHeight;
+                ViewModel.OnPropertyChanged(nameof(ViewModel.MinFrameWidth));
+            }
+            catch
+            {
+                // Catches the error of page not in the tree of the shell 
+                // when the application begins
+            }
         }
 
         #endregion
