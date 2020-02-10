@@ -11,6 +11,6 @@ namespace SalesManagment
         /// The factory method
         /// </summary>
         /// <param name="page">The page indicator</param>
-        Page GetPage(ApplicationPage page);
+        BasePage GetPage(ApplicationPage page);
     }
 }

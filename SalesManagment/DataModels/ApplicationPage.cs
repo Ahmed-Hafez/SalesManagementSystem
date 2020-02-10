@@ -26,12 +26,7 @@
         ProductsManagement,
 
         /// <summary>
-        /// The page used to add a new class
-        /// </summary>
-        AddingCategory,
-
-        /// <summary>
-        /// The page used to manage classes
+        /// The page used to manage categories of products
         /// </summary>
         CategoriesManagement,
 

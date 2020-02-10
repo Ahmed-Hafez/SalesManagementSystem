@@ -1,0 +1,230 @@
+﻿<local:BasePage x:Class="SalesManagment.CategoriesManagementPage" x:TypeArguments="local:CategoriesManagementPageViewModel"
+                x:Name="CategoriesManagement"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:SalesManagment"
+                mc:Ignorable="d" 
+                d:DesignHeight="700" d:DesignWidth="1200"
+                Title="Categories Management">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" 
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
+                 FontSize="{StaticResource FontSizeMedium}"
+                 FontFamily="{StaticResource LatoRegular}"
+                 Foreground="{StaticResource ForegroundLightBrush}"
+                 Text="{Binding ElementName=CategoriesManagement, Path=Title, FallbackValue='Categories Management'}" 
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Top"
+                 Margin="{Binding PageTitleMargin, FallbackValue='0 30 0 0'}"
+                 Height="60"
+                 Width="500"
+                 Style="{StaticResource RoundedTextBox}"
+                 BorderThickness="10,5"
+                 IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
+                 ContextMenu="{x:Null}"/>
+
+        <Border x:Name="MainBorder"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                Width="{Binding MinFrameWidth}"
+                Background="Transparent"
+                BorderThickness="3"
+                BorderBrush="White">
+            <!--VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 80'}"
+                Padding="{Binding BorderFramePadding, FallbackValue='20 50 20 15'}"-->
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    
+                    <!--Category Headline-->
+                    <RowDefinition Height="70"/>
+                    
+                    <!--Category Data Section-->
+                    <RowDefinition Height="*"/>
+
+                    <!--Buttons Section-->
+                    <RowDefinition Height="auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    
+                    <!--Category Headline-->
+                    <ColumnDefinition/>
+                    
+                    <!--Categories List Section-->
+                    <ColumnDefinition/>
+                    
+                </Grid.ColumnDefinitions>
+
+                <!--Category Headline-->
+                <Border Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        BorderThickness="0 0 3 3"
+                        Width="250"
+                        BorderBrush="{Binding ElementName=MainBorder, Path=BorderBrush}">
+                    
+                    <TextBlock Text="Category Data"
+                               FontSize="{StaticResource FontSizeMedium}"
+                               Background="{StaticResource DarkToLightToDarkSky}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Padding="15"/>
+                    
+                </Border>
+
+                <!--Category Data Section-->
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal"
+                            Margin="35 0 0 0">
+
+                    <!--Labels-->
+                    <StackPanel Orientation="Vertical"
+                                Margin="0 0 15 0">
+                        
+                        <TextBlock Text="Category ID"
+                                   Margin="0 30 0 30"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Text="Category Name"
+                                   Margin="0 30 0 30"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   FontSize="{StaticResource FontSizeRegular}"/>
+                        
+                    </StackPanel>
+
+                    <!-- : -->
+                    <StackPanel Orientation="Vertical"
+                                Margin="0 0 15 0">
+
+                        <TextBlock Text=":"
+                                   Margin="0 30 0 30"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Text=":"
+                                   Margin="0 30 0 30"
+                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                   FontSize="{StaticResource FontSizeRegular}"/>
+                        
+                    </StackPanel>
+
+                    <!-- Text Boxes -->
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBox Style="{StaticResource TextBoxPlaceHolder}"
+                                 Margin="0 30 0 30"
+                                 Background="Transparent"
+                                 Tag="ID"
+                                 Text="{Binding ProductName}"
+                                 FontFamily="{StaticResource LatoRegular}"
+                                 FontSize="{StaticResource FontSizeRegular}"
+                                 Foreground="{StaticResource ForegroundLightBrush}"
+                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                 CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                                 Width="200"
+                                 IsEnabled="{Binding AdditionState}"/>
+                        
+                        <TextBox Style="{StaticResource TextBoxPlaceHolder}"
+                                 Margin="0 20 0 30"
+                                 Background="Transparent"
+                                 Tag="Name"
+                                 Text="{Binding ProductName}"
+                                 FontFamily="{StaticResource LatoRegular}"
+                                 FontSize="{StaticResource FontSizeRegular}"
+                                 Foreground="{StaticResource ForegroundLightBrush}"
+                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                 CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                                 Width="200"
+                                 IsEnabled="{Binding AdditionState}"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <WrapPanel Grid.Row="2" 
+                           Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                    
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    <Button Margin="35 0 0 0"
+                            Width="200"
+                            Height="40"
+                            Content="Add"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
+                    
+                </WrapPanel>
+            </Grid>
+            
+
+        </Border>
+    </Grid>
+</local:BasePage>

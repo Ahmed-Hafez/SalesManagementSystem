@@ -19,7 +19,7 @@ namespace SalesManagment
          *       the database will not be called except when initializing
          *       them in the first time, and also when any thing changed in the database
          */
-        private static Dictionary<ApplicationPage, Page> mApplicationPages;
+        private static Dictionary<ApplicationPage, BasePage> mApplicationPages;
 
         #endregion
 
@@ -62,6 +62,11 @@ namespace SalesManagment
         /// </summary>
         public static User CurrentUser { get; set; }
 
+        /// <summary>
+        /// The current page previewed in the shell
+        /// </summary>
+        public static BasePage CurrentPage { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -82,14 +87,20 @@ namespace SalesManagment
         /// </summary>
         public void InitializePages()
         {
-            mApplicationPages = new Dictionary<ApplicationPage, Page>(20);
+            mApplicationPages = new Dictionary<ApplicationPage, BasePage>(20);
             mApplicationPages[ApplicationPage.Login] = LoginPage.GetInstance;
 
             // Products
             var addingProductsPage = AddingProductsPage.GetInstance;
             var productManagementPage = ProductManagementPage.GetInstance;
+
+            // Categories
+            var categoriesManagementPage = CategoriesManagementPage.GetInstance;
+
+            // Filling the Dictionary
             mApplicationPages[ApplicationPage.AddingProducts] = addingProductsPage;
             mApplicationPages[ApplicationPage.ProductsManagement] = productManagementPage;
+            mApplicationPages[ApplicationPage.CategoriesManagement] = categoriesManagementPage;
 
             addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
@@ -100,14 +111,13 @@ namespace SalesManagment
         /// The Factory Method
         /// </summary>
         /// <param name="page">The page to get</param>
-        public Page GetPage(ApplicationPage page)
+        public BasePage GetPage(ApplicationPage page)
         {
             switch (page)
             {
                 case ApplicationPage.Login:
                 case ApplicationPage.AddingProducts:
                 case ApplicationPage.ProductsManagement:
-                case ApplicationPage.AddingCategory:
                 case ApplicationPage.CategoriesManagement:
                 case ApplicationPage.AddingClient:
                 case ApplicationPage.ClientsManagement:
@@ -117,7 +127,8 @@ namespace SalesManagment
                 case ApplicationPage.UsersManagement:
                 case ApplicationPage.CreatingBackup:
                 case ApplicationPage.RestoringSavedCopy:
-                    return mApplicationPages[page];
+                    CurrentPage = mApplicationPages[page];
+                    return CurrentPage;
 
                 default:
                     return null;

@@ -10,10 +10,6 @@
                 d:DesignHeight="700" d:DesignWidth="1000"
                 Title="Add New Product">
 
-    <ScrollViewer Template="{StaticResource RoundedScrollViewer}"
-                  VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Auto">
-        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -23,7 +19,7 @@
         <TextBox Grid.Row="0" 
                  Grid.Column="0"
                  Grid.ColumnSpan="2"
-                 FontSize="{StaticResource FontSizeRegular}"
+                 FontSize="{StaticResource FontSizeMedium}"
                  FontFamily="{StaticResource LatoRegular}"
                  Foreground="{StaticResource ForegroundLightBrush}"
                  Text="{Binding ElementName=AddingProductView, Path=Title, FallbackValue='Add New Product'}" 
@@ -31,8 +27,8 @@
                  VerticalContentAlignment="Center"
                  VerticalAlignment="Top"
                  Margin="{Binding PageTitleMargin, FallbackValue='0 30 0 0'}"
-                 Height="50"
-                 Width="400"
+                 Height="60"
+                 Width="500"
                  Style="{StaticResource RoundedTextBox}"
                  BorderThickness="10,5"
                  IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
@@ -251,7 +247,7 @@
                         BorderBrush="{StaticResource ForegroundLightBrush}"
                         Background="{StaticResource LightWhiteBrush}">
 
-                        <Image Source="{Binding ProductImagePath}" 
+                    <Image Source="{Binding ProductImagePath}" 
                                Stretch="Fill"/>
 
                 </Border>
@@ -283,7 +279,5 @@
         </Border>
 
     </Grid>
-
-    </ScrollViewer>
 
 </local:BasePage>

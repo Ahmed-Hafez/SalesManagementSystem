@@ -113,9 +113,6 @@ namespace SalesManagment
                     }
                     else MessageBox.Show("Username, password or user type is incorrect.",
                         "Signing in failed", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    // Reset
-                    Username = null;
                 });
             }
             catch(Exception e)

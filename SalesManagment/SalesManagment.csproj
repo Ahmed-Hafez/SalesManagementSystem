@@ -144,6 +144,7 @@
     <Compile Include="ViewModels\Base\WindowsFactory.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\CategoriesManagementPageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
@@ -159,6 +160,9 @@
     <Compile Include="Views\Base\BasePage.cs" />
     <Compile Include="Animation\IPageAnimation.cs" />
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
+    <Compile Include="Views\Pages\CategoriesManagementPage.xaml.cs">
+      <DependentUpon>CategoriesManagementPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -212,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\AddingProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\CategoriesManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

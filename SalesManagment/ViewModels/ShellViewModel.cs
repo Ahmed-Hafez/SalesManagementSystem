@@ -210,6 +210,11 @@ namespace SalesManagment
                 OnPropertyChanged(nameof(FrameCornerRadius));
             };
 
+            Shell.SizeChanged += (sender, e) => 
+            {
+                ApplicationDirector.CurrentPage?.UpdatePageDimensions();
+            };
+
             // Initailize commands
             MinimizeCommand = new RelayCommand(() => Shell.WindowState = WindowState.Minimized);
             MaximizeCommand = new RelayCommand(() => Shell.WindowState ^= WindowState.Maximized);
@@ -267,8 +272,12 @@ namespace SalesManagment
                             Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.ProductsManagement
                         },
-                        new MenuItemViewModel { Header="Add Category" },
-                        new MenuItemViewModel { Header="Categories Management"}
+                        new MenuItemViewModel
+                        {
+                            Header = "Categories Management",
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.CategoriesManagement
+                        }
                     }
                 },
                 new MenuItemViewModel
