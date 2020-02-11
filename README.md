@@ -20,6 +20,10 @@ Blend for Visual Studio
 
 ---
 # Design patterns used till now
+MVVM
+
+Command 
+
 Singleton
 
 Observer
