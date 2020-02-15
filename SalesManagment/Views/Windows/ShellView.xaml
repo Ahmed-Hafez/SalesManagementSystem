@@ -231,7 +231,7 @@
         </Border.OpacityMask>
 
         <Grid Background="{StaticResource DarkToLightToDarkSky}">
-
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
@@ -265,6 +265,12 @@
 
             </Menu>
 
+            <Border Grid.Row="1">
+                <Border.Background>
+                    <ImageBrush ImageSource="..\..\Images\Computer.jpg" Opacity="0.2"/>
+                </Border.Background>
+            </Border>
+            
             <ScrollViewer Grid.Row="1"
                           HorizontalScrollBarVisibility="Hidden"
                           VerticalScrollBarVisibility="Auto"
