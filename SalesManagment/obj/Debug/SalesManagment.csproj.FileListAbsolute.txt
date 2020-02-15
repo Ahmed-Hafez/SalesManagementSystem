@@ -161,7 +161,6 @@ F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\AxShockwaveFla
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\ShockwaveFlashObjects.dll
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\bin\Debug\stdole.dll
-F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControl1.g.cs
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.g.cs
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\CategoryRowViewer.g.cs
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\CategoryRowViewerList.g.cs
@@ -184,7 +183,6 @@ F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\App.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\PropertyResources\PropertyResources.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ComboBoxes.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Styles\ScrollViewers.baml
-F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControl1.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ButtonList.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\CategoryRowViewer.baml
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\CategoryRowViewerList.baml

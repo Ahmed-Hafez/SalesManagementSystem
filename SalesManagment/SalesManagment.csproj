@@ -108,9 +108,6 @@
     <Compile Include="Models\BussinessLogic\SearchEnums.cs" />
     <Compile Include="UI_Manager\IUI_Manager.cs" />
     <Compile Include="UI_Manager\UI_Manager.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Base\BaseRowViewer.cs" />
     <Compile Include="UserControls\CategoryRowViewer.xaml.cs">
       <DependentUpon>CategoryRowViewer.xaml</DependentUpon>
@@ -207,10 +204,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\ScrollViewers.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -362,6 +355,7 @@
   <ItemGroup>
     <Resource Include="Images\pexels-photo-40120_650x434_acf_cropped.jpeg" />
     <Resource Include="Images\unnamed.jpg" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Delete_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\DeleteProduct.sql" />

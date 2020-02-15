@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_category_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_product_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/delete_category_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/deleteproduct.sql")]
