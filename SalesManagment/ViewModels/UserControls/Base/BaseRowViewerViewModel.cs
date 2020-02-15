@@ -11,17 +11,17 @@ namespace SalesManagment
         #region Commands
 
         /// <summary>
-        /// The command used to delete product from the database
+        /// The command used to delete item
         /// </summary>
         public abstract ICommand DeleteCommand { get; set; }
 
         /// <summary>
-        /// The command used to edit product data in the database
+        /// The command used to edit item data
         /// </summary>
         public abstract ICommand EditCommand { get; set; }
 
         /// <summary>
-        /// The command used to print product data in the database
+        /// The command used to print item data
         /// </summary>
         public abstract ICommand PrintCommand { get; set; }
 
@@ -32,17 +32,17 @@ namespace SalesManagment
         #region Public Events
 
         /// <summary>
-        /// Fires when a product is deleted from the database
+        /// Fires when a item is deleted
         /// </summary>
         public event Action<BaseRowViewerViewModel> Deleted;
 
         /// <summary>
-        /// Fires when a product data is edited
+        /// Fires when a item data is edited
         /// </summary>
         public event Action<BaseRowViewerViewModel> Edited;
 
         /// <summary>
-        /// Fires when a product data is requested to be printed
+        /// Fires when a item data is requested to be printed
         /// </summary>
         public event Action<BaseRowViewerViewModel> Printed;
 
@@ -50,6 +50,9 @@ namespace SalesManagment
 
         #region Constructor
 
+        /// <summary>
+        /// Initialize new instance from <see cref="BaseRowViewerViewModel"/> class
+        /// </summary>
         public BaseRowViewerViewModel()
         {
             DeleteCommand = new RelayCommand(() => Delete());
