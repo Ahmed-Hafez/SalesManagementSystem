@@ -38,11 +38,11 @@
                 Grid.Row="1"
                 VerticalAlignment="Center"
                 Width="{Binding MinFrameWidth}"
-                Height="{Binding MinFrameHeight, FallbackValue=850}"
+                Height="{Binding MinFrameHeight, FallbackValue=800}"
                 Background="Transparent"
                 BorderThickness="3"
                 BorderBrush="{StaticResource BackgroundVeryLightBrush}"
-                Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 30'}"
+                Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 20'}"
                 Padding="{Binding BorderFramePadding, FallbackValue='0'}">
 
             <Grid>
@@ -51,6 +51,7 @@
                     <!--Category Data and Categories List Section-->
                     <RowDefinition Height="*"/>
 
+                    <!--Adding Category Section-->
                     <RowDefinition Height="auto"/>
 
                     <!--Buttons Section-->
@@ -68,47 +69,172 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Categories List-->
-                <local:CategoryRowViewerList Grid.Row="0"
+                <local:CategoryRowViewerList x:Name="CategoriesList"
+                                             Grid.Row="0"
                                              Grid.Column="0"
                                              Grid.ColumnSpan="2"
                                              Margin="10 10 10 0"/>
 
-                <!--Controls-->
-                <ScrollViewer Grid.Row="1" 
-                              Grid.ColumnSpan="2"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              VerticalScrollBarVisibility="Hidden"
-                              HorizontalScrollBarVisibility="Auto"
-                              Template="{DynamicResource RoundedScrollViewer}"
-                              Margin="10">
+
+                <!--Adding Category Section-->
+                <Border x:Name="AddingCategorySection"
+                        Grid.Row="1" 
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0 0 0 30"
+                        Padding="15"
+                        BorderThickness="2"
+                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                        Height="0">
 
                     <Grid>
-
+                        
                         <Grid.RowDefinitions>
+                            
+                            <!--ID Section-->
                             <RowDefinition />
+                            
+                            <!--Name Section-->
                             <RowDefinition />
-                        </Grid.RowDefinitions>
 
+                            <!--Buttons Section-->
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+                        
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
+                            
+                            <!--Labels Section-->
+                            <ColumnDefinition />
+                            
+                            <!--Text boxes section-->                            
+                            <ColumnDefinition />
+                            
+                            <!--Buttons Section-->
+                            <ColumnDefinition Width="425"/>
+
                         </Grid.ColumnDefinitions>
 
-                        <!--New - Add-->
-                        <Button Grid.Row="0"
+                        <!--ID Section-->
+                        <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="ID"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 0 50 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                        <local:NumericTextBox Grid.Row="0"
+                         Grid.Column="1"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxPlaceHolder}"
+                         Margin="0"
+                         Background="Transparent"
+                         Tag="ID"
+                         Text="{Binding Category_ID}"
+                         FontFamily="{StaticResource LatoRegular}"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Foreground="{StaticResource ForegroundLightBrush}"
+                         SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                         CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                         Width="200"
+                         TabIndex="2"/>
+
+                        <!--Name Section-->
+                        <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Name"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 15 50 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxPlaceHolder}"
+                         Margin="0 15 0 0"
+                         Background="Transparent"
+                         Tag="Name"
+                         Text="{Binding CategoryName}"
+                         FontFamily="{StaticResource LatoRegular}"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Foreground="{StaticResource ForegroundLightBrush}"
+                         SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                         CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                         Width="200"
+                         TabIndex="2"/>
+
+                        <Grid Grid.Row="2"
+                              Grid.Column="2">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Button Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    Width="200"
+                                    Height="40"
+                                    Content="Add"
+                                    Style="{StaticResource  RegularButton}"
+                                    FontSize="{StaticResource FontSizeRegular}"
+                                    Command="{Binding AddCategoryCommand}"/>
+
+                            <Button Grid.Column="1" 
+                                    HorizontalAlignment="Center"
+                                    Width="200"
+                                    Height="40"
+                                    Content="Cancel"
+                                    Style="{StaticResource  RegularButton}"
+                                    FontSize="{StaticResource FontSizeRegular}"
+                                    Click="CloseAddingCategorySection"
+                                    Command="{Binding CancelCommand}"/>
+
+                        </Grid>
+                        
+                    </Grid>
+
+                </Border>
+
+
+                <!--Controls-->
+                <Grid Grid.Row="2" 
+                      Grid.ColumnSpan="2"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Add-->
+                    <Button Grid.Row="0"
                             Grid.Column="0"
                             Width="200"
                             Height="40"
                             Margin="0 0 25 0"
-                            Content="{Binding AdditionButtonState, FallbackValue='Add'}"
+                            Content="New"
                             Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
+                            FontSize="{StaticResource FontSizeRegular}"
+                            Click="OpenAddingCategorySection"/>
 
-                        <!--Print all categories-->
-                        <Button Grid.Row="0"
+                    <!--Print all categories-->
+                    <Button Grid.Row="0"
                             Grid.Column="3"
                             Width="300"
                             Height="40"
@@ -117,8 +243,8 @@
                             Style="{StaticResource  RegularButton}"
                             FontSize="{StaticResource FontSizeRegular}"/>
 
-                        <!--Save category with its products in a PDF file-->
-                        <Button Grid.Row="1"
+                    <!--Save category with its products in a PDF file-->
+                    <Button Grid.Row="1"
                             Grid.ColumnSpan="4"
                             Height="40"
                             Margin="10 20 10 0"
@@ -126,9 +252,7 @@
                             Style="{StaticResource  RegularButton}"
                             FontSize="{StaticResource FontSizeRegular}"/>
 
-                    </Grid>
-
-                </ScrollViewer>
+                </Grid>
 
             </Grid>
 
