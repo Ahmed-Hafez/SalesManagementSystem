@@ -150,9 +150,7 @@ namespace SalesManagment
         /// </summary>
         public AddingProductPageViewModel()
         {
-            CategoryItems = Category.GetAllCategories();
-            if (CategoryItems != null)
-                IsCategoryItemsComboBoxEnabled = true;
+            FillCategoriesCombobox();
 
             SelectPhotoCommand = new RelayCommand(SelectPhoto);
             AddProductCommand = new RelayCommand(AddProduct);
@@ -164,6 +162,24 @@ namespace SalesManagment
         #endregion
 
         #region Methods
+
+        #region Public Methods
+
+        /// <summary>
+        /// Filling the categories combobox
+        /// </summary>
+        public void FillCategoriesCombobox()
+        {
+            CategoryItems = Category.GetAllCategories();
+            if (CategoryItems != null)
+                IsCategoryItemsComboBoxEnabled = true;
+            else
+                IsCategoryItemsComboBoxEnabled = false;
+        }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Adding photo from the pc into the image frame
@@ -242,6 +258,8 @@ namespace SalesManagment
             else
                 MessageBox.Show("There is already a product with the same ID", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        #endregion
 
         #endregion
 
