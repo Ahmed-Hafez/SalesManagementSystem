@@ -40,7 +40,7 @@
                             </MultiDataTrigger.Conditions>
                         </MultiDataTrigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="arrow" Value="Blue"/>
+                            <Setter Property="Fill" TargetName="arrow" Value="White"/>
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -48,7 +48,7 @@
                                 <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="templateRoot" Value="Transparent"/>
-                            <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource DarktSkyBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="templateRoot" Value="White"/>
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
