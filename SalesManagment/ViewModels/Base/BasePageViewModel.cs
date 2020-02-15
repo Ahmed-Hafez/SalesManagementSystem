@@ -33,9 +33,15 @@
         public double Height { get; set; }
 
         /// <summary>
-        /// The minimum width for the frame (Used by some pages except login page)
+        /// The minimum width for the frame (Used by some pages)
         /// </summary>
         public double MinFrameWidth { get { return Width - 100; } }
+
+        /// <summary>
+        /// The minimum height for the frame (Used by some pages)
+        /// </summary>
+        public double MinFrameHeight { get { return Height - 200; } }
+
         #endregion
     }
 }
