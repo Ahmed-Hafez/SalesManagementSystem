@@ -6,7 +6,8 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:local="clr-namespace:SalesManagment"
                 mc:Ignorable="d" 
-                d:DesignHeight="700" d:DesignWidth="1200"
+                MinWidth="900"
+                d:DesignHeight="1000" d:DesignWidth="1200"
                 Title="Categories Management">
 
     <Grid>
@@ -35,195 +36,102 @@
 
         <Border x:Name="MainBorder"
                 Grid.Row="1"
-                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 Width="{Binding MinFrameWidth}"
+                Height="{Binding MinFrameHeight, FallbackValue=850}"
                 Background="Transparent"
                 BorderThickness="3"
-                BorderBrush="White">
-            <!--VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 80'}"
-                Padding="{Binding BorderFramePadding, FallbackValue='20 50 20 15'}"-->
+                BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 30'}"
+                Padding="{Binding BorderFramePadding, FallbackValue='0'}">
 
             <Grid>
                 <Grid.RowDefinitions>
-                    
-                    <!--Category Headline-->
-                    <RowDefinition Height="70"/>
-                    
-                    <!--Category Data Section-->
+
+                    <!--Category Data and Categories List Section-->
                     <RowDefinition Height="*"/>
+
+                    <RowDefinition Height="auto"/>
 
                     <!--Buttons Section-->
                     <RowDefinition Height="auto"/>
-                    
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    
-                    <!--Category Headline-->
+
+                    <!--Category Headline and Category Data Section-->
                     <ColumnDefinition/>
-                    
+
                     <!--Categories List Section-->
                     <ColumnDefinition/>
-                    
+
                 </Grid.ColumnDefinitions>
 
-                <!--Category Headline-->
-                <Border Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        BorderThickness="0 0 3 3"
-                        Width="250"
-                        BorderBrush="{Binding ElementName=MainBorder, Path=BorderBrush}">
-                    
-                    <TextBlock Text="Category Data"
-                               FontSize="{StaticResource FontSizeMedium}"
-                               Background="{StaticResource DarkToLightToDarkSky}"
-                               Foreground="{StaticResource ForegroundLightBrush}"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"
-                               Padding="15"/>
-                    
-                </Border>
+                <!--Categories List-->
+                <local:CategoryRowViewerList Grid.Row="0"
+                                             Grid.Column="0"
+                                             Grid.ColumnSpan="2"
+                                             Margin="10 10 10 0"/>
 
-                <!--Category Data Section-->
-                <StackPanel Grid.Row="1"
+                <!--Controls-->
+                <ScrollViewer Grid.Row="1" 
+                              Grid.ColumnSpan="2"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              VerticalScrollBarVisibility="Hidden"
+                              HorizontalScrollBarVisibility="Auto"
+                              Template="{DynamicResource RoundedScrollViewer}"
+                              Margin="10">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--New - Add-->
+                        <Button Grid.Row="0"
                             Grid.Column="0"
-                            Orientation="Horizontal"
-                            Margin="35 0 0 0">
+                            Width="200"
+                            Height="40"
+                            Margin="0 0 25 0"
+                            Content="{Binding AdditionButtonState, FallbackValue='Add'}"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
 
-                    <!--Labels-->
-                    <StackPanel Orientation="Vertical"
-                                Margin="0 0 15 0">
-                        
-                        <TextBlock Text="Category ID"
-                                   Margin="0 30 0 30"
-                                   Foreground="{StaticResource ForegroundLightBrush}"
-                                   FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Text="Category Name"
-                                   Margin="0 30 0 30"
-                                   Foreground="{StaticResource ForegroundLightBrush}"
-                                   FontSize="{StaticResource FontSizeRegular}"/>
-                        
-                    </StackPanel>
+                        <!--Print all categories-->
+                        <Button Grid.Row="0"
+                            Grid.Column="3"
+                            Width="300"
+                            Height="40"
+                            Margin="25 0 0 0"
+                            Content="Print all categories"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
 
-                    <!-- : -->
-                    <StackPanel Orientation="Vertical"
-                                Margin="0 0 15 0">
+                        <!--Save category with its products in a PDF file-->
+                        <Button Grid.Row="1"
+                            Grid.ColumnSpan="4"
+                            Height="40"
+                            Margin="10 20 10 0"
+                            Content="Save category with its products in a PDF file"
+                            Style="{StaticResource  RegularButton}"
+                            FontSize="{StaticResource FontSizeRegular}"/>
 
-                        <TextBlock Text=":"
-                                   Margin="0 30 0 30"
-                                   Foreground="{StaticResource ForegroundLightBrush}"
-                                   FontSize="{StaticResource FontSizeRegular}"/>
-                        <TextBlock Text=":"
-                                   Margin="0 30 0 30"
-                                   Foreground="{StaticResource ForegroundLightBrush}"
-                                   FontSize="{StaticResource FontSizeRegular}"/>
-                        
-                    </StackPanel>
+                    </Grid>
 
-                    <!-- Text Boxes -->
-                    <StackPanel Orientation="Vertical">
+                </ScrollViewer>
 
-                        <TextBox Style="{StaticResource TextBoxPlaceHolder}"
-                                 Margin="0 30 0 30"
-                                 Background="Transparent"
-                                 Tag="ID"
-                                 Text="{Binding ProductName}"
-                                 FontFamily="{StaticResource LatoRegular}"
-                                 FontSize="{StaticResource FontSizeRegular}"
-                                 Foreground="{StaticResource ForegroundLightBrush}"
-                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
-                                 CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
-                                 Width="200"
-                                 IsEnabled="{Binding AdditionState}"/>
-                        
-                        <TextBox Style="{StaticResource TextBoxPlaceHolder}"
-                                 Margin="0 20 0 30"
-                                 Background="Transparent"
-                                 Tag="Name"
-                                 Text="{Binding ProductName}"
-                                 FontFamily="{StaticResource LatoRegular}"
-                                 FontSize="{StaticResource FontSizeRegular}"
-                                 Foreground="{StaticResource ForegroundLightBrush}"
-                                 SelectionBrush="{StaticResource LightRedSelectionBrush}"
-                                 CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
-                                 Width="200"
-                                 IsEnabled="{Binding AdditionState}"/>
-
-                    </StackPanel>
-
-                </StackPanel>
-
-                <WrapPanel Grid.Row="2" 
-                           Grid.ColumnSpan="2"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
-                    
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    <Button Margin="35 0 0 0"
-                            Width="200"
-                            Height="40"
-                            Content="Add"
-                            Style="{StaticResource  RegularButton}"
-                            FontSize="{StaticResource FontSizeRegular}"/>
-                    
-                </WrapPanel>
             </Grid>
-            
+
 
         </Border>
     </Grid>
