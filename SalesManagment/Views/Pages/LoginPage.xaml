@@ -9,13 +9,10 @@
       d:DesignHeight="600" d:DesignWidth="1000">
 
     <Border>
-        <Border.Background>
-            <ImageBrush ImageSource="..\..\Images\computer.jpg"/>
-        </Border.Background>
 
         <Grid>
 
-            <Border Background="{StaticResource DarkSkyMask}"/>
+            <Border Background="{StaticResource DarkSkyMask}" Opacity="0.5"/>
 
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
