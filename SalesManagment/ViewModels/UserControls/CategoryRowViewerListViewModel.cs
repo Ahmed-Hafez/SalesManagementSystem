@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading;
+using System.Windows;
 
 namespace SalesManagment
 {
@@ -130,6 +129,8 @@ namespace SalesManagment
             sqlParameters[0].Value = ((CategoryRowViewerViewModel)viewModel).ID;
 
             DataConnection.ExcuteCommand("Delete_Category_Procedure", sqlParameters);
+
+            ApplicationDirector.UpdateCategories();
         }
 
         protected override void EditItem(BaseRowViewerViewModel viewModel)
@@ -138,10 +139,21 @@ namespace SalesManagment
 
             if (categoryRowViewerViewModel.IsEditable)
             {
+                // Validate
+                if(string.IsNullOrEmpty(categoryRowViewerViewModel.EditedName) ||
+                   string.IsNullOrWhiteSpace(categoryRowViewerViewModel.EditedName))
+                {
+                    MessageBox.Show("Category must have a name", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Edit
                 categoryRowViewerViewModel.Name = categoryRowViewerViewModel.EditedName;
                 Category category = new Category(categoryRowViewerViewModel.ID, categoryRowViewerViewModel.Name);
                 categoryRowViewerViewModel.IsEditable = false;
                 category.Edit();
+
+                ApplicationDirector.UpdateCategories();
             }
             else
             {
@@ -183,6 +195,22 @@ namespace SalesManagment
             viewModel.Cancel += CancelEditing;
 
             return viewModel;
+        }
+
+        #endregion
+
+        #region Observer Pattern Methods
+
+        public new void Update<T>(params object[] parameters)
+            where T : CategoryRowViewerViewModel
+        {
+            var viewModel = parameters[0] as T;
+            viewModel.Deleted += DeleteItem;
+            viewModel.Edited += EditItem;
+            viewModel.Cancel += CancelEditing;
+
+            Items.Add(viewModel);
+            AllItems.Add(viewModel);
         }
 
         #endregion

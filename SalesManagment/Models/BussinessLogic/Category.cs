@@ -113,6 +113,27 @@ namespace SalesManagment
         #region Instance Methods
 
         /// <summary>
+        /// Adds a new category to the database,
+        /// Returns True if the category was added otherwise false
+        /// </summary>
+        public bool Add()
+        {
+            // Check if there is already category with this ID in the database
+            if (IsFound(ID))
+                return false;
+
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@Category_ID", SqlDbType.Int);
+            sqlParameters[0].Value = ID;
+            sqlParameters[1] = new SqlParameter("@Description", SqlDbType.VarChar);
+            sqlParameters[1].Value = Name;
+
+            DataConnection.ExcuteCommand("Add_Category_Procedure", sqlParameters);
+
+            return true;
+        }
+
+        /// <summary>
         /// Edits the category data in the database
         /// </summary>
         public void Edit()

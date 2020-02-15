@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -80,6 +81,20 @@ namespace SalesManagment
 
         #region Methods
 
+        #region Static Methods
+
+        /// <summary>
+        /// Notfies all pages that use the category table that it is updated
+        /// </summary>
+        public static void UpdateCategories()
+        {
+            ((AddingProductPageViewModel)mApplicationPages[ApplicationPage.AddingProducts].DataContext).FillCategoriesCombobox();
+        }
+
+        #endregion
+
+        #region Instance Methods
+
         /// <summary>
         /// Initializing pages here to make them ready to use and they just need rendering only,
         /// Also making just one instance from all pages to get it every time and also update it
@@ -104,6 +119,9 @@ namespace SalesManagment
 
             addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
+
+            categoriesManagementPage.ViewModel.RegisterObserver(
+                (CategoryRowViewerListViewModel)categoriesManagementPage.CategoriesList.DataContext);
 
         }
 
@@ -134,6 +152,8 @@ namespace SalesManagment
                     return null;
             }
         }
+
+        #endregion
 
         #endregion
     }
