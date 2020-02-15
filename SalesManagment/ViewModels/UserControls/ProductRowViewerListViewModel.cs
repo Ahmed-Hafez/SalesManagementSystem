@@ -11,7 +11,7 @@ namespace SalesManagment
         #region Private Members
 
         /// <summary>
-        /// The type of search on the products in the list
+        /// The type of search on the products list
         /// </summary>
         private ProductSearchType mProductSearchType = ProductSearchType.Name;
 
@@ -20,7 +20,7 @@ namespace SalesManagment
         #region Public Properties 
 
         /// <summary>
-        /// The type of search on the products in the list
+        /// The type of search on the products list
         /// </summary>
         public ProductSearchType ProductSearchType
         {
@@ -56,17 +56,7 @@ namespace SalesManagment
 
             Items = new ObservableCollection<BaseRowViewerViewModel>();
 
-            Action AddingAction = new Action(() => Items.Add(AllItems[Items.Count]));
-
-            SearcherThread = new Thread(() =>
-            {
-                while (Items.Count != AllItems.Count)
-                {
-                    ApplicationDirector.MainThread.BeginInvoke(AddingAction);
-                    Thread.Sleep(300);
-                }
-            });
-            SearcherThread.Start();
+            Fill_List();
         }
 
         #endregion
@@ -154,29 +144,29 @@ namespace SalesManagment
         /// <param name="productRowViewerViewmodel">The view model of the item to edit</param>
         protected override void EditItem(BaseRowViewerViewModel viewModel)
         {
-            var productRowViewerViewmodel = viewModel as ProductRowViewerViewModel;
+            var productRowViewerViewModel = viewModel as ProductRowViewerViewModel;
 
             Product product = new Product(
-                productRowViewerViewmodel.ID,
-                productRowViewerViewmodel.Name,
-                productRowViewerViewmodel.Description,
-                productRowViewerViewmodel.StoredQuantity,
-                productRowViewerViewmodel.Price,
-                productRowViewerViewmodel.Picture,
-                productRowViewerViewmodel.Category.ID);
+                productRowViewerViewModel.ID,
+                productRowViewerViewModel.Name,
+                productRowViewerViewModel.Description,
+                productRowViewerViewModel.StoredQuantity,
+                productRowViewerViewModel.Price,
+                productRowViewerViewModel.Picture,
+                productRowViewerViewModel.Category.ID);
 
             EditProductWindowViewModel editProductWindowViewModel
                 = new EditProductWindowViewModel(product);
             UI_Manager ui_Manager = new UI_Manager();
             ui_Manager.ShowDialog(editProductWindowViewModel);
 
-            productRowViewerViewmodel.ID = editProductWindowViewModel.NewProductData.ID;
-            productRowViewerViewmodel.Name = editProductWindowViewModel.NewProductData.Name;
-            productRowViewerViewmodel.Description = editProductWindowViewModel.NewProductData.Description;
-            productRowViewerViewmodel.StoredQuantity = editProductWindowViewModel.NewProductData.QuantityInStock;
-            productRowViewerViewmodel.Price = editProductWindowViewModel.NewProductData.Price;
-            productRowViewerViewmodel.Picture = editProductWindowViewModel.NewProductData.Image;
-            productRowViewerViewmodel.Category = editProductWindowViewModel.NewProductData.Category;
+            productRowViewerViewModel.ID = editProductWindowViewModel.NewProductData.ID;
+            productRowViewerViewModel.Name = editProductWindowViewModel.NewProductData.Name;
+            productRowViewerViewModel.Description = editProductWindowViewModel.NewProductData.Description;
+            productRowViewerViewModel.StoredQuantity = editProductWindowViewModel.NewProductData.QuantityInStock;
+            productRowViewerViewModel.Price = editProductWindowViewModel.NewProductData.Price;
+            productRowViewerViewModel.Picture = editProductWindowViewModel.NewProductData.Image;
+            productRowViewerViewModel.Category = editProductWindowViewModel.NewProductData.Category;
         }
 
         /// <summary>
@@ -199,7 +189,7 @@ namespace SalesManagment
 
         /// <summary>
         /// Converting the <see cref="Product"/> object 
-        /// to <see cref="ProductRowViewer"/> object
+        /// to <see cref="ProductRowViewer"/> object using ProductRowViewerViewModel
         /// </summary>
         /// <param name="product">The product to convert</param>
         private ProductRowViewerViewModel ConvertToProductRowViewer(Product product)
