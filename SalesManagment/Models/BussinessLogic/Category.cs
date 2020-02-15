@@ -113,6 +113,20 @@ namespace SalesManagment
         #region Instance Methods
 
         /// <summary>
+        /// Edits the category data in the database
+        /// </summary>
+        public void Edit()
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@Category_ID", SqlDbType.Int);
+            sqlParameters[0].Value = ID;
+            sqlParameters[1] = new SqlParameter("@Description", SqlDbType.VarChar);
+            sqlParameters[1].Value = Name.ToString();
+
+            DataConnection.ExcuteCommand("Edit_Category_Procedure", sqlParameters);
+        }
+
+        /// <summary>
         /// Returns the category name
         /// </summary>
         public override string ToString()

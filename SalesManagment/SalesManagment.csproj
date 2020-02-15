@@ -105,10 +105,19 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataModels\SystemDelegates.cs" />
-    <Compile Include="Models\BussinessLogic\ProductSearchType.cs" />
+    <Compile Include="Models\BussinessLogic\SearchEnums.cs" />
     <Compile Include="UI_Manager\IUI_Manager.cs" />
     <Compile Include="UI_Manager\UI_Manager.cs" />
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Base\BaseRowViewer.cs" />
+    <Compile Include="UserControls\CategoryRowViewer.xaml.cs">
+      <DependentUpon>CategoryRowViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryRowViewerList.xaml.cs">
+      <DependentUpon>CategoryRowViewerList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ImagePathToImageByteArrayValueConverter.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Expression\ExpressionHelpers.cs" />
@@ -147,6 +156,8 @@
     <Compile Include="ViewModels\Pages\CategoriesManagementPageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\CategoryRowViewerListViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\CategoryRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerListDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ProductRowViewerDesignModel.cs" />
     <Compile Include="ViewModels\UserControls\MenuItemViewModel.cs" />
@@ -199,9 +210,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ButtonList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CategoryRowViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CategoryRowViewerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PageAnimator.xaml">
       <SubType>Designer</SubType>
@@ -337,8 +360,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\pexels-photo-40120_650x434_acf_cropped.jpeg" />
+    <Resource Include="Images\unnamed.jpg" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Delete_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\DeleteProduct.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Product_Procedure.sql" />
