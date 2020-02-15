@@ -49,7 +49,7 @@ namespace SalesManagment
         /// <summary>
         /// The smallest width for the window
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 1000;
+        public double WindowMinimumWidth { get; set; } = 1150;
 
         /// <summary>
         /// The smallest height for the window
