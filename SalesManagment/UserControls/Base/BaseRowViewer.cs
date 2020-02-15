@@ -6,6 +6,11 @@ namespace SalesManagment
     public class BaseRowViewer : UserControl
     {
         /// <summary>
+        /// The duration of the row viewer loading animation
+        /// </summary>
+        protected int LoadAnimationDuration { get; set; } = 300;
+
+        /// <summary>
         /// Inititalizes a new instance from <see cref="BaseRowViewer"/> class
         /// </summary>
         public BaseRowViewer()
@@ -15,7 +20,7 @@ namespace SalesManagment
 
         private async void ProductRowViewer_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.SlideAndFadeInFromLeft(400, keepMargin: false);
+            await this.SlideAndFadeInFromLeft(LoadAnimationDuration, keepMargin: false);
         }
     }
 }

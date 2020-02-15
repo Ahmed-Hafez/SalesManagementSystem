@@ -39,12 +39,12 @@ namespace SalesManagment
         #region Public Properties
 
         /// <summary>
-        /// The container of the product row viewer items to show
+        /// The container of the row viewer items to show
         /// </summary>
         public virtual ObservableCollection<BaseRowViewerViewModel> Items { get; set; }
 
         /// <summary>
-        /// The container of all product row viewer items for all products
+        /// The container of all row viewer items for all products
         /// </summary>
         public virtual ObservableCollection<BaseRowViewerViewModel> AllItems { get; set; }
 
@@ -64,7 +64,7 @@ namespace SalesManagment
                 if (string.IsNullOrEmpty(mSearchText) || string.IsNullOrEmpty(value))
                 {
                     mSearchText = value;
-                    _Search();
+                    SearchForward();
                 }
                 else if (value.StartsWith(mSearchText) || mSearchText.StartsWith(value))
                 {
@@ -81,6 +81,15 @@ namespace SalesManagment
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The duration of the row viewer loading animation
+        /// </summary>
+        protected int LoadAnimationDuration { get; set; } = 300;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -89,7 +98,7 @@ namespace SalesManagment
         public BaseRowViewerListViewModel()
         {
             SearcherThread = new Thread(() => { });
-            searchHandler = new SearchHandler(_Search);
+            searchHandler = new SearchHandler(SearchForward);
             mCopiedList = new ObservableCollection<BaseRowViewerViewModel>();
         }
 
@@ -148,12 +157,46 @@ namespace SalesManagment
 
         #endregion
 
+        #region Protected Virtual Methods
+
+        /// <summary>
+        /// Invoking 
+        /// </summary>
+        protected virtual void Fill_List()
+        {
+            Action AddingAction = new Action(() =>
+            {
+                // TODO: Comment this section
+                try
+                {
+                    Items.Add(AllItems[Items.Count]);
+
+                }
+                catch (Exception)
+                {
+
+                }
+            });
+
+            SearcherThread = new Thread(() =>
+            {
+                while (Items.Count != AllItems.Count)
+                {
+                    ApplicationDirector.MainThread.BeginInvoke(AddingAction);
+                    Thread.Sleep(LoadAnimationDuration);
+                }
+            });
+            SearcherThread.Start();
+        }
+
+        #endregion
+
         #region Private Methods
 
         /// <summary>
-        /// Searches in the products list
+        /// Searches in the row viewers list when writing the string to search for
         /// </summary>
-        private void _Search()
+        private void SearchForward()
         {
             // If the searching process is working, kill it and start a new search
             if (SearcherThread.IsAlive) SearcherThread.Abort();
@@ -180,7 +223,7 @@ namespace SalesManagment
                 delegate (BaseRowViewerViewModel item)
                 {
                     ApplicationDirector.MainThread.BeginInvoke(addingAction, item);
-                    Thread.Sleep(300);
+                    Thread.Sleep(LoadAnimationDuration);
                 };
 
                 // Initializing the containers (Items and mCopiedList)
@@ -198,7 +241,7 @@ namespace SalesManagment
         }
 
         /// <summary>
-        /// Searches in the product list when removing character from the search text
+        /// Searches in the row viewers list when removing character from the search text
         /// </summary>
         private void SearchBack()
         {
@@ -233,7 +276,7 @@ namespace SalesManagment
                 foreach (var item in Search())
                 {
                     ApplicationDirector.MainThread.BeginInvoke(AddingAction, item);
-                    Thread.Sleep(200);
+                    Thread.Sleep(LoadAnimationDuration);
                 };
             });
             SearcherThread.Start();
