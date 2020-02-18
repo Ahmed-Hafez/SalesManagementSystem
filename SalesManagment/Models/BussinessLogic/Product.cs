@@ -17,27 +17,27 @@ namespace SalesManagment
         /// <summary>
         /// Product Label
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Description about the product
         /// </summary>
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
         /// <summary>
         /// The quantity of this product in the stock
         /// </summary>
-        public double QuantityInStock { get; set; }
+        public double QuantityInStock { get; private set; }
 
         /// <summary>
         /// Product Price
         /// </summary>
-        public decimal Price { get; set; }
+        public decimal Price { get; private set; }
 
         /// <summary>
         /// Product Image
         /// </summary>
-        public byte[] Image { get; set; }
+        public byte[] Image { get; private set; }
 
         /// <summary>
         /// The category ID of this product category
