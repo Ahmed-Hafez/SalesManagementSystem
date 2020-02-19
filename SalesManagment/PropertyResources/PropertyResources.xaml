@@ -33,4 +33,24 @@
 
     </ObjectDataProvider>
 
+    <ObjectDataProvider MethodName="GetValues" 
+                        ObjectType="{x:Type System:Enum}" 
+                        x:Key="GenderEnumMenu">
+
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="local:GenderType"/>
+        </ObjectDataProvider.MethodParameters>
+
+    </ObjectDataProvider>
+
+    <ObjectDataProvider MethodName="GetValues" 
+                        ObjectType="{x:Type System:Enum}" 
+                        x:Key="ClientSearchEnumMenu">
+
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="local:ClientSearchType"/>
+        </ObjectDataProvider.MethodParameters>
+
+    </ObjectDataProvider>
+
 </ResourceDictionary>

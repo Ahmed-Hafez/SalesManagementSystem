@@ -286,7 +286,12 @@ namespace SalesManagment
                     ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
-                        new MenuItemViewModel { Header="Add Client" },
+                        new MenuItemViewModel 
+                        {
+                            Header = "Add Client",
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.AddingClient
+                        },
                         new MenuItemViewModel { Header="Clients Management"},
                         new MenuItemViewModel { Header="Add Sale" },
                         new MenuItemViewModel { Header="Sales Management"}

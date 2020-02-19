@@ -98,6 +98,8 @@
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="CustomControls\PhoneTextBox.cs" />
+    <Compile Include="Models\BussinessLogic\Client.cs" />
     <Compile Include="Reports\ProductReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,7 +123,6 @@
     <Compile Include="Models\BussinessLogic\Category.cs" />
     <Compile Include="Models\BussinessLogic\Product.cs" />
     <Compile Include="Models\BussinessLogic\User.cs" />
-    <Compile Include="Models\BussinessLogic\UserType.cs" />
     <Compile Include="CustomControls\NumericTextBox.cs" />
     <Compile Include="Security\IHavePassword.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="ViewModels\Base\ObseverPattern\Subject.cs" />
     <Compile Include="ViewModels\Base\PagesFactory.cs" />
     <Compile Include="ViewModels\Base\WindowsFactory.cs" />
+    <Compile Include="ViewModels\Pages\AddingClientPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
     <Compile Include="ViewModels\Pages\CategoriesManagementPageViewModel.cs" />
@@ -162,6 +164,9 @@
     <Compile Include="ViewModels\UserControls\ProductRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\ProductRowViewerViewModel.cs" />
     <Compile Include="ViewModels\Windows\ProductReportingWindowViewModel.cs" />
+    <Compile Include="Views\Pages\AddingClientPage.xaml.cs">
+      <DependentUpon>AddingClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\AddingProductsPage.xaml.cs">
       <DependentUpon>AddingProductsPage.xaml</DependentUpon>
     </Compile>
@@ -228,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ProductRowViewerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\AddingClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -355,15 +364,21 @@
   <ItemGroup>
     <Resource Include="Images\pexels-photo-40120_650x434_acf_cropped.jpeg" />
     <Resource Include="Images\unnamed.jpg" />
+    <Resource Include="Images\female.png" />
+    <Resource Include="Images\Male.png" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Category_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Client_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Delete_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\DeleteProduct.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Category_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Client_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Edit_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Category_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Client_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Find_Product_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_All_Categories_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_All_Clients_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_All_Products_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_CategoryName_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Login_Procedure.sql" />

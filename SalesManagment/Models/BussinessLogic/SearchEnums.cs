@@ -18,4 +18,15 @@
         ID,
         Name,
     }
+
+    /// <summary>
+    /// The search types of the clients search
+    /// </summary>
+    public enum ClientSearchType
+    {
+        Name,
+        gender,
+        Phone,
+        Email
+    }
 }
