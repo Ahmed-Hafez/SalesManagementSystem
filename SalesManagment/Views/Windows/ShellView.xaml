@@ -248,7 +248,11 @@
                   Foreground="{StaticResource ForegroundLightBrush}"
                   Background="{StaticResource DarktSkyBrush}"
                   Focusable="False"
-                  IsEnabled="{Binding IsMenuVisible, FallbackValue='False'}">
+                  IsEnabled=
+                  "{
+                    Binding IsMenuVisible, 
+                    Source={x:Static local:ApplicationDirector.Instance}
+                   }">
 
                 <!--Editing the menu items to be adaptive with the view model-->
                 <Menu.ItemContainerStyle>
