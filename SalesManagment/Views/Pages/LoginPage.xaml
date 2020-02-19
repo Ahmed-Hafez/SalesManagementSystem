@@ -76,8 +76,7 @@
                                   Foreground="{StaticResource ForegroundLightBrush}" 
                                   Style="{StaticResource HollowComboBox}"
                                   ItemsSource="{Binding Source={StaticResource UserTypeEnumMenu}}"
-                                  SelectedItem="{Binding UserType}"
-                                  TabIndex="2">
+                                  SelectedItem="{Binding UserType}">
 
                             <ComboBox.InputBindings>
 
@@ -95,8 +94,7 @@
                                 Style="{StaticResource RegularButton}"
                                 Command="{Binding SignInCommand}"
                                 CommandParameter="{Binding ElementName=LoginPageView}"
-                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
-                                TabIndex="3"/>
+                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"/>
 
                     </StackPanel>
 

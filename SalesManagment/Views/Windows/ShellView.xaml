@@ -246,7 +246,9 @@
                   FontSize="20" 
                   ItemsSource="{Binding MenuItems}"
                   Foreground="{StaticResource ForegroundLightBrush}"
-                  Background="{StaticResource DarktSkyBrush}">
+                  Background="{StaticResource DarktSkyBrush}"
+                  Focusable="False"
+                  IsEnabled="{Binding IsMenuVisible, FallbackValue='False'}">
 
                 <!--Editing the menu items to be adaptive with the view model-->
                 <Menu.ItemContainerStyle>

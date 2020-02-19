@@ -42,6 +42,7 @@ namespace SalesManagment
         /// </summary>
         public BasePage()
         {
+            Focusable = false;
             if (this.PageLoadAnimation != PageAnimation.None)
                 this.Visibility = Visibility.Collapsed;
 

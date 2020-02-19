@@ -12,6 +12,7 @@
            BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -25,11 +26,13 @@
 
     <Style TargetType="{x:Type Button}" x:Key="SystemIconButton" 
            BasedOn="{StaticResource HoverlessButton}">
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
     </Style>
 
     <Style TargetType="{x:Type Button}" x:Key="WindowControlButton" 
            BasedOn="{StaticResource SystemIconButton}">
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>
         <Setter Property="Padding" Value="7"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -72,6 +75,7 @@
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="Margin" Value="0 20 0 0" />
+        <Setter Property="Focusable" Value="False"/>
 
         <Setter Property="local:IsBusyProperty.Value" Value="False"/>
 
@@ -157,6 +161,7 @@
     </Style>
 
     <Style x:Key="RoundedButton" TargetType="{x:Type Button}" >
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="WhiteSmoke"/>
@@ -243,6 +248,7 @@
         <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="5 2" />
+        <Setter Property="Focusable" Value="False"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -293,6 +299,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Focusable" Value="False"/>
 
         <Setter Property="Template">
             <Setter.Value>
