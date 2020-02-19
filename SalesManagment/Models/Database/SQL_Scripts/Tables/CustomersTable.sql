@@ -5,6 +5,7 @@ CREATE TABLE [dbo].[Customers](
 	[Customer_ID] [int] IDENTITY(1,1) NOT NULL,
 	[First_Name] [varchar](50) NULL,
 	[Last_Name] [varchar](50) NULL,
+	[Gender] [varchar](50) NULL,
 	[Telephone] [nchar](15) NULL,
 	[Email] [varchar](25) NULL,
 	[Image] [image] NULL,
