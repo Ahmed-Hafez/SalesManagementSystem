@@ -100,9 +100,8 @@ namespace SalesManagment
 
             if (dt.Rows.Count > 0)
             {
-                long id = dt.Rows[0].Field<int>("Category_ID");
                 string name = dt.Rows[0].Field<string>("Description");
-                return new Category(id, name);
+                return new Category(categoryID, name);
             }
             else
                 throw new Exception($"Category with the ID = {categoryID} is not found");

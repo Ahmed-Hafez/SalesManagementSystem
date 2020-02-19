@@ -28,7 +28,7 @@ namespace SalesManagment
 
         public static CategoriesManagementPage GetInstance { get; private set; } = new CategoriesManagementPage();
 
-        public CategoriesManagementPage()
+        private CategoriesManagementPage()
         {
             InitializeComponent();
             openAddingCategorySection = new DoubleAnimation(0, AddingCategorySectionHeight, TimeSpan.FromMilliseconds(100));

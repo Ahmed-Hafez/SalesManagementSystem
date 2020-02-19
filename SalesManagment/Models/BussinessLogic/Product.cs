@@ -89,7 +89,7 @@ namespace SalesManagment
         #region Static Methods
 
         /// <summary>
-        /// Getting all product categories from database
+        /// Getting all products from database
         /// </summary>
         /// <returns></returns>
         public static List<Product> GetAllProducts()
@@ -97,13 +97,19 @@ namespace SalesManagment
             var products = DataConnection.SelectData("Get_All_Products_Procedure", null);
             var productsList = new List<Product>();
 
-            // If categories found, return it
+            // If products found, return it
             if (products.Rows.Count > 0)
             {
                 for (int i = 0; i < products.Rows.Count; i++)
                 {
-                    long productID = Convert.ToInt64(products.Rows[i].Field<string>("Product_ID"));
-                    productsList.Add(GetProduct(productID));
+                    long id = Convert.ToInt64(products.Rows[i].Field<string>("Product_ID"));
+                    string name = products.Rows[i].Field<string>("Product_Label");
+                    string description = products.Rows[i].Field<string>("Product_Description");
+                    double quantity = products.Rows[i].Field<int>("Quantity_in_Stock");
+                    decimal price = Convert.ToDecimal(products.Rows[i].Field<string>("Price"));
+                    byte[] image = products.Rows[i].Field<byte[]>("Product_Image");
+                    long categoryId = products.Rows[i].Field<int>("Category_ID");
+                    productsList.Add(new Product(id, name, description, quantity, price, image, categoryId));
                 }
                 return productsList;
             }
@@ -227,7 +233,7 @@ namespace SalesManagment
         }
 
         /// <summary>
-        /// Returns the category name
+        /// Returns the product name
         /// </summary>
         public override string ToString()
         {

@@ -112,10 +112,15 @@ namespace SalesManagment
             // Categories
             var categoriesManagementPage = CategoriesManagementPage.GetInstance;
 
+            // Clients
+            var addinClientPage = AddingClientPage.GetInstance;
+            //var clientManagementPage = ClientManagementPage.GetInstance;
+
             // Filling the Dictionary
             mApplicationPages[ApplicationPage.AddingProducts] = addingProductsPage;
             mApplicationPages[ApplicationPage.ProductsManagement] = productManagementPage;
             mApplicationPages[ApplicationPage.CategoriesManagement] = categoriesManagementPage;
+            mApplicationPages[ApplicationPage.AddingClient] = addinClientPage;
 
             addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
@@ -131,26 +136,8 @@ namespace SalesManagment
         /// <param name="page">The page to get</param>
         public BasePage GetPage(ApplicationPage page)
         {
-            switch (page)
-            {
-                case ApplicationPage.Login:
-                case ApplicationPage.AddingProducts:
-                case ApplicationPage.ProductsManagement:
-                case ApplicationPage.CategoriesManagement:
-                case ApplicationPage.AddingClient:
-                case ApplicationPage.ClientsManagement:
-                case ApplicationPage.AddingSale:
-                case ApplicationPage.SalesManagement:
-                case ApplicationPage.AddingUser:
-                case ApplicationPage.UsersManagement:
-                case ApplicationPage.CreatingBackup:
-                case ApplicationPage.RestoringSavedCopy:
-                    CurrentPage = mApplicationPages[page];
-                    return CurrentPage;
-
-                default:
-                    return null;
-            }
+            CurrentPage = mApplicationPages[page];
+            return CurrentPage;
         }
 
         #endregion
