@@ -4,6 +4,15 @@ using System.Data.SqlClient;
 namespace SalesManagment
 {
     /// <summary>
+    /// The user type of the application
+    /// </summary>
+    public enum UserType
+    {
+        Manager,
+        Employee
+    }
+
+    /// <summary>
     /// The logic of the user of the application
     /// </summary>
     public class User
