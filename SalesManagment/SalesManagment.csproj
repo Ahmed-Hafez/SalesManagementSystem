@@ -151,8 +151,8 @@
     <Compile Include="ValueConverters\StringARGBToBrushConverter.cs" />
     <Compile Include="ViewModels\ApplicationDirector.cs" />
     <Compile Include="ViewModels\Base\BaseWindowViewModel.cs" />
-    <Compile Include="ViewModels\Base\ObseverPattern\Observer.cs" />
-    <Compile Include="ViewModels\Base\ObseverPattern\Subject.cs" />
+    <Compile Include="ViewModels\Base\ObseverPattern\IObserver.cs" />
+    <Compile Include="ViewModels\Base\ObseverPattern\ISubject.cs" />
     <Compile Include="ViewModels\Base\PagesFactory.cs" />
     <Compile Include="ViewModels\Base\WindowsFactory.cs" />
     <Compile Include="ViewModels\Pages\AddingClientPageViewModel.cs" />

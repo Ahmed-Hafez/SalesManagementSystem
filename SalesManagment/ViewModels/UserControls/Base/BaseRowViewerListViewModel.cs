@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace SalesManagment
 {
-    public abstract class BaseRowViewerListViewModel : BaseViewModel, Observer
+    public abstract class BaseRowViewerListViewModel : BaseViewModel, IObserver
     {
         #region Delegates
 

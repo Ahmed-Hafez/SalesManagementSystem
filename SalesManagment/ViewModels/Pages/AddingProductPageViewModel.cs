@@ -10,7 +10,7 @@ namespace SalesManagment
     /// <summary>
     /// The view model that controls the  AddingProductPage View
     /// </summary>
-    public class AddingProductPageViewModel : BasePageViewModel, Subject
+    public class AddingProductPageViewModel : BasePageViewModel, ISubject
     {
         #region Private Members
 
@@ -156,7 +156,7 @@ namespace SalesManagment
             AddProductCommand = new RelayCommand(AddProduct);
 
             // Initializing the observers list
-            Observers = new List<Observer>();
+            Observers = new List<IObserver>();
         }
 
         #endregion
@@ -268,14 +268,14 @@ namespace SalesManagment
         /// <summary>
         /// Observers which this subject provide data to them
         /// </summary>
-        private List<Observer> Observers;
+        private List<IObserver> Observers;
 
-        public void RegisterObserver(Observer observer)
+        public void RegisterObserver(IObserver observer)
         {
             Observers.Add(observer);
         }
 
-        public void RemoveObserver(Observer observer)
+        public void RemoveObserver(IObserver observer)
         {
             if (Observers.Contains(observer))
                 Observers.Remove(observer);
