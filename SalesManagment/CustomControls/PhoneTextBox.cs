@@ -19,19 +19,19 @@ namespace SalesManagment
 
         private void PhoneTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            string txt = ((PhoneTextBox)sender).Text + e.Text;
+            string str = ((PhoneTextBox)sender).Text + e.Text;
             int caretIndex = ((PhoneTextBox)sender).CaretIndex;
             if ((caretIndex == 0 && e.Text != "0") || 
                 (caretIndex == 1 && e.Text != "1") ||
                 (caretIndex == 2 && e.Text != "0" && e.Text != "1" && e.Text != "2" && e.Text != "5") ||
-                 txt.Length > 11)
+                 e.Text == "." ||
+                 str.Length > 11)
             {
                 e.Handled = true;
                 return;
             }
             Regex regex = new Regex(@"01*\d{0,9}");
-            bool ghghg = regex.IsMatch(txt);
-            e.Handled = !(ghghg);
+            e.Handled = !(regex.IsMatch(str));
         }
     }
 }
