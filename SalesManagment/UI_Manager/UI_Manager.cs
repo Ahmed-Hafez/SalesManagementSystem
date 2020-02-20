@@ -23,6 +23,8 @@ namespace SalesManagment
                 return new EditProductWindow();
             if (typeof(VMType).Equals(typeof(ProductReportingWindowViewModel)))
                 return new ProductReportingWindow();
+            if (typeof(VMType).Equals(typeof(EditClientWindowViewModel)))
+                return new EditClientWindow();
             return null;
         }
     }

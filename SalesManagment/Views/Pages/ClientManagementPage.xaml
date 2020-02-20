@@ -1,0 +1,54 @@
+﻿<local:BasePage x:Class="SalesManagment.ClientManagementPage" x:TypeArguments="local:ClientManagementPageViewModel"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:SalesManagment"
+                x:Name="ClientManagementView"
+                mc:Ignorable="d" 
+                d:DesignHeight="1100" d:DesignWidth="1500"
+                Title="Product Management">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <TextBox Grid.Row="0" 
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     FontSize="{StaticResource FontSizeMedium}"
+                     FontFamily="{StaticResource LatoRegular}"
+                     Foreground="{StaticResource ForegroundLightBrush}"
+                     Text="{Binding ElementName=ClientManagementView, Path=Title, FallbackValue='Clients Management'}" 
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     Margin="{Binding PageTitleMargin, FallbackValue='0 30 0 0'}"
+                     Height="60"
+                     Width="500"
+                     Style="{StaticResource RoundedTextBox}"
+                     BorderThickness="10,5"
+                     IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
+                     ContextMenu="{x:Null}"/>
+
+
+        <!--Content-->
+        <Border Grid.Row="1"
+                    BorderBrush="White"
+                    BorderThickness="3"
+                    MinWidth="{Binding MinFrameWidth}"
+                    Margin="{Binding BorderFrameMargin, FallbackValue='0 0 0 10'}"
+                    Padding="{Binding BorderFramePadding, FallbackValue='5'}"
+                    HorizontalAlignment="Center">
+
+            <!--Content-->
+            <StackPanel>
+                <local:ClientRowViewerList x:Name="clientsList" x:FieldModifier="public"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</local:BasePage>

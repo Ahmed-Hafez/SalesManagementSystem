@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\App.xaml
-21236020035
-221738760049
-80971530128
+25209184057
+23-1565530743
+90-1799784873
 26-467864871
-PropertyResources\PropertyResources.xaml;Styles\ComboBoxes.xaml;Styles\ScrollViewers.xaml;UserControls\ButtonList.xaml;UserControls\CategoryRowViewer.xaml;UserControls\CategoryRowViewerList.xaml;UserControls\PageAnimator.xaml;UserControls\ProductRowViewer.xaml;UserControls\ProductRowViewerList.xaml;Views\Pages\AddingClientPage.xaml;Views\Pages\AddingProductsPage.xaml;Views\Pages\CategoriesManagementPage.xaml;Views\Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Views\Pages\ProductManagementPage.xaml;Views\Windows\EditProductWindow.xaml;Views\Windows\ShellView.xaml;Views\Windows\Reports\ProductReportingWindow.xaml;
+PropertyResources\PropertyResources.xaml;Styles\ComboBoxes.xaml;Styles\ScrollViewers.xaml;UserControls\ButtonList.xaml;UserControls\CategoryRowViewer.xaml;UserControls\CategoryRowViewerList.xaml;UserControls\PageAnimator.xaml;UserControls\ProductRowViewer.xaml;UserControls\ClientRowViewer.xaml;UserControls\ClientRowViewerList.xaml;UserControls\ProductRowViewerList.xaml;Views\Pages\AddingClientPage.xaml;Views\Pages\AddingProductsPage.xaml;Views\Pages\CategoriesManagementPage.xaml;Views\Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Views\Pages\ClientManagementPage.xaml;Views\Pages\ProductManagementPage.xaml;Views\Windows\EditClientWindow.xaml;Views\Windows\EditProductWindow.xaml;Views\Windows\ShellView.xaml;Views\Windows\Reports\ProductReportingWindow.xaml;
 
 False
 

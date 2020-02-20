@@ -210,3 +210,11 @@ F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\SalesManagment.csprojAssemblyReference.cache
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingClientPage.g.cs
 F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\AddingClientPage.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ClientRowViewer.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ClientRowViewer.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ClientRowViewerList.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\UserControls\ClientRowViewerList.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ClientManagementPage.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Pages\ClientManagementPage.baml
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\EditClientWindow.g.cs
+F:\GitHub Projects\SalesManagementSystem\SalesManagment\obj\Debug\Views\Windows\EditClientWindow.baml

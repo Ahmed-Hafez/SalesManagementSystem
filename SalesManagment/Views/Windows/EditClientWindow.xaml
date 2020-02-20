@@ -1,0 +1,264 @@
+﻿<Window x:Class="SalesManagment.EditClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesManagment"
+        mc:Ignorable="d"
+        x:Name="EditingClientWindow"
+        Background="{StaticResource DarkToLightToDarkSky}"
+        Title="Edit Client Data" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" 
+                Background="LightGray"
+                Opacity="0.05"
+                MouseDown="DraggableBorder_MouseDown"/>
+        
+        <TextBox Grid.Row="1" 
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
+                 FontSize="{StaticResource FontSizeMedium}"
+                 FontFamily="{StaticResource LatoRegular}"
+                 Foreground="{StaticResource ForegroundLightBrush}"
+                 Text="{Binding ElementName=EditingClientWindow, Path=Title, FallbackValue='Edit Client Data'}" 
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Top"
+                 Height="60"
+                 Width="500"
+                 Style="{StaticResource RoundedTextBox}"
+                 BorderThickness="10,5"
+                 IsEnabled="False" Background="{StaticResource DarktSkyBrush}"
+                 ContextMenu="{x:Null}"/>
+
+        <Border Grid.Row="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0 0 0 60"
+                Padding="20 40 20 15"
+                Background="Transparent"
+                BorderThickness="3"
+                BorderBrush="White">
+
+            <Grid Grid.Row="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Margin="-3">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--First Name Section-->
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="First Name"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 5 0 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxPlaceHolder}"
+                         Margin="0"
+                         Background="Transparent"
+                         Tag="First Name"
+                         Text="{Binding ClientFirstName}"
+                         FontFamily="{StaticResource LatoRegular}"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Foreground="{StaticResource ForegroundLightBrush}"
+                         SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                         CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                         Width="200"
+                         TabIndex="1"/>
+
+                <!--Second Name Section-->
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Second Name"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 5 0 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxPlaceHolder}"
+                         Margin="0"
+                         Background="Transparent"
+                         Tag="Second Name"
+                         Text="{Binding ClientSecondName}"
+                         FontFamily="{StaticResource LatoRegular}"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Foreground="{StaticResource ForegroundLightBrush}"
+                         SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                         CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                         Width="200"
+                         TabIndex="2"/>
+
+                <!--Gender Section-->
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Gender"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 5 0 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                <ComboBox Grid.Row="2"
+                          Grid.Column="1"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          Style="{StaticResource HollowComboBox}"
+                          Margin="0"
+                          FontFamily="{StaticResource LatoRegular}"
+                          FontSize="{StaticResource FontSizeRegular}"
+                          Foreground="{StaticResource ForegroundLightBrush}"
+                          BorderBrush="{StaticResource ForegroundLightBrush}"
+                          Width="200"
+                          ItemsSource="{Binding Source={StaticResource GenderEnumMenu}}"
+                          SelectedItem="{Binding ClientGender}"
+                          TabIndex="2"/>
+
+                <!--Phone Section-->
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Phone"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 5 0 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                <local:PhoneTextBox Grid.Row="3"
+                                     Grid.Column="1"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Style="{StaticResource TextBoxPlaceHolder}"
+                                     Margin="0"
+                                     Background="Transparent"
+                                     Tag="Phone"
+                                     Text="{Binding ClientPhone}"
+                                     FontFamily="{StaticResource LatoRegular}"
+                                     FontSize="{StaticResource FontSizeRegular}"
+                                     Foreground="{StaticResource ForegroundLightBrush}"
+                                     SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                     CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                                     Width="200"
+                                     TabIndex="3"/>
+
+                <!--Email Section-->
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Email"
+                           FontFamily="{StaticResource LatoRegular}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           Margin="0 5 0 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="4"
+                         Grid.Column="1"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxPlaceHolder}"
+                         Margin="0"
+                         Background="Transparent"
+                         Tag="Email"
+                         Text="{Binding ClientEmail}"
+                         FontFamily="{StaticResource LatoRegular}"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Foreground="{StaticResource ForegroundLightBrush}"
+                         SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                         CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                         Width="200"
+                         TabIndex="4"/>
+
+                <!--Photo Section-->
+                <Border Grid.Row="1"
+                        Grid.RowSpan="6"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="250"
+                        Margin="50 -20 0 0"
+                        VerticalAlignment="Top"
+                        BorderThickness="2"
+                        BorderBrush="{StaticResource ForegroundLightBrush}"
+                        Background="{StaticResource LightWhiteBrush}">
+
+                    <Image Source="{Binding ClientImage,  Converter={local:ObjectToImageSourceValueConverter}}" 
+                               Stretch="Fill"/>
+
+                </Border>
+                <Button Grid.Row="5"
+                        Grid.RowSpan="2"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Margin="25 0 0 0"
+                        Width="250"
+                        Content="Select Photo"
+                        Style="{StaticResource RoundedButton}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Command="{Binding SelectPhotoCommand}"
+                        TabIndex="5"/>
+
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="7"
+                            Grid.Column="2">
+
+                    <Button 
+                        Margin="0 10 10 0"
+                        Width="200"
+                        Content="Edit"
+                        Style="{StaticResource  RegularButton}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Command="{Binding EditCommand}"
+                        TabIndex="6"/>
+
+                    <Button 
+                        Margin="0 10 0 0"
+                        Width="188"
+                        Content="Cancel"
+                        Style="{StaticResource  RegularButton}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Command="{Binding CancelCommand}"
+                        TabIndex="7"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</Window>

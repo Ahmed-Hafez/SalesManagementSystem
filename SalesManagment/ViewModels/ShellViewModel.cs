@@ -35,7 +35,7 @@ namespace SalesManagment
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage mCurrentPage = ApplicationPage.Login;
+        public ApplicationPage mCurrentPage = ApplicationPage.ClientsManagement;
 
         #endregion
 
@@ -292,7 +292,12 @@ namespace SalesManagment
                             Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.AddingClient
                         },
-                        new MenuItemViewModel { Header="Clients Management"},
+                        new MenuItemViewModel 
+                        {
+                            Header = "Clients Management",
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.ClientsManagement
+                        },
                         new MenuItemViewModel { Header="Add Sale" },
                         new MenuItemViewModel { Header="Sales Management"}
                     }

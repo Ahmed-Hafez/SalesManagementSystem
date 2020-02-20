@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -132,7 +133,7 @@ namespace SalesManagment
                 mClientGender = value;
                 if (!mIsImageUploaded)
                 {
-                    if(ClientGender == GenderType.Male)
+                    if (ClientGender == GenderType.Male)
                         ClientImagePath = @"..\..\Images\Male.png";
                     else
                         ClientImagePath = @"..\..\Images\Female.png";
@@ -209,7 +210,7 @@ namespace SalesManagment
         /// Attempts to add a new product to the database
         /// </summary>
         private void AddClient()
-        {   
+        {
             if (string.IsNullOrEmpty(ClientFirstName) || string.IsNullOrWhiteSpace(ClientFirstName))
             {
                 MessageBox.Show("First name cann't be empty", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -225,17 +226,19 @@ namespace SalesManagment
                 MessageBox.Show("Phone number must be 11 digits", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
             #region Email Validation
 
-            // TODO: Validate that professionally
-            // Trivial email validation for now
-            Regex regex = new Regex(@".+@.+\..+");
-            if (ClientEmail == null)
+            if (string.IsNullOrEmpty(ClientEmail) || string.IsNullOrWhiteSpace(ClientEmail))
             {
                 MessageBox.Show("Email can't be empty", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else if(!regex.IsMatch(ClientEmail))
+            try
+            {
+                MailAddress address = new MailAddress(ClientEmail);
+            }
+            catch (System.Exception)
             {
                 MessageBox.Show("Email format isn't valid", "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -243,11 +246,10 @@ namespace SalesManagment
 
             #endregion
 
-
             Client client = new Client
                 (
-                ClientFirstName,
-                ClientSecondName,
+                ClientFirstName.Trim(),
+                ClientSecondName.Trim(),
                 ClientGender,
                 ClientPhone,
                 ClientEmail,
@@ -262,7 +264,8 @@ namespace SalesManagment
                 ClientGender = GenderType.Male;
                 ClientPhone = null;
                 ClientEmail = null;
-                ClientImagePath= defaultImagePath;
+                ClientImagePath = defaultImagePath;
+                mIsImageUploaded = false;
             }
             else
                 MessageBox.Show("There is already a client with the same phone number or email", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -291,18 +294,17 @@ namespace SalesManagment
         public void NotifyObservers()
         {
 
-            //Observers.ForEach((observer) => observer.Update<ProductRowViewerViewModel>(
-            //    new ProductRowViewerViewModel
-            //    {
-            //        ID = ProductID.GetValueOrDefault(),
-            //        Name = ProductName,
-            //        Category = ProductCategory.Value,
-            //        Description = ProductDescription,
-            //        Price = ProductPrice.GetValueOrDefault(),
-            //        StoredQuantity = ProductStoredQuantity.GetValueOrDefault(),
-            //        Picture = mProductImage
-            //    })
-            //);
+            Observers.ForEach((observer) => observer.Update<ClientRowViewerViewModel>(
+                new ClientRowViewerViewModel
+                {
+                    FirstName = ClientFirstName,
+                    SecondName = ClientSecondName,
+                    Gender = ClientGender,
+                    Phone = ClientPhone,
+                    Email = ClientEmail,
+                    Image = mClientImage
+                })
+            );
         }
 
         #endregion

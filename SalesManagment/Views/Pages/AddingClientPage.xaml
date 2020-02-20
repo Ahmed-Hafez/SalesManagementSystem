@@ -90,7 +90,7 @@
                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
                          CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
                          Width="200"
-                         TabIndex="2"/>
+                         TabIndex="1"/>
 
                 <!--Second Name Section-->
                 <TextBlock Grid.Row="1"
@@ -142,7 +142,7 @@
                           Width="200"
                           ItemsSource="{Binding Source={StaticResource GenderEnumMenu}}"
                           SelectedItem="{Binding ClientGender}"
-                          TabIndex="1"/>
+                          TabIndex="2"/>
                 
                 <!--Phone Section-->
                 <TextBlock Grid.Row="3"
@@ -169,7 +169,7 @@
                                      SelectionBrush="{StaticResource LightRedSelectionBrush}"
                                      CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
                                      Width="200"
-                                     TabIndex="2"/>
+                                     TabIndex="3"/>
 
                 <!--Email Section-->
                 <TextBlock Grid.Row="4"
@@ -196,7 +196,7 @@
                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
                          CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
                          Width="200"
-                         TabIndex="2"/>
+                         TabIndex="4"/>
 
                 <!--Photo Section-->
                 <Border Grid.Row="1"
@@ -224,7 +224,7 @@
                         Style="{StaticResource RoundedButton}"
                         FontSize="{StaticResource FontSizeRegular}"
                         Command="{Binding SelectPhotoCommand}"
-                        TabIndex="6"/>
+                        TabIndex="5"/>
 
 
                 <Button Grid.Row="7"
@@ -235,7 +235,7 @@
                         Style="{StaticResource  RegularButton}"
                         FontSize="{StaticResource FontSizeRegular}"
                         Command="{Binding AddClientCommand}"
-                        TabIndex="7"/>
+                        TabIndex="6"/>
 
             </Grid>
 

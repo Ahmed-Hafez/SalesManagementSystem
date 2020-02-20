@@ -75,7 +75,6 @@
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="Margin" Value="0 20 0 0" />
-        <Setter Property="Focusable" Value="False"/>
 
         <Setter Property="local:IsBusyProperty.Value" Value="False"/>
 

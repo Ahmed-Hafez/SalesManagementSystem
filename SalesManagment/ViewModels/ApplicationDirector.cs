@@ -114,19 +114,23 @@ namespace SalesManagment
 
             // Clients
             var addinClientPage = AddingClientPage.GetInstance;
-            //var clientManagementPage = ClientManagementPage.GetInstance;
+            var clientManagementPage = ClientManagementPage.GetInstance;
 
             // Filling the Dictionary
             mApplicationPages[ApplicationPage.AddingProducts] = addingProductsPage;
             mApplicationPages[ApplicationPage.ProductsManagement] = productManagementPage;
             mApplicationPages[ApplicationPage.CategoriesManagement] = categoriesManagementPage;
             mApplicationPages[ApplicationPage.AddingClient] = addinClientPage;
+            mApplicationPages[ApplicationPage.ClientsManagement] = clientManagementPage;
 
             addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
 
             categoriesManagementPage.ViewModel.RegisterObserver(
                 (CategoryRowViewerListViewModel)categoriesManagementPage.CategoriesList.DataContext);
+
+            addinClientPage.ViewModel.RegisterObserver(
+                (ClientRowViewerListViewModel)clientManagementPage.clientsList.DataContext);
 
         }
 

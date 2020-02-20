@@ -258,8 +258,8 @@ namespace SalesManagment
         public void Edit()
         {
             SqlParameter[] sqlParameters = new SqlParameter[7];
-            sqlParameters[1] = new SqlParameter("@Customer_ID", SqlDbType.Int);
-            sqlParameters[1].Value = FirstName;
+            sqlParameters[0] = new SqlParameter("@Customer_ID", SqlDbType.Int);
+            sqlParameters[0].Value = ID;
             sqlParameters[1] = new SqlParameter("@First_Name", SqlDbType.VarChar);
             sqlParameters[1].Value = FirstName;
             sqlParameters[2] = new SqlParameter("@Last_Name", SqlDbType.VarChar);

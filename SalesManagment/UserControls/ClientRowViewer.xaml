@@ -1,0 +1,213 @@
+﻿<local:BaseRowViewer x:Class="SalesManagment.ClientRowViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesManagment"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900"
+             Margin="0 0 0 10" 
+             d:DataContext="{x:Static local:ClientRowViewerDesignModel.Instance}">
+    
+
+    <Border BorderBrush="White">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <!--Product Content-->
+                <RowDefinition Height="auto"/>
+
+                <!--Show and Delete Buttons-->
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+
+            <!--Content-->
+            <Grid Grid.Row="0"
+              Background="{StaticResource DarkToLightToDarkSky}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+
+                    <!--Client Image-->
+                    <ColumnDefinition Width="2*" MaxWidth="700"/>
+
+                    <!--Client Details-->
+                    <ColumnDefinition Width="6*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <!--Image box frame-->
+                <Border Grid.Column="0"
+                        MaxHeight="350"
+                        Background="#29FFFFFF"
+                        BorderBrush="White"
+                        BorderThickness="4">
+
+                    <Image Source="{Binding Image, Converter={local:ByteArrayToImageSourceValueConverter}}"
+                           Stretch="Fill"/>
+
+                </Border>
+
+
+                <!--Details frame-->
+                <Border Grid.Column="1"
+                        Background="Transparent"
+                        BorderBrush="White"
+                        BorderThickness="4">
+
+                    <!--Details-->
+                    <Grid Margin="15 15 15 0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+
+                            <!--Dummy row, it were used during design, you can ignore it-->
+                            <RowDefinition Height="auto" />
+
+                            <!--The actual design rows-->
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <!--________________________-->
+
+                            <!--Dummy row, it were used during design, you can ignore it-->
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--Name Section-->
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="0"
+                               Text="Name"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="2"
+                               Text="{Binding FullName}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Gender Section-->
+                        <TextBlock Grid.Row="2" 
+                               Grid.Column="0"
+                               Text="Gender"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="2" 
+                               Grid.Column="2"
+                               Text="{Binding Gender}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Phone Section-->
+                        <TextBlock Grid.Row="3" 
+                               Grid.Column="0"
+                               Text="Phone"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="3"
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="3"
+                               Grid.Column="2"
+                               Text="{Binding Phone}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+
+                        <!--Email Section-->
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="0"
+                               Text="Email"
+                               Foreground="{StaticResource DataBrush}"
+                               FontFamily="{StaticResource LatoHeavy}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="1"
+                               Padding="10 0"
+                               Text=":"
+                               Foreground="{StaticResource DataBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+                        <TextBlock Grid.Row="4" 
+                               Grid.Column="2"
+                               Text="{Binding Email}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeRegular}"/>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Content="Print" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 10 20"
+                        Padding="10"
+                        Width="150"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding PrintCommand}"/>
+                
+                <Button Content="Edit" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 10 20"
+                        Padding="10"
+                        Width="150"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding EditCommand}"/>
+
+                <Button Content="Delete" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 0 20"
+                        Padding="10"
+                        Width="150"
+                        Style="{StaticResource RegularButton}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Command="{Binding DeleteCommand}"/>
+
+            </StackPanel>
+            
+            </Grid>
+    
+    </Border>
+
+</local:BaseRowViewer>
