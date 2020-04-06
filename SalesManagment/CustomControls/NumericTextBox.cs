@@ -15,6 +15,11 @@ namespace SalesManagment
         public bool HasDecimalPoint { get; set; } = true;
 
         /// <summary>
+        /// The maximum number of characters to be written in the textbox
+        /// </summary>
+        public int MaxCharacters { get; set; } = int.MaxValue;
+
+        /// <summary>
         /// Initializes a new instance from <see cref="NumericTextBox"/> class
         /// </summary>
         public NumericTextBox()
@@ -24,10 +29,18 @@ namespace SalesManagment
 
         private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            string writtenText = ((NumericTextBox)sender).Text;
+
+            if ((writtenText + e.Text).Length > MaxCharacters)
+            {
+                e.Handled = true;
+                return;
+            }
+
             // Make sure that the number has only one decimal point at most
             bool HasDot = false;
             Regex regex = new Regex(@"\d*\.\d*");
-            if (regex.IsMatch(((NumericTextBox)sender).Text))
+            if (regex.IsMatch(writtenText))
                 HasDot = true;
 
             if(HasDecimalPoint && !HasDot)
