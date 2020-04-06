@@ -1,11 +1,11 @@
 ﻿namespace SalesManagment
 {
-    public interface IObserver
+    public interface IObserver<TDad>
     {
         /// <summary>
         /// Updating the observers when any thing changed
         /// </summary>
         void Update<T>(params object[] parameters)
-            where T : BaseRowViewerViewModel;
+            where T : TDad;
     }
 }

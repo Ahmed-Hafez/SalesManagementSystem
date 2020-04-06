@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace SalesManagment
 {
-    public class AddingClientPageViewModel : BasePageViewModel, ISubject
+    public class AddingClientPageViewModel : BasePageViewModel, ISubject<BaseRowViewerViewModel>
     {
         #region Private Members
 
@@ -180,7 +180,7 @@ namespace SalesManagment
             mClientImage = defaultClientImage;
 
             // Initializing the observers list
-            Observers = new List<IObserver>();
+            Observers = new List<IObserver<BaseRowViewerViewModel>>();
         }
 
         #endregion
@@ -278,14 +278,14 @@ namespace SalesManagment
         /// <summary>
         /// Observers which this subject provide data to them
         /// </summary>
-        private List<IObserver> Observers;
+        private List<IObserver<BaseRowViewerViewModel>> Observers;
 
-        public void RegisterObserver(IObserver observer)
+        public void RegisterObserver(IObserver<BaseRowViewerViewModel> observer)
         {
             Observers.Add(observer);
         }
 
-        public void RemoveObserver(IObserver observer)
+        public void RemoveObserver(IObserver<BaseRowViewerViewModel> observer)
         {
             if (Observers.Contains(observer))
                 Observers.Remove(observer);

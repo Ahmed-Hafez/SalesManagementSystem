@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace SalesManagment
 {
-    public class CategoriesManagementPageViewModel : BasePageViewModel, ISubject
+    public class CategoriesManagementPageViewModel : BasePageViewModel, ISubject<BaseRowViewerViewModel>
     {
         #region Public Properties
 
@@ -76,7 +76,7 @@ namespace SalesManagment
             CancelCommand = new RelayCommand(CancelAddition);
 
             // Initializing the observers list
-            Observers = new List<IObserver>();
+            Observers = new List<IObserver<BaseRowViewerViewModel>>();
         }
 
         /// <summary>
@@ -127,14 +127,14 @@ namespace SalesManagment
         /// <summary>
         /// Observers which this subject provide data to them
         /// </summary>
-        private List<IObserver> Observers;
+        private List<IObserver<BaseRowViewerViewModel>> Observers;
 
-        public void RegisterObserver(IObserver observer)
+        public void RegisterObserver(IObserver<BaseRowViewerViewModel> observer)
         {
             Observers.Add(observer);
         }
 
-        public void RemoveObserver(IObserver observer)
+        public void RemoveObserver(IObserver<BaseRowViewerViewModel> observer)
         {
             if (Observers.Contains(observer))
                 Observers.Remove(observer);
