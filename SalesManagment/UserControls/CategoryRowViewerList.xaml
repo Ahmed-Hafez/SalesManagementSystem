@@ -72,7 +72,7 @@
 
         </Border>
 
-        <!--Search section-->
+        <!--List section-->
         <Border Grid.Row="1"
             Background="{StaticResource DarktSkyBrush}"
             BorderBrush="{StaticResource BackgroundVeryLightBrush}"
@@ -160,7 +160,6 @@
                                 BorderBrush="{Binding ElementName=MainBorder, Path=BorderBrush}"
                                 BorderThickness="0 3 0 0"
                                 Margin="0 -3 0 0">
-
 
                     <ScrollViewer Template="{StaticResource RoundedScrollViewer}"
                               VerticalScrollBarVisibility="Visible">

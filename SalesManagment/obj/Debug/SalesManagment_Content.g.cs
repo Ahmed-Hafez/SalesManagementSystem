@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/get_order_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/get_orderdetails_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_order_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_orderdetails_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/pages/add_category_procedure.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/get_current_orderid_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_category_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_client_procedure.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/database/sql_scripts/storedprocedures/add_product_procedure.sql")]

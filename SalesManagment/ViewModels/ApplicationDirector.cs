@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -59,11 +60,6 @@ namespace SalesManagment
         }
 
         /// <summary>
-        /// The current user of the application after login
-        /// </summary>
-        public static User CurrentUser { get; set; }
-
-        /// <summary>
         /// The current page previewed in the shell
         /// </summary>
         public static BasePage CurrentPage { get; private set; }
@@ -116,12 +112,16 @@ namespace SalesManagment
             var addinClientPage = AddingClientPage.GetInstance;
             var clientManagementPage = ClientManagementPage.GetInstance;
 
+            // Cart
+            var cartPage = CartPage.GetInstance;
+
             // Filling the Dictionary
             mApplicationPages[ApplicationPage.AddingProducts] = addingProductsPage;
             mApplicationPages[ApplicationPage.ProductsManagement] = productManagementPage;
             mApplicationPages[ApplicationPage.CategoriesManagement] = categoriesManagementPage;
             mApplicationPages[ApplicationPage.AddingClient] = addinClientPage;
             mApplicationPages[ApplicationPage.ClientsManagement] = clientManagementPage;
+            mApplicationPages[ApplicationPage.Cart] = cartPage;
 
             addingProductsPage.ViewModel.RegisterObserver(
                 (ProductRowViewerListViewModel)productManagementPage.ProductsList.DataContext);
@@ -131,9 +131,7 @@ namespace SalesManagment
 
             addinClientPage.ViewModel.RegisterObserver(
                 (ClientRowViewerListViewModel)clientManagementPage.clientsList.DataContext);
-
         }
-
         /// <summary>
         /// The Factory Method
         /// </summary>

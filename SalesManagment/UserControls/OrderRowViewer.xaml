@@ -1,0 +1,197 @@
+﻿<local:BaseRowViewer x:Class="SalesManagment.OrderRowViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesManagment"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800">
+
+    <Button>
+
+        <Button.Style>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="MouseEnter">
+                                    <ColorAnimation To="{StaticResource LightWhiteColor}" 
+                                                    From="Transparent" 
+                                                    Duration="0:0:0.5"
+                                                    Storyboard.TargetName="MainBorder"
+                                                    Storyboard.TargetProperty="Background.Color"/>
+                                </Storyboard>
+
+                                <Storyboard x:Key="MouseLeave">
+                                    <ColorAnimation To="Transparent" 
+                                                    From="{StaticResource LightWhiteColor}" 
+                                                    Duration="0:0:0.5"
+                                                    Storyboard.TargetName="MainBorder"
+                                                    Storyboard.TargetProperty="Background.Color"/>
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+
+                            <!--Design-->
+                            <Grid x:Name="MainBorder" Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--Line Number-->
+                                <Border Grid.Column="0"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="0 2 2 2"
+                                        Height="50">
+
+                                        <TextBlock Text="{Binding RowNumber, FallbackValue='i'}"
+                                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                                   FontSize="{StaticResource FontSizeSmall}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+
+                                </Border>
+
+                                <!--Product Name-->
+                                <Border Grid.Column="1"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+
+                                    <TextBlock Text="{Binding ProductName, FallbackValue='ProductName'}"
+                                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                                   FontSize="{StaticResource FontSizeSmall}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="{Binding IsEditable, Converter={local:BooleanToVisibiltyValueConverter}}"/>
+
+                                </Border>
+
+                                <!--Product Price-->
+                                <Border Grid.Column="2"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+
+                                    <TextBlock Text="{Binding ProductPrice, FallbackValue='Product Price'}"
+                                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                                   FontSize="{StaticResource FontSizeSmall}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="{Binding IsEditable, Converter={local:BooleanToVisibiltyValueConverter}}"/>
+
+                                </Border>
+
+                                <!--Quantity-->
+                                <Border Grid.Column="3"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+
+                                    <local:NumericTextBox VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"
+                                                          Style="{StaticResource TextBoxPlaceHolder}"
+                                                          Margin="0"
+                                                          Background="Transparent"
+                                                          Tag="1"
+                                                          Text="{Binding QuantityString, FallbackValue='1', UpdateSourceTrigger=PropertyChanged}"
+                                                          FontFamily="{StaticResource LatoRegular}"
+                                                          FontSize="{StaticResource FontSizeRegular}"
+                                                          Foreground="{StaticResource ForegroundLightBrush}"
+                                                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                                          CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                                                          Width="75"
+                                                          MaxWidth="80"
+                                                          TextAlignment="Center"
+                                                          HasDecimalPoint="False"
+                                                          IsEnabled="{Binding CanDelete}"/>
+                                </Border>
+
+                                <!--Discount-->
+                                <Border Grid.Column="4"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+
+                                    <local:NumericTextBox VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"
+                                                          Style="{StaticResource TextBoxPlaceHolder}"
+                                                          Margin="0"
+                                                          Background="Transparent"
+                                                          Tag="0.0"
+                                                          Text="{Binding DiscountString, FallbackValue='0.0', UpdateSourceTrigger=PropertyChanged}"
+                                                          FontFamily="{StaticResource LatoRegular}"
+                                                          FontSize="{StaticResource FontSizeRegular}"
+                                                          Foreground="{StaticResource ForegroundLightBrush}"
+                                                          SelectionBrush="{StaticResource LightRedSelectionBrush}"
+                                                          CaretBrush="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Foreground}"
+                                                          Width="75"
+                                                          MaxWidth="80"
+                                                          TextAlignment="Center"
+                                                          HasDecimalPoint="True"
+                                                          IsEnabled="{Binding CanDelete}"/>
+
+                                    
+                                </Border>
+
+                                <!--Total Price-->
+                                <Border Grid.Column="5"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+
+                                    <TextBlock Text="{Binding TotalPrice, FallbackValue='Total Price'}"
+                                                   Foreground="{StaticResource ForegroundLightBrush}"
+                                                   FontSize="{StaticResource FontSizeSmall}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="{Binding IsEditable, Converter={local:BooleanToVisibiltyValueConverter}}"/>
+
+                                </Border>
+
+
+                                <!--Delete-->
+                                <Border Grid.Column="10"
+                                        BorderBrush="{StaticResource BackgroundVeryLightBrush}"
+                                        BorderThickness="2"
+                                        Height="50">
+                                    
+                                    <Button Content="Delete"
+                                            Margin="10"
+                                            Width="60"
+                                            Style="{StaticResource RegularButton}" 
+                                            FontSize="{StaticResource FontSizeSmall}"
+                                            Command="{Binding DeleteCommand}"
+                                            IsEnabled="{Binding CanDelete}"/>
+                                </Border>
+
+                            </Grid>
+
+                            <!--Triggers-->
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource DarkSkyToLightSky}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Opacity" Value="0.9" />
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource DarkSkyToLightSky}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Button.Style>
+
+    </Button>
+</local:BaseRowViewer>

@@ -100,6 +100,8 @@
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="CustomControls\PhoneTextBox.cs" />
     <Compile Include="Models\BussinessLogic\Client.cs" />
+    <Compile Include="Models\BussinessLogic\Order.cs" />
+    <Compile Include="Models\BussinessLogic\OrderLine.cs" />
     <Compile Include="Reports\ProductReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,8 +113,14 @@
     <Compile Include="UI_Manager\IUI_Manager.cs" />
     <Compile Include="UI_Manager\UI_Manager.cs" />
     <Compile Include="UserControls\Base\BaseRowViewer.cs" />
+    <Compile Include="UserControls\OrderRowViewer.cs">
+      <DependentUpon>OrderRowViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CategoryRowViewer.xaml.cs">
       <DependentUpon>CategoryRowViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OrderRowViewerList.xaml.cs">
+      <DependentUpon>OrderRowViewerList.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CategoryRowViewerList.xaml.cs">
       <DependentUpon>CategoryRowViewerList.xaml</DependentUpon>
@@ -158,10 +166,12 @@
     <Compile Include="ViewModels\Pages\AddingClientPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SalesManagementPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\CategoriesManagementPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\ClientManagementPageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\OrderRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\CategoryRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\CategoryRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\DesignModels\ClientRowViewerDesignModel.cs" />
@@ -171,6 +181,7 @@
     <Compile Include="ViewModels\UserControls\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\Pages\ProductManagementPageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\ClientRowViewerListViewModel.cs" />
+    <Compile Include="ViewModels\UserControls\OrderRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\ProductRowViewerListViewModel.cs" />
     <Compile Include="ViewModels\UserControls\ClientRowViewerViewModel.cs" />
     <Compile Include="ViewModels\UserControls\ProductRowViewerViewModel.cs" />
@@ -187,6 +198,9 @@
     <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
     <Compile Include="Views\Pages\CategoriesManagementPage.xaml.cs">
       <DependentUpon>CategoriesManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -234,9 +248,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\OrderRowViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\CategoryRowViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\OrderRowViewerList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\CategoryRowViewerList.xaml">
       <SubType>Designer</SubType>
@@ -271,6 +293,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\CategoriesManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\CartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -396,10 +422,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_Order_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_OrderDetails_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Order_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_OrderDetails_Procedure.sql" />
+    <Content Include="Views\Pages\Add_Category_Procedure.sql" />
     <Resource Include="Images\pexels-photo-40120_650x434_acf_cropped.jpeg" />
     <Resource Include="Images\unnamed.jpg" />
     <Resource Include="Images\female.png" />
     <Resource Include="Images\Male.png" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_Current_OrderID_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Category_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Client_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Product_Procedure.sql" />

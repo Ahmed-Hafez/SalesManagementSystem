@@ -282,7 +282,7 @@ namespace SalesManagment
                 },
                 new MenuItemViewModel
                 {
-                    Header = "Clients" ,
+                    Header = "Sales" ,
                     ForgroundBrushARGB = "FFFFFFFF",
                     MenuItems = new ObservableCollection<MenuItemViewModel>
                     {
@@ -298,8 +298,12 @@ namespace SalesManagment
                             Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
                             CommandParameter = ApplicationPage.ClientsManagement
                         },
-                        new MenuItemViewModel { Header="Add Sale" },
-                        new MenuItemViewModel { Header="Sales Management"}
+                        new MenuItemViewModel 
+                        { 
+                            Header="Cart",
+                            Command = new ParameterizedRelayCommand((parameter) => AddRelatedPage(parameter)),
+                            CommandParameter = ApplicationPage.Cart
+                        }
                     }
                 },
                 new MenuItemViewModel

@@ -34,6 +34,11 @@ namespace SalesManagment
         /// </summary>
         public UserType UserType { get; set; }
 
+        /// <summary>
+        /// The current user of the application after login
+        /// </summary>
+        public static User CurrentUser { get; private set; }
+
         #endregion
 
         #region Methods
@@ -60,6 +65,8 @@ namespace SalesManagment
                 Username = username;
                 Password = password;
                 UserType = userType;
+
+                CurrentUser = this;
 
                 return true;
             }

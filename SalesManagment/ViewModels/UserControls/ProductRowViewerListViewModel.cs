@@ -136,6 +136,8 @@ namespace SalesManagment
             sqlParameters[0].Value = ((ProductRowViewerViewModel)viewModel).ID.ToString();
 
             DataConnection.ExcuteCommand("DeleteProduct", sqlParameters);
+
+            OrderRowViewerListViewModel.Instance.RemoveFromCart((ProductRowViewerViewModel)viewModel);
         }
 
         /// <summary>
@@ -167,6 +169,7 @@ namespace SalesManagment
             productRowViewerViewModel.Price = editProductWindowViewModel.NewProductData.Price;
             productRowViewerViewModel.Picture = editProductWindowViewModel.NewProductData.Image;
             productRowViewerViewModel.Category = editProductWindowViewModel.NewProductData.Category;
+            productRowViewerViewModel.Update();
         }
 
         /// <summary>

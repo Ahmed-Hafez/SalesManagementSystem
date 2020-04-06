@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace SalesManagment
 {
-    public abstract class BaseRowViewerListViewModel : BaseViewModel, IObserver
+    public abstract class BaseRowViewerListViewModel : BaseViewModel, IObserver<BaseRowViewerViewModel>
     {
         #region Delegates
 
@@ -61,7 +61,7 @@ namespace SalesManagment
             get => mSearchText;
             set
             {
-                if (string.IsNullOrEmpty(mSearchText) || string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(mSearchText) || string.IsNullOrEmpty(value) || value.StartsWith(mSearchText))
                 {
                     mSearchText = value;
                     SearchForward();
@@ -87,6 +87,15 @@ namespace SalesManagment
         /// The duration of the row viewer loading animation
         /// </summary>
         protected int LoadAnimationDuration { get; set; } = 300;
+
+        #region Protected Events
+
+        /// <summary>
+        /// Fire when searching is finished
+        /// </summary>
+        protected event Action SearchFinished;
+
+        #endregion
 
         #endregion
 
@@ -230,12 +239,14 @@ namespace SalesManagment
                 ApplicationDirector.MainThread.BeginInvoke(initailizerAction);
 
                 // Adding the items to the containers
-                if (SearchText != "")
+                if (SearchText != "" || AllItems == null)
                     foreach (var item in Search())
                         addingMethod(item);
-                else if (AllItems != null)
+                else if (AllItems.Count != 0)
                     foreach (var item in AllItems)
                         addingMethod(item);
+
+                SearchFinished?.Invoke();
             });
             SearcherThread.Start();
         }
@@ -278,6 +289,7 @@ namespace SalesManagment
                     ApplicationDirector.MainThread.BeginInvoke(AddingAction, item);
                     Thread.Sleep(LoadAnimationDuration);
                 };
+                SearchFinished?.Invoke();
             });
             SearcherThread.Start();
         }

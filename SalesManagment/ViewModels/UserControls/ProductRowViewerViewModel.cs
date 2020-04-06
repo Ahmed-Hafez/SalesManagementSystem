@@ -1,11 +1,19 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 
 namespace SalesManagment
 {
     public class ProductRowViewerViewModel : BaseRowViewerViewModel
     {
+        #region Public Events
+        
+        /// <summary>
+        /// Fire when product is updated
+        /// </summary>
+        public event Action ProductUpdated;
+
+        #endregion
+        
         #region Public Properties
 
         #region Product Data
@@ -50,6 +58,11 @@ namespace SalesManagment
         /// </summary>
         public byte[] Picture { get; set; }
 
+        /// <summary>
+        /// Determine if product isn't in the cart or in it
+        /// </summary>
+        public bool IsOutFromCart { get; set; } = true;
+
         #endregion
 
         #region Public Commands
@@ -58,7 +71,44 @@ namespace SalesManagment
         public override ICommand EditCommand { get; set;}
         public override ICommand PrintCommand { get; set;}
 
+        /// <summary>
+        /// The command used to add product to cart
+        /// </summary>
+        public ICommand AddToCartCommand { get; set; }
+
         #endregion
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initialize an instance from the <see cref="ProductRowViewerViewModel"/> class
+        /// </summary>
+        public ProductRowViewerViewModel()
+        {
+            AddToCartCommand = new RelayCommand(() => AddToCart());
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Adding this item to cart
+        /// </summary>
+        public void AddToCart()
+        {
+            OrderRowViewerListViewModel.Instance.AddToCart(this);
+        }
+
+        /// <summary>
+        /// Notify that the product is updated
+        /// </summary>
+        public void Update()
+        {
+            ProductUpdated?.Invoke();
+        }
 
         #endregion
     }

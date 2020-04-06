@@ -41,14 +41,9 @@
         ClientsManagement,
 
         /// <summary>
-        /// The page used to add a new sale
+        /// The page used to represent the cart
         /// </summary>
-        AddingSale,
-
-        /// <summary>
-        /// The page used to manage products
-        /// </summary>
-        SalesManagement,
+        Cart,
 
         /// <summary>
         /// The page used to add a new user
