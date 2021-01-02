@@ -166,7 +166,7 @@
     <Compile Include="ViewModels\Pages\AddingClientPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\AddingProductPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BasePageViewModel.cs" />
-    <Compile Include="ViewModels\Pages\SalesManagementPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\CartPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\CategoriesManagementPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\ClientManagementPageViewModel.cs" />
     <Compile Include="ViewModels\UserControls\Base\BaseRowViewerListViewModel.cs" />
@@ -426,6 +426,7 @@
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Get_OrderDetails_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_Order_Procedure.sql" />
     <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Add_OrderDetails_Procedure.sql" />
+    <Content Include="Models\Database\SQL_Scripts\StoredProcedures\Update_Product_Quantity_Procedure.sql" />
     <Content Include="Views\Pages\Add_Category_Procedure.sql" />
     <Resource Include="Images\pexels-photo-40120_650x434_acf_cropped.jpeg" />
     <Resource Include="Images\unnamed.jpg" />
